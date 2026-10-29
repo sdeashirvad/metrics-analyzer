@@ -1,0 +1,93 @@
+:root {
+  color-scheme: light;
+
+  --canvas: #f3f5f8;
+  --canvas-tint: radial-gradient(1200px 480px at 30% -120px, rgba(59, 75, 168, 0.07), transparent 70%);
+  --surface: #ffffff;
+  --surface-2: #f7f9fb;
+  --surface-hover: #f2f5f9;
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-strong: rgba(255, 255, 255, 0.86);
+  --glass-fallback: #fbfcfd;
+  --glass-filter: blur(20px) saturate(160%);
+
+  --ink-1: #0f1b26;
+  --ink-2: #3d4c5b;
+  --ink-3: #5b6877;
+  --hairline: rgba(15, 27, 38, 0.1);
+  --hairline-strong: rgba(15, 27, 38, 0.18);
+
+  --red: #a1262d;
+  --red-bg: #fbeaea;
+  --amber: #7a5200;
+  --amber-bg: #fbf2dc;
+  --green: #17663f;
+  --green-bg: #e6f3eb;
+  --na: #46525f;
+  --na-bg: #eef1f4;
+  --na-hatch: repeating-linear-gradient(135deg, #dde3e9 0 3px, #f3f5f8 3px 7px);
+
+  --tech: #3b4ba8;
+  --tech-bg: #eceefa;
+  --dq: #0f6f73;
+  --dq-bg: #e3f2f2;
+
+  --data-ink: #4a5a6b;
+  --data-track: #e8edf2;
+  --accent: #2357c5;
+  --accent-bg: rgba(35, 87, 197, 0.1);
+  --accent-strong: #1a449c;
+  --info: #1f4e79;
+  --info-bg: #e7eef5;
+
+  --font: -apple-system, "SF Pro Text", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-32: 32px;
+  --fs-40: 40px;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-14: 56px;
+
+  --r-control: 8px;
+  --r-card: 12px;
+  --r-tile: 16px;
+  --r-sheet: 20px;
+  --r-pill: 999px;
+
+  --e-1: 0 0 0 1px var(--hairline);
+  --e-2: 0 1px 2px rgba(15, 27, 38, 0.06), 0 8px 24px rgba(15, 27, 38, 0.06);
+  --e-3: 0 2px 6px rgba(15, 27, 38, 0.08), 0 16px 40px rgba(15, 27, 38, 0.12);
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-control: 160ms;
+  --t-panel: 240ms;
+
+  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 4px var(--accent);
+
+  --sidebar: 232px;
+  --env-h: 28px;
+  --content-max: 1360px;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--fs-14);
+  line-height: 1.5;
+  color: var(--ink-1);
+  background: var(--canvas-tint), var(--canvas);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
