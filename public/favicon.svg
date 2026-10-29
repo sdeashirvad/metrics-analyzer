@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Metrics Analyzer">
+  <rect width="32" height="32" rx="7" fill="#0B1F33"/>
+  <circle cx="16" cy="16" r="10" fill="none" stroke="#D5E0EA" stroke-width="1.4"/>
+  <rect x="10.5" y="17" width="2.4" height="5" rx="0.4" fill="#7DBE9B"/>
+  <rect x="14.8" y="14" width="2.4" height="8" rx="0.4" fill="#D4B46A"/>
+  <rect x="19.1" y="11" width="2.4" height="11" rx="0.4" fill="#E7EEF5"/>
+</svg>
