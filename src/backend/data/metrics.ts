@@ -1,0 +1,223 @@
+import type { MetricDefinition } from '../contracts/types'
+
+export const M004_AMBER_NOTE =
+  'The scenario establishes that Backup Success went amber and then red on 22 October. It does not establish the date the metric first entered amber. Amber points before 22 October are illustrative synthetic values and are not confirmed historical events.'
+
+export interface RawMetric extends MetricDefinition {
+  value: number | null
+  asOf: string | null
+  breachedOn: string | null
+  coverageNote: string
+  trendCaption: string | null
+}
+
+const OWNER = 'Technology Risk'
+const SEEDED_CAPTION =
+  'All values on this chart are illustrative synthetic data, not SMARTS results. The breach date is a supplied scenario fact.'
+
+export const metrics: RawMetric[] = [
+  {
+    id: 'M001',
+    name: 'Critical Patch Compliance %',
+    domain: 'Vulnerability Mgmt',
+    controlId: 'CTL-VM-01',
+    frequency: 'Daily',
+    direction: 'higher_is_better',
+    unit: '%',
+    thresholds: { green: 98, amber: 95 },
+    provisionalDefinition:
+      'Percentage of in-scope critical assets with required critical patches applied within the control window.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: 90.4,
+    asOf: '2026-10-27',
+    breachedOn: '2026-10-14',
+    coverageNote:
+      'Illustrative daily series from 8 October to 27 October 2026. The breach date is a supplied scenario fact. Readings are synthetic.',
+    trendCaption: SEEDED_CAPTION,
+  },
+  {
+    id: 'M002',
+    name: 'Privileged Access Recertification %',
+    domain: 'Access Mgmt',
+    controlId: 'CTL-AM-04',
+    frequency: 'Monthly',
+    direction: 'higher_is_better',
+    unit: '%',
+    thresholds: { green: 100, amber: 97 },
+    provisionalDefinition:
+      'Percentage of privileged access entitlements recertified within the monthly cycle.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: null,
+    asOf: null,
+    breachedOn: null,
+    coverageNote: 'Monthly metric. No illustrative history in this demo. RAG is not evaluated.',
+    trendCaption: null,
+  },
+  {
+    id: 'M003',
+    name: 'Critical Vulnerabilities > 30 Days',
+    domain: 'Vulnerability Mgmt',
+    controlId: 'CTL-VM-02',
+    frequency: 'Daily',
+    direction: 'lower_is_better',
+    unit: 'count',
+    thresholds: { green: 10, amber: 25 },
+    provisionalDefinition:
+      'Count of critical vulnerabilities that have remained unresolved for more than 30 days.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: 41,
+    asOf: '2026-10-27',
+    breachedOn: '2026-10-16',
+    coverageNote:
+      'Illustrative daily series from 8 October to 27 October 2026. The breach date is a supplied scenario fact. Readings are synthetic.',
+    trendCaption: SEEDED_CAPTION,
+  },
+  {
+    id: 'M004',
+    name: 'Backup Success Rate %',
+    domain: 'Resilience',
+    controlId: 'CTL-RS-03',
+    frequency: 'Daily',
+    direction: 'higher_is_better',
+    unit: '%',
+    thresholds: { green: 99.5, amber: 98 },
+    provisionalDefinition: 'Percentage of scheduled backup jobs that completed successfully.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: 97,
+    asOf: '2026-10-27',
+    breachedOn: '2026-10-22',
+    coverageNote: M004_AMBER_NOTE,
+    trendCaption: M004_AMBER_NOTE,
+  },
+  {
+    id: 'M005',
+    name: 'Sev1 Incident MTTR (hrs)',
+    domain: 'Incident Mgmt',
+    controlId: 'CTL-IM-01',
+    frequency: 'Weekly',
+    direction: 'lower_is_better',
+    unit: 'hrs',
+    thresholds: { green: 4, amber: 8 },
+    provisionalDefinition: 'Mean time to restore service for severity-1 incidents, in hours.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: 3.2,
+    asOf: '2026-10-27',
+    breachedOn: null,
+    coverageNote:
+      'Illustrative synthetic reading for portfolio context. No breach story, trend history, or organizational breakdown was supplied.',
+    trendCaption: null,
+  },
+  {
+    id: 'M006',
+    name: 'End-of-Life Software Footprint %',
+    domain: 'Tech Obsolescence',
+    controlId: 'CTL-TO-02',
+    frequency: 'Monthly',
+    direction: 'lower_is_better',
+    unit: '%',
+    thresholds: { green: 2, amber: 5 },
+    provisionalDefinition: 'Percentage of the software estate that is past vendor end-of-life.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: 3.4,
+    asOf: '2026-10-27',
+    breachedOn: null,
+    coverageNote:
+      'Illustrative synthetic reading for portfolio context. No breach story, trend history, or organizational breakdown was supplied.',
+    trendCaption: null,
+  },
+  {
+    id: 'M007',
+    name: 'Change Failure Rate %',
+    domain: 'Change Mgmt',
+    controlId: 'CTL-CM-02',
+    frequency: 'Weekly',
+    direction: 'lower_is_better',
+    unit: '%',
+    thresholds: { green: 5, amber: 10 },
+    provisionalDefinition:
+      'Percentage of changes that failed, were rolled back, or required emergency remediation.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: 14.1,
+    asOf: '2026-10-25',
+    breachedOn: '2026-10-18',
+    coverageNote:
+      'Illustrative weekly series. The latest point is the week ending 25 October 2026. The breach date is a supplied scenario fact. Readings are synthetic.',
+    trendCaption: SEEDED_CAPTION,
+  },
+  {
+    id: 'M008',
+    name: 'Endpoint Protection Coverage %',
+    domain: 'Cyber',
+    controlId: 'CTL-CY-01',
+    frequency: 'Daily',
+    direction: 'higher_is_better',
+    unit: '%',
+    thresholds: { green: 99, amber: 96 },
+    provisionalDefinition: 'Percentage of in-scope endpoints with current protection agent coverage.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: 99.3,
+    asOf: '2026-10-27',
+    breachedOn: null,
+    coverageNote:
+      'Illustrative synthetic reading for portfolio context. No breach story, trend history, or organizational breakdown was supplied.',
+    trendCaption: null,
+  },
+  {
+    id: 'M009',
+    name: 'DR Test Completion %',
+    domain: 'Resilience',
+    controlId: 'CTL-RS-05',
+    frequency: 'Monthly',
+    direction: 'higher_is_better',
+    unit: '%',
+    thresholds: { green: 100, amber: 90 },
+    provisionalDefinition:
+      'Percentage of required disaster-recovery tests completed in the monthly cycle.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: null,
+    asOf: null,
+    breachedOn: null,
+    coverageNote: 'Monthly metric. No illustrative history in this demo. RAG is not evaluated.',
+    trendCaption: null,
+  },
+  {
+    id: 'M010',
+    name: 'Orphaned Service Accounts',
+    domain: 'Access Mgmt',
+    controlId: 'CTL-AM-07',
+    frequency: 'Weekly',
+    direction: 'lower_is_better',
+    unit: 'count',
+    thresholds: { green: 5, amber: 15 },
+    provisionalDefinition: 'Count of service accounts with no identified owner.',
+    definitionStatus: 'provisional_pending_validation',
+    ownerFunction: OWNER,
+    controlStatement: null,
+    value: 4,
+    asOf: '2026-10-27',
+    breachedOn: null,
+    coverageNote:
+      'Illustrative synthetic reading for portfolio context. No breach story, trend history, or organizational breakdown was supplied.',
+    trendCaption: null,
+  },
+]
+
+export const metricById = new Map(metrics.map((metric) => [metric.id, metric]))
