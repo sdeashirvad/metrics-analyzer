@@ -43,6 +43,15 @@ function Invoke-MetricsCommit {
         throw "Missing paths for batch '$Summary': $($missing -join ', ')"
     }
     git add -- @Paths
+    foreach ($p in $Paths) {
+        if ($p -like 'frontend/*') {
+            $old = $p.Substring(9)
+            git cat-file -e "HEAD:${old}" 2>$null
+            if ($LASTEXITCODE -eq 0) {
+                git add -u -- $old
+            }
+        }
+    }
     $staged = git diff --cached --name-only
     if (-not $staged) {
         Write-Host "Skip (nothing staged): $Summary"
@@ -59,8 +68,10 @@ $batches = @(
     @{
         Summary = 'vite react app scaffold'
         Paths   = @(
-            '.gitignore', 'README.md', 'index.html', 'package.json', 'package-lock.json',
-            'tsconfig.json', 'vite.config.ts', 'public/favicon.svg', 'src/vite-env.d.ts', 'src/main.tsx'
+            '.gitignore', 'README.md', 'backend/README.md',
+            'frontend/index.html', 'frontend/package.json', 'frontend/package-lock.json',
+            'frontend/tsconfig.json', 'frontend/vite.config.ts', 'frontend/public/favicon.svg',
+            'frontend/src/vite-env.d.ts', 'frontend/src/main.tsx'
         )
     },
     @{
@@ -70,90 +81,90 @@ $batches = @(
     @{
         Summary = 'mock api contracts and tech-risk data'
         Paths   = @(
-            'src/backend/contracts/types.ts', 'src/backend/contracts/routes.ts',
-            'src/backend/services/index.ts', 'src/backend/services/errors.ts', 'src/backend/services/delay.ts',
-            'src/backend/services/mockApi.ts', 'src/backend/services/dq.ts',
-            'src/backend/data/metrics.ts', 'src/backend/data/trends.ts',
-            'src/backend/data/investigations.ts', 'src/backend/data/orgContribution.ts',
-            'src/domain/evaluateStatus.ts', 'src/domain/format.ts'
+            'frontend/src/backend/contracts/types.ts', 'frontend/src/backend/contracts/routes.ts',
+            'frontend/src/backend/services/index.ts', 'frontend/src/backend/services/errors.ts', 'frontend/src/backend/services/delay.ts',
+            'frontend/src/backend/services/mockApi.ts', 'frontend/src/backend/services/dq.ts',
+            'frontend/src/backend/data/metrics.ts', 'frontend/src/backend/data/trends.ts',
+            'frontend/src/backend/data/investigations.ts', 'frontend/src/backend/data/orgContribution.ts',
+            'frontend/src/domain/evaluateStatus.ts', 'frontend/src/domain/format.ts'
         )
     },
     @{
         Summary = 'workbook dq json fixtures'
         Paths   = @(
-            'src/backend/data/dq/definitions.json', 'src/backend/data/dq/results.json',
-            'src/backend/data/dq/results-by-desk.json', 'src/backend/data/dq/exceptions.json',
-            'src/backend/data/dq/hierarchy.json', 'src/backend/data/dq/events.json',
-            'src/backend/data/dq/commentary.json', 'src/backend/data/dq/summary.json'
+            'frontend/src/backend/data/dq/definitions.json', 'frontend/src/backend/data/dq/results.json',
+            'frontend/src/backend/data/dq/results-by-desk.json', 'frontend/src/backend/data/dq/exceptions.json',
+            'frontend/src/backend/data/dq/hierarchy.json', 'frontend/src/backend/data/dq/events.json',
+            'frontend/src/backend/data/dq/commentary.json', 'frontend/src/backend/data/dq/summary.json'
         )
     },
     @{
         Summary = 'router shell and url query hooks'
         Paths   = @(
-            'src/App.tsx', 'src/hooks/useQuery.ts', 'src/hooks/useUrlState.ts', 'src/hooks/useOrigin.ts',
-            'src/components/AppShell.tsx', 'src/components/EnvironmentBar.tsx', 'src/components/NotFoundPage.tsx'
+            'frontend/src/App.tsx', 'frontend/src/hooks/useQuery.ts', 'frontend/src/hooks/useUrlState.ts', 'frontend/src/hooks/useOrigin.ts',
+            'frontend/src/components/AppShell.tsx', 'frontend/src/components/EnvironmentBar.tsx', 'frontend/src/components/NotFoundPage.tsx'
         )
     },
     @{
         Summary = 'design tokens and layout styles'
         Paths   = @(
-            'src/styles/tokens.css', 'src/styles/base.css', 'src/styles/components.css',
-            'src/styles/pages.css', 'src/styles/architecture.css'
+            'frontend/src/styles/tokens.css', 'frontend/src/styles/base.css', 'frontend/src/styles/components.css',
+            'frontend/src/styles/pages.css', 'frontend/src/styles/architecture.css'
         )
     },
     @{
         Summary = 'shared ui primitives and charts'
         Paths   = @(
-            'src/components/StatusBadge.tsx', 'src/components/TrendChart.tsx',
-            'src/components/ThresholdScale.tsx', 'src/components/HotspotChart.tsx',
-            'src/components/ui/PageHeader.tsx', 'src/components/ui/Breadcrumbs.tsx',
-            'src/components/ui/SegmentedControl.tsx', 'src/components/ui/Tabs.tsx',
-            'src/components/ui/SectionState.tsx', 'src/components/ui/ProvenanceChip.tsx',
-            'src/components/ui/DataTable.tsx', 'src/components/ui/Pager.tsx',
-            'src/components/ui/FilterToolbar.tsx', 'src/components/ui/Disclosure.tsx',
-            'src/components/ui/Sparkline.tsx', 'src/components/ui/StatusStrip.tsx',
-            'src/components/ui/BookTile.tsx', 'src/components/ui/AttentionRow.tsx',
-            'src/components/ui/Select.tsx'
+            'frontend/src/components/StatusBadge.tsx', 'frontend/src/components/TrendChart.tsx',
+            'frontend/src/components/ThresholdScale.tsx', 'frontend/src/components/HotspotChart.tsx',
+            'frontend/src/components/ui/PageHeader.tsx', 'frontend/src/components/ui/Breadcrumbs.tsx',
+            'frontend/src/components/ui/SegmentedControl.tsx', 'frontend/src/components/ui/Tabs.tsx',
+            'frontend/src/components/ui/SectionState.tsx', 'frontend/src/components/ui/ProvenanceChip.tsx',
+            'frontend/src/components/ui/DataTable.tsx', 'frontend/src/components/ui/Pager.tsx',
+            'frontend/src/components/ui/FilterToolbar.tsx', 'frontend/src/components/ui/Disclosure.tsx',
+            'frontend/src/components/ui/Sparkline.tsx', 'frontend/src/components/ui/StatusStrip.tsx',
+            'frontend/src/components/ui/BookTile.tsx', 'frontend/src/components/ui/AttentionRow.tsx',
+            'frontend/src/components/ui/Select.tsx'
         )
     },
     @{
         Summary = 'dashboard metric health books'
-        Paths   = @('src/features/dashboard/DashboardPage.tsx')
+        Paths   = @('frontend/src/features/dashboard/DashboardPage.tsx')
     },
     @{
         Summary = 'triage queue movement and trend explorer'
         Paths   = @(
-            'src/features/overview/triage.ts', 'src/features/overview/TriageQueue.tsx',
-            'src/features/overview/MovementRail.tsx', 'src/features/overview/TrendExplorer.tsx',
-            'src/features/overview/OverviewPage.tsx'
+            'frontend/src/features/overview/triage.ts', 'frontend/src/features/overview/TriageQueue.tsx',
+            'frontend/src/features/overview/MovementRail.tsx', 'frontend/src/features/overview/TrendExplorer.tsx',
+            'frontend/src/features/overview/OverviewPage.tsx'
         )
     },
     @{
         Summary = 'metric register filters and exports'
-        Paths   = @('src/features/register/RegisterPage.tsx')
+        Paths   = @('frontend/src/features/register/RegisterPage.tsx')
     },
     @{
         Summary = 'metric detail and dq evidence tabs'
-        Paths   = @('src/features/metric/MetricDetailPage.tsx', 'src/features/metric/DqEvidence.tsx')
+        Paths   = @('frontend/src/features/metric/MetricDetailPage.tsx', 'frontend/src/features/metric/DqEvidence.tsx')
     },
     @{
         Summary = 'investigation views and analysis simulation'
         Paths   = @(
-            'src/features/investigation/InvestigationPage.tsx', 'src/features/investigation/InvestigationChrome.tsx',
-            'src/features/investigation/DqInvestigationView.tsx', 'src/features/investigation/AnalysisSimulation.tsx'
+            'frontend/src/features/investigation/InvestigationPage.tsx', 'frontend/src/features/investigation/InvestigationChrome.tsx',
+            'frontend/src/features/investigation/DqInvestigationView.tsx', 'frontend/src/features/investigation/AnalysisSimulation.tsx'
         )
     },
     @{
         Summary = 'architecture diagram and walkthrough'
         Paths   = @(
-            'src/features/architecture/model.ts', 'src/features/architecture/ArchitecturePage.tsx',
-            'src/features/architecture/ArchitectureDiagram.tsx', 'src/features/architecture/DetailPanel.tsx',
-            'src/features/architecture/Walkthrough.tsx'
+            'frontend/src/features/architecture/model.ts', 'frontend/src/features/architecture/ArchitecturePage.tsx',
+            'frontend/src/features/architecture/ArchitectureDiagram.tsx', 'frontend/src/features/architecture/DetailPanel.tsx',
+            'frontend/src/features/architecture/Walkthrough.tsx'
         )
     },
     @{
         Summary = 'glossary and conventions page'
-        Paths   = @('src/features/glossary/GlossaryPage.tsx')
+        Paths   = @('frontend/src/features/glossary/GlossaryPage.tsx')
     },
     @{
         Summary = 'batch commit script'
