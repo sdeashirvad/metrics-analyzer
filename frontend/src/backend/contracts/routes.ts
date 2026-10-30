@@ -1,7 +1,7 @@
 /**
  * Future HTTP map for controllens_backend.
  * The UI depends on RiskApi, not on these strings.
- * Swap src/backend/services/index.ts to an HTTP client that calls these routes.
+ * Swap frontend/src/backend/services/index.ts to an HTTP client that calls these routes.
  */
 export const apiRoutes = {
   overview: 'GET /api/v1/overview',
