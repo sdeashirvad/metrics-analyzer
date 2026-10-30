@@ -8,8 +8,11 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-XLSX = ROOT.parent / "SMARTS_DQ_mock_data.xlsx"
-OUT = ROOT / "src" / "backend" / "data" / "dq"
+XLSX = next(
+    (path for path in (ROOT / "SMARTS_DQ_mock_data.xlsx", ROOT.parent / "SMARTS_DQ_mock_data.xlsx") if path.exists()),
+    ROOT / "SMARTS_DQ_mock_data.xlsx",
+)
+OUT = ROOT / "frontend" / "src" / "backend" / "data" / "dq"
 NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
 STORIES = {

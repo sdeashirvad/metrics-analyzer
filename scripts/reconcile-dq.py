@@ -6,7 +6,7 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "src" / "backend" / "data" / "dq"
+OUT = ROOT / "frontend" / "src" / "backend" / "data" / "dq"
 spec = importlib.util.spec_from_file_location("dqbuild", ROOT / "scripts" / "build-dq-fixtures.py")
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
