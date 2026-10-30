@@ -54,6 +54,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 1px;
+  min-width: 0;
   padding: 4px 9px;
   text-align: left;
   background: var(--surface);
@@ -145,15 +146,49 @@
 .arch-layers { display: none; }
 .arch-layers section { padding: var(--s-3) 0; border-top: 1px solid var(--hairline); }
 .arch-layers section:first-child { border-top: 0; padding-top: 0; }
-.arch-layer-nodes { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-2); }
-.arch-node-flow { position: relative; width: auto; height: auto; min-height: 44px; }
+.arch-layer-nodes { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin-top: var(--s-2); max-width: 440px; }
+.arch-flow-item { width: 100%; }
+.arch-node-flow { position: relative; width: 100%; height: auto; min-height: 44px; }
+.arch-flow-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 22px;
+  margin-left: 22px;
+  color: var(--ink-3);
+  font-size: var(--fs-12);
+  font-weight: 600;
+}
+.arch-flow-stem { width: 0; height: 16px; border-left: 1.5px solid var(--data-ink); }
+.arch-flow-link.edge-control .arch-flow-stem { border-left-color: var(--info); }
+.arch-flow-link.edge-async .arch-flow-stem { border-left-style: dashed; border-left-color: var(--amber); }
+.arch-flow-link.is-traced { color: var(--accent); }
+.arch-flow-link.is-traced .arch-flow-stem { border-left-color: var(--accent); border-left-width: 2px; }
 .arch-layers.is-stepping .arch-node:not(.is-traced) { opacity: 0.45; }
-.arch-inline-detail { margin-top: var(--s-3); }
+.arch-inline-detail { margin-top: var(--s-3); max-width: 440px; }
 
-@media (max-width: 960px) {
+/* The canvas uses fixed coordinates. Keep it only while the page column can
+   hold the diagram beside the detail panel, or alone at a readable scale. */
+.architecture { container-type: inline-size; container-name: archpage; }
+
+@container archpage (max-width: 1040px) {
   .arch-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@container archpage (max-width: 900px) {
   .arch-scene { display: none; }
   .arch-layers { display: block; }
   .arch-side { display: none; }
   .arch-panel { min-height: 0; }
+  .arch-dock { position: static; }
+}
+
+@media (max-width: 1320px) {
+  .arch-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 1180px) {
+  .arch-scene { display: none; }
+  .arch-layers { display: block; }
+  .arch-side { display: none; }
+  .arch-panel { min-height: 0; }
+  .arch-dock { position: static; }
 }
