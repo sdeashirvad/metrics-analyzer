@@ -10,7 +10,10 @@ import { Walkthrough } from './Walkthrough'
 
 type TabId = ArchGraph['id']
 
-const NARROW = '(max-width: 960px)'
+function compactDiagram() {
+  const scene = document.querySelector<HTMLElement>('.arch-scene')
+  return !scene || getComputedStyle(scene).display === 'none'
+}
 
 function reducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -33,7 +36,7 @@ export function ArchitecturePage() {
       follow.current = true
       setStepIndex((current) => ({ ...current, [tab]: next }))
       const nodes = graph.steps[next]?.nodes
-      if (nodes?.[0] && !window.matchMedia(NARROW).matches) setSelected((current) => ({ ...current, [tab]: nodes[0] }))
+      if (nodes?.[0] && !compactDiagram()) setSelected((current) => ({ ...current, [tab]: nodes[0] }))
     },
     [graph.steps, tab],
   )
@@ -42,7 +45,7 @@ export function ArchitecturePage() {
     if (!follow.current) return
     follow.current = false
     if (step < 0) return
-    const narrow = window.matchMedia(NARROW).matches
+    const narrow = compactDiagram()
     const scope = document.getElementById(narrow ? `arch-list-${tab}` : `arch-scene-${tab}`)
     if (!scope) return
     const targets = [...scope.querySelectorAll<HTMLElement>('.is-traced')]

@@ -145,23 +145,35 @@ export function ArchitectureList({
           <div className="arch-layer-nodes">
             {graph.nodes
               .filter((node) => node.layer === layer)
-              .map((node) => (
-                <button
-                  key={node.id}
-                  type="button"
-                  className={nodeClass(node, selectedId, tracedSet, 'arch-node-flow')}
-                  aria-pressed={node.id === selectedId}
-                  onClick={() => onSelect(node.id)}
-                >
-                  {tracedSet.has(node.id) && (
-                    <span className="arch-step-badge" aria-hidden="true">
-                      {stepNumber}
-                    </span>
-                  )}
-                  <span>{node.label}</span>
-                  <small>{statusShort(node.status)}</small>
-                </button>
-              ))}
+              .map((node, index, layerNodes) => {
+                const next = layerNodes[index + 1]
+                const link = next ? graph.edges.find((edge) => edge.from === node.id && edge.to === next.id) : undefined
+                const linkHot = link ? tracedSet.has(link.from) && tracedSet.has(link.to) : false
+                return (
+                  <div key={node.id} className="arch-flow-item">
+                    <button
+                      type="button"
+                      className={nodeClass(node, selectedId, tracedSet, 'arch-node-flow')}
+                      aria-pressed={node.id === selectedId}
+                      onClick={() => onSelect(node.id)}
+                    >
+                      {tracedSet.has(node.id) && (
+                        <span className="arch-step-badge" aria-hidden="true">
+                          {stepNumber}
+                        </span>
+                      )}
+                      <span>{node.label}</span>
+                      <small>{statusShort(node.status)}</small>
+                    </button>
+                    {link && (
+                      <div className={`arch-flow-link edge-${link.kind}${linkHot ? ' is-traced' : ''}`}>
+                        <span className="arch-flow-stem" aria-hidden="true" />
+                        <span>{link.label}</span>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
           </div>
           {layer === selectedLayer && <div className="arch-inline-detail">{detail}</div>}
         </section>
