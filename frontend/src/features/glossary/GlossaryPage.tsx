@@ -11,7 +11,7 @@ import { ENVIRONMENT_NOTICE } from '../../components/EnvironmentBar'
 
 const EVIDENCE: Array<{ kind: Evidence; meaning: string }> = [
   { kind: 'fact', meaning: 'A fact written into the synthetic Technology Risk scenario, such as a breach date. It is part of the story, not a live observation.' },
-  { kind: 'workbook', meaning: 'A result or record taken directly from the supplied workbook.' },
+  { kind: 'workbook', meaning: 'A Data Quality result stored in Snowflake from the supplied workbook. It is not a live SMARTS feed.' },
   { kind: 'established', meaning: 'Follows directly from supplied results or definitions, for example a threshold comparison.' },
   { kind: 'hypothesis', meaning: 'A possible explanation supplied with the scenario or workbook. It has not been validated.' },
   { kind: 'linked', meaning: 'An event tied to a control by control ID. A nearby date is not treated as a cause.' },
@@ -20,7 +20,7 @@ const EVIDENCE: Array<{ kind: Evidence; meaning: string }> = [
 ]
 
 const SOURCES: Array<{ kind: Provenance; meaning: string }> = [
-  { kind: 'simulated', meaning: 'The Technology Risk investigation sequence is a scripted, in-browser simulation. It does not call a model.' },
+  { kind: 'simulated', meaning: 'The Technology Risk investigation is an illustrative scenario served by the API. It is not a Snowflake or Cortex result.' },
   { kind: 'proposed', meaning: 'Architecture elements that are drawn but not built.' },
 ]
 
@@ -54,7 +54,7 @@ export function GlossaryPage() {
 
   return (
     <div className="page glossary page-narrow">
-      <PageHeader title="Glossary & conventions" subtitle="How to read identifiers, statuses and source labels in this demonstration." />
+      <PageHeader title="Glossary & conventions" subtitle="How to read identifiers, statuses and source labels. Technology Risk and Data Quality use different sources." />
 
       <nav className="gloss-toc" aria-label="On this page">
         <a href="#gloss-ids">Identifiers</a>
@@ -70,11 +70,11 @@ export function GlossaryPage() {
         <dl className="gloss-list">
           <Term term="M-numbers · Technology Risk metrics">
             Identifiers such as <Link to={`/metrics/${tech.metric.id}`}>{tech.metric.id}</Link> ({tech.metric.name}, {tech.metric.domain}). The register holds {techList.total} Technology
-            Risk metrics across {techDomains.length} domains: {techDomains.join(', ')}. Readings are synthetic.
+            Risk metrics across {techDomains.length} domains: {techDomains.join(', ')}. Readings are illustrative scenario data.
           </Term>
           <Term term="DQ-numbers · Data Quality controls">
             Identifiers such as <Link to={`/metrics/${dq.metric.id}`}>{dq.metric.id}</Link> ({dq.metric.name}, {dq.metric.domain}). The workbook defines {dqList.total} controls across{' '}
-            {dqDimensions.length} dimensions: {dqDimensions.join(', ')}. Results are supplied by the workbook.
+            {dqDimensions.length} dimensions: {dqDimensions.join(', ')}. Results are read from Snowflake.
           </Term>
           <Term term="Why two series">
             The two books are measured differently and come from different sources, so their counts and pass rates are never added together or averaged.
@@ -117,7 +117,7 @@ export function GlossaryPage() {
             Where a problem concentrates. For Data Quality it is desk failure volume. For Technology Risk it is an illustrative organizational concentration supplied only for M001 and M003.
           </Term>
           <Term term="Triage and investigation">
-            <Link to="/overview">Triage</Link> lists the at-risk metrics and controls. An investigation is a prepared story for a seeded metric or control; other controls have detail pages only.
+            <Link to="/overview">Triage</Link> lists the at-risk metrics and controls. A Technology Risk investigation is an illustrative scenario. A Data Quality investigation is drafted from Snowflake facts, checked, and cached. Controls without that investigation show their detail page only.
           </Term>
         </dl>
       </section>
@@ -140,8 +140,8 @@ export function GlossaryPage() {
       <section className="card" id="gloss-sources" aria-labelledby="gloss-sources-title">
         <h2 id="gloss-sources-title">Data sources</h2>
         <p>
-          Everything in this demonstration is sample data. Technology Risk readings, trends and hotspots are illustrative values written for the scenario. Data Quality results, exceptions,
-          events and commentary come from the supplied SMARTS_DQ_mock_data.xlsx workbook, not from SMARTS. The two are never mixed or added together.
+          Technology Risk readings, trends and hotspots are illustrative values written for the scenario. They are served by the application API and are not Snowflake or Cortex results. Data Quality results, exceptions, events and commentary are stored in Snowflake from the
+          supplied workbook, not from a live SMARTS feed. Narrative text on a completed Data Quality investigation is written by the published Cortex agent from those stored facts, then checked against the retrieved figures. A facts-only view is not a Cortex analysis. The two books are never mixed or added together.
         </p>
         <dl className="gloss-list gloss-tags">
           {SOURCES.map((item) => (
@@ -168,8 +168,8 @@ export function GlossaryPage() {
         <h2 id="gloss-demo-title">Demo environment</h2>
         <p className="env-quote">{ENVIRONMENT_NOTICE}</p>
         <p>
-          The application runs entirely in the browser on bundled sample data behind a mock service boundary. It does not call SMARTS, Snowflake or Snowflake Cortex, and nothing here is a live
-          reading. The Architecture page shows what is running and what is only planned.
+          Technology Risk is illustrative scenario data served by the API. It does not call SMARTS or Snowflake Cortex. Data Quality calls the same API, which reads Snowflake and, for a new
+          investigation, the published Cortex agent. The Architecture page shows what is running and what is only planned.
         </p>
       </section>
     </div>

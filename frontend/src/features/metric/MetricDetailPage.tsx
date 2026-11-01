@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import type { DqSummary, MetricDetailResponse } from '../../backend/contracts/types'
 import { api, generateDqSummary, getDqSummary } from '../../backend/services'
+import { pollDqInvestigation } from '../../backend/services/httpApi'
+import { useAnalysisCache } from '../../state/analysisState'
+import { estimateFor, recordSample } from '../../state/etaStore'
+import { InvestigationActions, InvestigationMark } from '../investigation/AccessControls'
+import { investigationAccess } from '../investigation/access'
+import { summaryRetry, type SummaryErrorKind } from './summaryFlow'
 import { StatusBadge } from '../../components/StatusBadge'
 import { ThresholdScale } from '../../components/ThresholdScale'
 import { TrendChart } from '../../components/TrendChart'
@@ -59,13 +65,13 @@ function DetailView({ data, back }: { data: MetricDetailResponse; back: ReturnTy
           </>
         }
         actions={
-          data.family === 'data_quality' || data.investigationAvailable ? (
-            <Link className="btn btn-primary" to={`/investigations/${metric.id}`} state={linkState}>
-              Open investigation
-            </Link>
-          ) : (
-            <p className="fine no-inv">No planted investigation for this control. Detail only.</p>
-          )
+          <InvestigationLink
+            metricId={metric.id}
+            family={data.family}
+            investigationAvailable={data.investigationAvailable}
+            snapshotUnavailable={data.snapshotUnavailable}
+            state={linkState}
+          />
         }
       />
 
@@ -164,17 +170,74 @@ function DetailView({ data, back }: { data: MetricDetailResponse; back: ReturnTy
   )
 }
 
+function InvestigationLink({
+  metricId,
+  family,
+  investigationAvailable,
+  snapshotUnavailable,
+  state,
+}: {
+  metricId: string
+  family: MetricDetailResponse['family']
+  investigationAvailable: boolean
+  snapshotUnavailable?: boolean
+  state: unknown
+}) {
+  const dataQuality = family === 'data_quality'
+  const cache = useAnalysisCache(dataQuality ? [metricId] : [])
+  const eta = estimateFor('INVESTIGATION')
+  const access = investigationAccess(
+    { family, id: metricId, investigationAvailable, snapshotUnavailable },
+    dataQuality ? cache(metricId) : undefined,
+  )
+  if (access === 'unavailable') return <p className="fine no-inv">No investigation available</p>
+  return (
+    <div className="row detail-inv">
+      <InvestigationMark access={access} family={family} etaLabel={eta?.label ?? null} />
+      <InvestigationActions id={metricId} access={access} state={state} length="long" detail={false} />
+    </div>
+  )
+}
+
+async function waitForSummary(controlId: string, runId: string, startedAt: number): Promise<DqSummary> {
+  let failures = 0
+  const started = Date.now()
+  while (Date.now() - started < 20 * 60 * 1000) {
+    try {
+      const status = await pollDqInvestigation(controlId, runId)
+      failures = 0
+      if (status.status === 'COMPLETED' && status.result) {
+        recordSample('SUMMARY', (Date.now() - startedAt) / 1000)
+        return status.result as unknown as DqSummary
+      }
+      if (status.status === 'FAILED') throw new Error(status.message || 'The summary did not finish. The previous summary is unchanged.')
+    } catch (error) {
+      if (error instanceof Error && /did not finish|unchanged/.test(error.message)) throw error
+      failures += 1
+      if (failures >= 3) throw new Error('The status check failed. The previous summary is unchanged.')
+    }
+    await new Promise((resolve) => setTimeout(resolve, 2500))
+  }
+  throw new Error('The summary is still running. Reload this page to check it.')
+}
+
 function DqSummaryCard({ controlId, snapshotUnavailable }: { controlId: string; snapshotUnavailable?: boolean }) {
   const [summary, setSummary] = useState<DqSummary | null>(null)
   const [missing, setMissing] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [errorKind, setErrorKind] = useState<SummaryErrorKind>(null)
   const [pending, setPending] = useState(false)
+  const [confirming, setConfirming] = useState(false)
+  const [reload, setReload] = useState(0)
+  const summaryBusy = useRef(false)
+  const summaryEta = estimateFor('SUMMARY')
 
   useEffect(() => {
     let cancelled = false
     setSummary(null)
     setMissing(false)
     setError(null)
+    setErrorKind(null)
     if (snapshotUnavailable) return
     getDqSummary(controlId)
       .then((found) => {
@@ -183,22 +246,37 @@ function DqSummaryCard({ controlId, snapshotUnavailable }: { controlId: string; 
       .catch((reason: unknown) => {
         if (cancelled) return
         if (reason instanceof ApiError && reason.status === 404) setMissing(true)
-        else setError(reason instanceof Error ? reason.message : 'Summary could not be loaded.')
+        else {
+          setErrorKind('load')
+          setError(reason instanceof Error ? reason.message : 'Summary could not be loaded.')
+        }
       })
     return () => {
       cancelled = true
     }
-  }, [controlId, snapshotUnavailable])
+  }, [controlId, snapshotUnavailable, reload])
 
   async function generate(forceRefresh: boolean) {
+    if (summaryBusy.current) return
+    summaryBusy.current = true
     setPending(true)
     setError(null)
+    setErrorKind(null)
     try {
-      setSummary(await generateDqSummary(controlId, forceRefresh))
+      const startedAt = Date.now()
+      const started = await generateDqSummary(controlId, forceRefresh)
+      if ('status' in started && started.status === 'RUNNING' && started.runId) {
+        const finished = await waitForSummary(controlId, started.runId, startedAt)
+        setSummary(finished)
+      } else if ('text' in started) {
+        setSummary(started)
+      }
       setMissing(false)
     } catch (reason) {
+      setErrorKind('generate')
       setError(reason instanceof Error ? reason.message : 'Summary could not be generated.')
     } finally {
+      summaryBusy.current = false
       setPending(false)
     }
   }
@@ -223,18 +301,63 @@ function DqSummaryCard({ controlId, snapshotUnavailable }: { controlId: string; 
             <dd>{summary.implications}</dd>
           </dl>
           <p className="fine">{summary.disclaimer}</p>
+          {summary.source === 'deterministic' && (
+            <p className="fine">Deterministic reading of stored facts. Not a Cortex analysis.</p>
+          )}
+          {error && <p>{error}</p>}
+          {confirming && (
+            <div className="callout confirm-run">
+              <p>
+                Refresh this summary? {summaryEta ? `${summaryEta.label}. ` : ''}The summary on screen stays until the new one finishes.
+              </p>
+              <div className="actions">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => {
+                    setConfirming(false)
+                    void generate(true)
+                  }}
+                >
+                  Refresh summary
+                </button>
+                <button type="button" className="btn" onClick={() => setConfirming(false)}>
+                  Keep this one
+                </button>
+              </div>
+            </div>
+          )}
           <div className="actions">
-            <button type="button" className="btn" disabled={pending} onClick={() => generate(true)}>
+            <button type="button" className="btn" disabled={pending || confirming} onClick={() => setConfirming(true)}>
               {pending ? 'Refreshing…' : 'Force refresh'}
             </button>
           </div>
         </>
       ) : error ? (
-        <p>{error}</p>
+        <div>
+          <p>{error}</p>
+          {summaryRetry(errorKind) === 'reload' && (
+            <div className="actions">
+              <button type="button" className="btn" disabled={pending} onClick={() => setReload((value) => value + 1)}>
+                Try again
+              </button>
+            </div>
+          )}
+          {summaryRetry(errorKind) === 'generate' && (
+            <div className="actions">
+              <button type="button" className="btn btn-primary" disabled={pending} onClick={() => void generate(false)}>
+                {pending ? 'Generating…' : 'Try again'}
+              </button>
+            </div>
+          )}
+        </div>
       ) : missing ? (
         <div className="actions">
-          <button type="button" className="btn btn-primary" disabled={pending} onClick={() => generate(false)}>
-            {pending ? 'Generating…' : 'Generate summary'}
+          {confirming && (
+            <p className="fine">Generate a summary? {summaryEta ? `${summaryEta.label}. ` : ''}This asks the analysis service to write one.</p>
+          )}
+          <button type="button" className="btn btn-primary" disabled={pending} onClick={() => (confirming ? void generate(false) : setConfirming(true))}>
+            {pending ? 'Generating…' : confirming ? 'Confirm and generate' : 'Generate summary'}
           </button>
         </div>
       ) : (
@@ -301,11 +424,16 @@ function TechBreakdown({ data, linkState }: { data: MetricDetailResponse; linkSt
       {org.data ? (
         org.data.availability === 'available' ? (
           <p>
-            An illustrative organizational contribution is supplied for this metric.{' '}
-            <Link to={`/investigations/${data.metric.id}`} state={linkState}>
-              See investigation
-            </Link>
-            .
+            An illustrative organizational contribution is supplied for this metric.
+            {data.investigationAvailable && (
+              <>
+                {' '}
+                <Link to={`/investigations/${data.metric.id}`} state={linkState}>
+                  See investigation
+                </Link>
+                .
+              </>
+            )}
           </p>
         ) : (
           <SectionUnavailable title="Not supplied." body={org.data.reason} />

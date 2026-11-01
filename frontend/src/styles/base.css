@@ -142,6 +142,7 @@ table { font-variant-numeric: tabular-nums; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .arch-edge-group.is-edge-active .arch-edge { animation: none; }
   *, *::before, *::after {
     transition: none !important;
     animation: none !important;

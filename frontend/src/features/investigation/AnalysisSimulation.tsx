@@ -40,7 +40,7 @@ export function AnalysisSimulation({ stages, onDone, note, stageMs = 1440, hold 
   return (
     <section className="card analysis no-print" aria-live="polite">
       <p className="eyebrow">
-        Simulated analysis · {step + 1} of {stages.length}
+        Illustrative walkthrough · {step + 1} of {stages.length}
       </p>
       <h2>{stages[step]}</h2>
       <p className="fine">{note}</p>

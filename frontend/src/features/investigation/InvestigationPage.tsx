@@ -14,9 +14,12 @@ import { PageError, PageLoading } from '../../components/ui/SectionState'
 import { displayOrMissing, formatDate, formatNumber } from '../../domain/format'
 import { useBackTarget, useLinkState, type BackTarget } from '../../hooks/useOrigin'
 import { useQuery } from '../../hooks/useQuery'
-import { DQ_STAGES, DqInvestigationView } from './DqInvestigationView'
+import { DqInvestigationView } from './DqInvestigationView'
 import { AnalysisSimulation } from './AnalysisSimulation'
+import { AwaitingAcceptanceLoader, CacheCheckLoader, CachedRetrievalLoader, LiveInvestigationLoader } from './LiveInvestigationLoader'
+import { showsGenerationLoader } from './openFlow'
 import { BackButton, InvestigationCrumbs } from './InvestigationChrome'
+import { useDqInvestigation } from './useDqInvestigation'
 
 const ANALYSIS_STAGES = [
   'Retrieving the control definition, direction, and thresholds',
@@ -33,7 +36,13 @@ export function InvestigationPage() {
   const { metricId = '' } = useParams()
   const back = useBackTarget({ to: '/overview', label: 'Triage' })
   const detailQuery = useQuery(`metric:${metricId}`, '', () => api.getMetric(metricId))
-  const investigationQuery = useQuery(`investigation:${metricId}`, '', () => api.getInvestigation(metricId))
+  const investigationQuery = useQuery(`investigation:${metricId}`, '', () =>
+    metricId.startsWith('DQ-') ? Promise.resolve(null as unknown as Investigation) : api.getInvestigation(metricId),
+  )
+
+  if (metricId.startsWith('DQ-')) {
+    return <DqInvestigationScreen metricId={metricId} detailQuery={detailQuery} back={back} />
+  }
 
   if (detailQuery.data && investigationQuery.error && isNotFound(investigationQuery.error)) {
     return <NoInvestigation detail={detailQuery.data} back={back} />
@@ -50,24 +59,92 @@ export function InvestigationPage() {
       />
     )
   }
-  if (metricId.startsWith('DQ-') && !investigationQuery.data && !investigationQuery.error) {
-    return (
-      <div className="page investigation">
-        <AnalysisSimulation
-          stages={DQ_STAGES}
-          hold
-          onDone={() => undefined}
-          note="The published Cortex Agent is writing the narrative. These stages stay on screen until that response is ready. Pass rate, RAG, and counts still come from Snowflake."
-        />
-      </div>
-    )
-  }
   if (!detailQuery.data || !investigationQuery.data) return <PageLoading label="Loading investigation" />
 
   const investigation = investigationQuery.data
   const detail = detailQuery.data
-  if ('kind' in investigation) return <DqInvestigationView key={metricId} pack={investigation} detail={detail} back={back} revealImmediately />
+  if ('kind' in investigation) return <PageLoading label="Loading investigation" />
   return <TechInvestigationView key={metricId} investigation={investigation} detail={detail} back={back} />
+}
+
+function DqInvestigationScreen({
+  metricId,
+  detailQuery,
+  back,
+}: {
+  metricId: string
+  detailQuery: ReturnType<typeof useQuery<MetricDetailResponse>>
+  back: BackTarget
+}) {
+  const job = useDqInvestigation(metricId, true)
+  const shown = job.pack ?? (job.phase === 'failed' ? job.preview : null)
+  if (detailQuery.error && !detailQuery.data) {
+    return <PageError message={detailQuery.error.message} onRetry={detailQuery.retry} />
+  }
+  if (job.phase === 'failed' && !shown) {
+    return (
+      <PageError
+        title={job.canResume ? 'The status check failed' : 'The investigation did not finish'}
+        message={job.message || 'The investigation did not finish.'}
+        onRetry={job.canResume ? job.checkAgain : job.retryOpen}
+      />
+    )
+  }
+  if ((job.phase === 'checking' || job.phase === 'retrieving') && !shown) {
+    return <div className="page investigation">{job.phase === 'retrieving' ? <CachedRetrievalLoader /> : <CacheCheckLoader />}</div>
+  }
+  if (job.phase === 'starting' && !shown) {
+    return (
+      <div className="page investigation">
+        <AwaitingAcceptanceLoader />
+      </div>
+    )
+  }
+  if (showsGenerationLoader(job.phase) && !shown) {
+    return (
+      <div className="page investigation">
+        <LiveInvestigationLoader startedAt={job.startedAt} estimate={job.estimate} />
+      </div>
+    )
+  }
+  if (!detailQuery.data || !shown) {
+    return <PageLoading label="Loading investigation" />
+  }
+  const executing = job.phase === 'starting' || job.phase === 'running'
+  const failed = job.phase === 'failed'
+  return (
+    <>
+      {job.phase === 'starting' && <div className="page investigation" style={{ paddingBottom: 0 }}><AwaitingAcceptanceLoader /></div>}
+      {showsGenerationLoader(job.phase) && (
+        <div className="page investigation" style={{ paddingBottom: 0 }}>
+          <LiveInvestigationLoader startedAt={job.startedAt} estimate={job.estimate} />
+        </div>
+      )}
+    <DqInvestigationView
+      pack={shown}
+      detail={detailQuery.data}
+      back={back}
+      revealImmediately
+      cached={job.phase === 'cached' || Boolean(shown.cached)}
+      notice={
+        executing
+          ? 'A new investigation is running. The saved one stays on screen until it finishes.'
+          : failed
+            ? job.message || 'The new analysis did not finish. The previous view is still shown.'
+            : shown.source === 'deterministic'
+              ? 'This view is built from stored facts. It is not a Cortex analysis.'
+              : shown.stale
+                ? `This is an earlier analysis from ${shown.generatedAt ?? 'a previous snapshot'}. It is not the current run.`
+                : undefined
+      }
+      etaLabel={job.estimate?.label ?? null}
+      executing={executing}
+      resumable={job.canResume}
+      onResume={job.checkAgain}
+      onRunAgain={job.runAgain}
+    />
+    </>
+  )
 }
 
 function NoInvestigation({ detail, back }: { detail: MetricDetailResponse; back: BackTarget }) {
@@ -123,7 +200,7 @@ function TechInvestigationView({ investigation, detail, back }: { investigation:
             <StatusBadge status={reading.status} />
             <FamilyChip family="technology_risk" />
             <ProvenanceChip kind="synthetic" />
-            <ProvenanceChip kind="simulated" />
+            <ProvenanceChip kind="simulated" label="Illustrative scenario" />
             <span className="fine">As of {reading.asOf ? formatDate(reading.asOf) : 'not supplied'}</span>
           </>
         }
@@ -138,20 +215,20 @@ function TechInvestigationView({ investigation, detail, back }: { investigation:
       />
 
       {!revealed ? (
-        <AnalysisSimulation stages={ANALYSIS_STAGES} onDone={() => setRevealed(true)} note="Working through a fixed sequence in the browser. This does not call Snowflake Cortex, a model, or SMARTS." />
+        <AnalysisSimulation stages={ANALYSIS_STAGES} onDone={() => setRevealed(true)} note="This Technology Risk investigation is an illustrative scenario served by the API. It is not a Snowflake or Cortex result." />
       ) : (
         <div className="ledger-layout">
           <div className="ledger">
             <section className="ledger-item" aria-labelledby="summary-title">
               <div className="card-head">
                 <h2 id="summary-title">Summary</h2>
-                <ProvenanceChip kind="simulated" />
+                <ProvenanceChip kind="simulated" label="Illustrative scenario" />
               </div>
               <p className="definition-label">Provisional definition — pending client validation</p>
               <p>{metric.provisionalDefinition}</p>
               <p>{investigation.summary.text}</p>
               <p className="fine">{investigation.summary.disclaimer}</p>
-              <p className="fine">Simulated analysis finished in the browser. This report was not produced by Snowflake Cortex.</p>
+              <p className="fine">This Technology Risk investigation is an illustrative scenario served by the API. It is not a Snowflake or Cortex result.</p>
             </section>
 
             <div className="two-up">
