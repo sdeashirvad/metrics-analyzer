@@ -16,9 +16,13 @@ import { directionLabel, formatDate, formatNumber, isFrequency, statusLabel } fr
 import { useLinkState } from '../../hooks/useOrigin'
 import { useQuery } from '../../hooks/useQuery'
 import { useUrlState } from '../../hooks/useUrlState'
+import { useAnalysisCache, type CacheEntry } from '../../state/analysisState'
+import { estimateFor } from '../../state/etaStore'
+import { InvestigationActions, InvestigationMark } from '../investigation/AccessControls'
+import { accessLabel, investigationAccess } from '../investigation/access'
 
 const PAGE_SIZE = 25
-const WORKBOOK_NOTICE = 'Workbook snapshot SMARTS_DQ_mock_data.xlsx — not connected to SMARTS'
+const WORKBOOK_NOTICE = 'Data Quality readings come from Snowflake. They are the loaded workbook snapshot, not a live SMARTS feed.'
 const FAMILY_LABEL: Record<MetricFamily, string> = { technology_risk: 'Technology Risk', data_quality: 'Data Quality' }
 
 type FamilyView = 'all' | MetricFamily
@@ -39,9 +43,11 @@ export function RegisterPage() {
   const [showThresholds, setShowThresholds] = useState(false)
   const [exporting, setExporting] = useState(false)
   const linkState = useLinkState('Metric register')
+  const eta = estimateFor('INVESTIGATION')
 
   const query: MetricListQuery = { q, domain, status, frequency, family, investigation: investigation || undefined, page, pageSize: PAGE_SIZE }
   const { data, error, retry, refreshing } = useQuery('register', JSON.stringify(query), () => api.listMetrics(query))
+  const cache = useAnalysisCache((data?.items ?? []).filter((item) => item.family === 'data_quality').map((item) => item.metric.id))
   const counts = useQuery('register-counts', '', async () => {
     const [tech, dq] = await Promise.all([
       api.listMetrics({ family: 'technology_risk', pageSize: 1 }),
@@ -74,7 +80,7 @@ export function RegisterPage() {
     setExporting(true)
     try {
       const all = await api.listMetrics({ ...query, page: 1, pageSize: Math.max(data.total, 1) })
-      download(all.items, 'metrics-analyzer-register-all.csv')
+      download(all.items, 'metrics-analyzer-register-all.csv', cache)
     } finally {
       setExporting(false)
     }
@@ -92,7 +98,7 @@ export function RegisterPage() {
     else groups.push({ family: item.family, items: [item] })
   }
   const total = counts.data ? counts.data.technology_risk + counts.data.data_quality : undefined
-  const columns = showThresholds ? 10 : 7
+  const columns = showThresholds ? 11 : 8
 
   return (
     <div className="page register">
@@ -126,7 +132,7 @@ export function RegisterPage() {
               Show thresholds
             </label>
             <span className="toolbar-spacer" />
-            <button type="button" className="btn btn-sm" disabled={data.items.length === 0} onClick={() => download(data.items, 'metrics-analyzer-register-page.csv')}>
+            <button type="button" className="btn btn-sm" disabled={data.items.length === 0} onClick={() => download(data.items, 'metrics-analyzer-register-page.csv', cache)}>
               Export this page
             </button>
             <button type="button" className="btn btn-sm" disabled={data.total === 0 || exporting} onClick={exportAll}>
@@ -199,8 +205,9 @@ export function RegisterPage() {
                   <th scope="col">Direction</th>
                 </>
               )}
+              <th scope="col">Investigation</th>
               <th scope="col">
-                <span className="sr-only">Action</span>
+                <span className="sr-only">Actions</span>
               </th>
             </tr>
           }
@@ -229,16 +236,11 @@ export function RegisterPage() {
                       <td>{directionLabel(item.metric.direction)}</td>
                     </>
                   )}
-                  <td className="reg-action">
-                    {item.investigationAvailable ? (
-                      <Link className="btn btn-sm" to={`/investigations/${item.metric.id}`} state={linkState}>
-                        Investigation
-                      </Link>
-                    ) : (
-                      <Link className="btn btn-sm btn-quiet" to={`/metrics/${item.metric.id}`} state={linkState}>
-                        Detail
-                      </Link>
-                    )}
+                  <td className="reg-inv">
+                    <InvestigationMark access={rowAccess(item, cache)} family={item.family} etaLabel={eta?.label ?? null} />
+                  </td>
+                  <td className="reg-actions">
+                    <InvestigationActions id={item.metric.id} access={rowAccess(item, cache)} state={linkState} length="short" />
                   </td>
                 </tr>
               ))}
@@ -272,9 +274,16 @@ function readingLabel(item: MetricListItem): string {
   return `${formatNumber(item.reading.value, item.metric.unit)} synthetic`
 }
 
-function download(items: MetricListItem[], filename: string) {
+function rowAccess(item: MetricListItem, cache: (id: string) => CacheEntry | undefined) {
+  return investigationAccess(
+    { family: item.family, id: item.metric.id, investigationAvailable: item.investigationAvailable },
+    item.family === 'data_quality' ? cache(item.metric.id) : undefined,
+  )
+}
+
+function download(items: MetricListItem[], filename: string, cache: (id: string) => CacheEntry | undefined) {
   if (items.length === 0) return
-  const blob = new Blob([buildRegisterCsv(items)], { type: 'text/csv;charset=utf-8' })
+  const blob = new Blob([buildRegisterCsv(items, cache)], { type: 'text/csv;charset=utf-8' })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
   link.href = url
@@ -289,7 +298,7 @@ function csvCell(value: string | number | null): string {
   return text
 }
 
-function buildRegisterCsv(items: MetricListItem[]): string {
+function buildRegisterCsv(items: MetricListItem[], cache: (id: string) => CacheEntry | undefined): string {
   const headers = [
     'family',
     'metric_id',
@@ -311,6 +320,7 @@ function buildRegisterCsv(items: MetricListItem[]): string {
     'status_basis',
     'breach_date',
     'investigation_available',
+    'investigation_status',
     'data_notice',
   ]
   const lines = items.map((item) =>
@@ -335,6 +345,7 @@ function buildRegisterCsv(items: MetricListItem[]): string {
       item.reading.statusBasis,
       item.reading.breachedOn,
       item.investigationAvailable ? 'yes' : 'no',
+      accessLabel(rowAccess(item, cache)),
       item.family === 'data_quality' ? WORKBOOK_NOTICE : DATA_NOTICE,
     ]
       .map(csvCell)

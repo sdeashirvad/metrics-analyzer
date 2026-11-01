@@ -13,6 +13,10 @@ import { formatDate, formatDateShort, formatNumber } from '../../domain/format'
 import { useLinkState } from '../../hooks/useOrigin'
 import { useQuery } from '../../hooks/useQuery'
 import { useUrlState } from '../../hooks/useUrlState'
+import { useAnalysisCache } from '../../state/analysisState'
+import { estimateFor } from '../../state/etaStore'
+import { InvestigationMark } from '../investigation/AccessControls'
+import { accessRank, actionCopy, investigationAccess } from '../investigation/access'
 
 type View = 'all' | 'technology_risk' | 'data_quality'
 
@@ -122,7 +126,7 @@ function TechBook({ items, error, retry, single }: BookProps & { items: MetricLi
       <BookTile
         family="technology_risk"
         title="Technology Risk"
-        chip={<ProvenanceChip kind="synthetic" />}
+        chip={<ProvenanceChip kind="synthetic" label="Illustrative" />}
         figure={atRisk}
         figureLabel={
           <>
@@ -132,7 +136,7 @@ function TechBook({ items, error, retry, single }: BookProps & { items: MetricLi
         }
         footnote={
           counts.insufficient_data > 0
-            ? `${counts.insufficient_data} metrics have no reading. Not counted as green.`
+            ? `${counts.insufficient_data} metrics are not evaluated. They are not counted as green.`
             : undefined
         }
         wide={single}
@@ -159,11 +163,13 @@ function TechBook({ items, error, retry, single }: BookProps & { items: MetricLi
                 status={item.reading.status}
                 to={`/investigations/${item.metric.id}`}
                 state={linkState}
-                action="Investigate"
+                action="Open investigation"
                 fact={
                   <>
                     <span className="num">{item.reading.value == null ? 'No reading' : formatNumber(item.reading.value, item.metric.unit)}</span> synthetic
                     {item.reading.breachedOn && <> · red since {formatDateShort(item.reading.breachedOn)}</>}
+                    {' '}
+                    <InvestigationMark access="ready" family="technology_risk" etaLabel={null} />
                   </>
                 }
                 spark={
@@ -213,6 +219,8 @@ function TechBook({ items, error, retry, single }: BookProps & { items: MetricLi
 
 function DqBook({ data, error, retry, single }: BookProps & { data: DataQualityOverview | undefined }) {
   const linkState = useLinkState('Dashboard')
+  const cache = useAnalysisCache((data?.atRisk ?? []).map((item) => item.id))
+  const eta = estimateFor('INVESTIGATION')
   if (!data) {
     return (
       <>
@@ -229,10 +237,11 @@ function DqBook({ data, error, retry, single }: BookProps & { data: DataQualityO
   const atRisk = data.latest.red + data.latest.amber
   const recentById = new Map(data.stories.map((story) => [story.id, story.recent]))
   const reds = data.atRisk.filter((item) => item.status === 'red' && !item.recovered)
-  const ordered = [
-    ...reds.filter((item) => item.investigationAvailable).sort((a, b) => (a.firstRed ?? '').localeCompare(b.firstRed ?? '')),
-    ...reds.filter((item) => !item.investigationAvailable),
-  ]
+  const ordered = [...reds].sort((a, b) => {
+    const left = investigationAccess({ family: 'data_quality', id: a.id, investigationAvailable: a.investigationAvailable }, cache(a.id))
+    const right = investigationAccess({ family: 'data_quality', id: b.id, investigationAvailable: b.investigationAvailable }, cache(b.id))
+    return accessRank(left) - accessRank(right) || (a.firstRed ?? '').localeCompare(b.firstRed ?? '')
+  })
   const limit = single ? 6 : 3
   const shown = ordered.slice(0, limit)
   const hiddenReds = ordered.slice(limit)
@@ -251,7 +260,7 @@ function DqBook({ data, error, retry, single }: BookProps & { data: DataQualityO
       <BookTile
         family="data_quality"
         title="Data Quality"
-        chip={<ProvenanceChip kind="workbook" />}
+        chip={<ProvenanceChip kind="workbook" label="Live from Snowflake" />}
         figure={atRisk}
         figureLabel={
           <>
@@ -274,24 +283,30 @@ function DqBook({ data, error, retry, single }: BookProps & { data: DataQualityO
       <section className="book-card" aria-labelledby="dq-next">
         <div className="card-head">
           <h2 id="dq-next">Open next</h2>
-          <span className="fine">Red controls, earliest first red first</span>
+          <span className="fine">Red controls, earliest first-red date first</span>
         </div>
         <ul className="attention-list">
           {shown.map((item) => {
             const recent = recentById.get(item.id)
+            const access = investigationAccess(
+              { family: 'data_quality', id: item.id, investigationAvailable: item.investigationAvailable },
+              cache(item.id),
+            )
+            const action = actionCopy(access, 'long')
             return (
               <AttentionRow
                 key={item.id}
                 id={item.id}
                 name={item.name}
                 status={item.status}
-                to={item.investigationAvailable ? `/investigations/${item.id}` : `/metrics/${item.id}`}
+                to={action ? `/investigations/${item.id}` : `/metrics/${item.id}`}
                 state={linkState}
-                action={item.investigationAvailable ? 'Investigate' : 'Detail only'}
+                action={action?.label ?? 'Detail'}
                 fact={
                   <>
                     <span className="num">{item.passRate.toFixed(2)}%</span> · <span className="num">{item.failed.toLocaleString()}</span> failed
-                    {item.firstRed && <> · first red {formatDateShort(item.firstRed)}</>}
+                    {item.firstRed && <> · first red {formatDateShort(item.firstRed)}</>}{' '}
+                    <InvestigationMark access={access} family="data_quality" etaLabel={eta?.label ?? null} />
                   </>
                 }
                 spark={

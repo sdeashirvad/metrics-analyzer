@@ -104,10 +104,7 @@
 /* Register */
 .results-line { font-size: var(--fs-13); color: var(--ink-2); font-weight: 500; }
 .toolbar-spacer { flex: 1; }
-.register-table .table-wrap { overflow: visible; }
-@media (min-width: 801px) and (max-width: 1100px) {
-  .register-table .table-wrap { overflow-x: auto; }
-}
+.register-table .table-wrap { overflow-x: auto; }
 .register-table .data-table thead th { top: var(--toolbar-h, 0px); }
 .reg-metric a { display: flex; flex-direction: column; text-decoration: none; color: var(--ink-1); }
 .reg-metric a:hover .reg-name { color: var(--accent-strong); text-decoration: underline; }
@@ -115,7 +112,8 @@
 .reg-row.fam-technology_risk .reg-metric { box-shadow: inset 3px 0 0 var(--tech-bg); }
 .reg-row.fam-data_quality .reg-metric { box-shadow: inset 3px 0 0 var(--dq-bg); }
 .reg-date, .reg-freq, .reg-reading { white-space: nowrap; }
-.reg-action { text-align: right; }
+.reg-inv { white-space: nowrap; }
+.reg-actions { text-align: right; }
 
 @media (max-width: 800px) {
   .register-table .data-table thead { display: none; }
@@ -126,7 +124,7 @@
   .register-table .reg-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas: "metric status" "meta action";
+    grid-template-areas: "metric status" "meta meta" "reading reading" "inv inv" "action action";
     gap: 4px var(--s-3);
     padding: var(--s-3);
     margin-bottom: var(--s-2);
@@ -135,12 +133,13 @@
     border-radius: var(--r-card);
   }
   .register-table .reg-row td { display: block; padding: 0; border: 0; }
-  .register-table .reg-row td:not(.reg-metric):not(.reg-status):not(.reg-action):not(.reg-reading):not(.reg-domain) { display: none; }
+  .register-table .reg-row td:not(.reg-metric):not(.reg-status):not(.reg-actions):not(.reg-reading):not(.reg-domain):not(.reg-inv) { display: none; }
   .register-table .reg-metric { grid-area: metric; box-shadow: none !important; }
   .register-table .reg-status { grid-area: status; justify-self: end; }
   .register-table .reg-domain { grid-area: meta; color: var(--ink-2); font-size: var(--fs-12); }
-  .register-table .reg-reading { grid-column: 1; grid-row: 3; font-size: var(--fs-12); color: var(--ink-2); }
-  .register-table .reg-action { grid-area: action; align-self: end; }
+  .register-table .reg-reading { grid-area: reading; font-size: var(--fs-12); color: var(--ink-2); }
+  .register-table .reg-inv { grid-area: inv; white-space: normal; }
+  .register-table .reg-actions { grid-area: action; justify-self: start; }
   .register-table .data-table tbody tr:hover td { background: none; }
 }
 
@@ -208,7 +207,26 @@
 .analysis h2 { font-size: var(--fs-20); margin-top: 4px; }
 .analysis-track { height: 3px; margin: var(--s-4) 0 4px; background: var(--data-track); border-radius: var(--r-pill); overflow: hidden; }
 .analysis-track span { display: block; height: 100%; width: 0; background: var(--accent); animation: analysis-fill 1440ms linear forwards; }
+.analysis-track span.is-loop { width: 32%; animation: analysis-loop 1.2s ease-in-out infinite; }
 @keyframes analysis-fill { to { width: 100%; } }
+@keyframes analysis-loop { from { transform: translateX(-120%); } to { transform: translateX(340%); } }
+.confirm-run { margin: 0 0 var(--s-4); }
+.cache-chip { display: inline-flex; align-items: center; margin-left: 6px; padding: 0 7px; border-radius: var(--r-pill); background: var(--green-bg); color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 0.01em; vertical-align: 1px; }
+.live-run-hint { display: inline; margin-left: 6px; }
+.inv-actions { display: inline-grid; grid-template-columns: 7.6rem auto; gap: 4px; align-items: center; justify-items: stretch; }
+.inv-actions .btn { width: 100%; }
+.inv-placeholder { color: var(--ink-3); text-align: center; }
+.inv-state { display: inline-flex; align-items: flex-start; gap: 6px; font-size: 12px; font-weight: 600; color: var(--ink-1); line-height: 1.3; text-align: left; }
+.inv-state .inv-sub { display: block; font-weight: 500; color: var(--ink-3); font-size: 11px; }
+.inv-dot { width: 7px; height: 7px; margin-top: 4px; border-radius: 50%; background: var(--ink-3); flex: none; }
+.inv-state.is-ready .inv-dot { background: var(--green); }
+.inv-state.is-not_run .inv-dot { background: var(--amber); }
+.inv-state.is-running .inv-dot { background: var(--info); }
+.inv-placeholder-dash { color: var(--ink-3); }
+.detail-inv { align-items: center; }
+.detail-inv .inv-actions { grid-template-columns: auto; }
+.detail-inv .inv-actions .btn { width: auto; }
+.triage-actions { flex-wrap: wrap; justify-content: flex-end; }
 .stages { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .stages li { padding: 8px 12px 8px 30px; border-radius: var(--r-control); background: var(--surface-2); color: var(--green); position: relative; font-size: var(--fs-13); }
 .stages li::before { content: ""; position: absolute; left: 12px; top: 14px; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }

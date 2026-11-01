@@ -6,6 +6,10 @@ import { EvidenceTag, ProvenanceChip } from '../../components/ui/ProvenanceChip'
 import { SectionEmpty } from '../../components/ui/SectionState'
 import { formatDate, formatDateShort, formatNumber, recoveredLine } from '../../domain/format'
 import { useLinkState } from '../../hooks/useOrigin'
+import { useAnalysisCache, type CacheEntry } from '../../state/analysisState'
+import { estimateFor } from '../../state/etaStore'
+import { InvestigationActions, InvestigationMark } from '../investigation/AccessControls'
+import { investigationAccess } from '../investigation/access'
 import { rowId, type DqQueueItem, type QueueItem, type TechQueueItem } from './triage'
 
 interface GroupInfo {
@@ -24,6 +28,8 @@ interface TriageQueueProps {
 }
 
 export function TriageQueue({ groups, highlighted, casesLoading, onClear }: TriageQueueProps) {
+  const cache = useAnalysisCache(groups.flatMap((group) => group.items.filter((item) => item.family === 'data_quality').map((item) => item.id)))
+  const eta = estimateFor('INVESTIGATION')
   const total = groups.reduce((sum, group) => sum + group.items.length, 0)
   if (total === 0) {
     return (
@@ -46,7 +52,10 @@ export function TriageQueue({ groups, highlighted, casesLoading, onClear }: Tria
             <h2 id={`group-${group.family}`}>
               {group.title} <span className="muted num">· {group.atRisk} at risk of {group.total}</span>
             </h2>
-            <ProvenanceChip kind={group.family === 'data_quality' ? 'workbook' : 'synthetic'} />
+            <ProvenanceChip
+              kind={group.family === 'data_quality' ? 'workbook' : 'synthetic'}
+              label={group.family === 'data_quality' ? 'Live from Snowflake' : 'Illustrative'}
+            />
           </header>
           {group.items.length === 0 ? (
             <p className="fine triage-none">No {group.title} rows match these filters.</p>
@@ -56,7 +65,7 @@ export function TriageQueue({ groups, highlighted, casesLoading, onClear }: Tria
                 item.family === 'technology_risk' ? (
                   <TechRow key={item.id} item={item} highlighted={highlighted === item.id} casesLoading={casesLoading} />
                 ) : (
-                  <DqRow key={item.id} item={item} highlighted={highlighted === item.id} />
+                  <DqRow key={item.id} item={item} highlighted={highlighted === item.id} entry={cache(item.id)} etaLabel={eta?.label ?? null} />
                 ),
               )}
             </ul>
@@ -94,15 +103,17 @@ function TechRow({ item, highlighted, casesLoading }: { item: TechQueueItem; hig
           </div>
         </div>
         <div className="triage-actions">
-          {item.investigationAvailable ? (
-            <Link className="btn btn-primary btn-sm" to={`/investigations/${metric.id}`} state={linkState}>
-              Investigate
-            </Link>
-          ) : (
-            <Link className="btn btn-sm" to={`/metrics/${metric.id}`} state={linkState}>
-              Detail only
-            </Link>
-          )}
+          <InvestigationMark
+            access={investigationAccess({ family: 'technology_risk', id: metric.id, investigationAvailable: item.investigationAvailable })}
+            family="technology_risk"
+            etaLabel={null}
+          />
+          <InvestigationActions
+            id={metric.id}
+            access={investigationAccess({ family: 'technology_risk', id: metric.id, investigationAvailable: item.investigationAvailable })}
+            state={linkState}
+            length="short"
+          />
           <button type="button" className="btn btn-quiet btn-sm expand" aria-expanded={open} aria-controls={bodyId} onClick={toggle}>
             <span className="chevron" aria-hidden="true" />
             <span className="sr-only">Details for {metric.id}</span>
@@ -128,7 +139,6 @@ function TechRow({ item, highlighted, casesLoading }: { item: TechQueueItem; hig
           ) : (
             casesLoading && <p className="fine">Loading validation checks…</p>
           ))}
-        {!item.investigationAvailable && <p className="fine">No seeded investigation for this metric. Detail only.</p>}
         <div className="row">
           <Link to={`/metrics/${metric.id}`} state={linkState}>
             Open detail
@@ -139,10 +149,14 @@ function TechRow({ item, highlighted, casesLoading }: { item: TechQueueItem; hig
   )
 }
 
-function DqRow({ item, highlighted }: { item: DqQueueItem; highlighted: boolean }) {
+function DqRow({ item, highlighted, entry, etaLabel }: { item: DqQueueItem; highlighted: boolean; entry: CacheEntry | undefined; etaLabel: string | null }) {
   const { open, toggle } = useExpand()
   const linkState = useLinkState('Triage')
   const control = item.control
+  const access = investigationAccess(
+    { family: 'data_quality', id: control.id, investigationAvailable: item.investigationAvailable },
+    entry,
+  )
   const bodyId = `${rowId(item.id)}-body`
   return (
     <li id={rowId(item.id)} className={`triage-row tone-${item.recovered ? 'recovered' : item.status}${highlighted ? ' is-highlighted' : ''}${open ? ' is-open' : ''}`}>
@@ -165,15 +179,8 @@ function DqRow({ item, highlighted }: { item: DqQueueItem; highlighted: boolean 
           </div>
         </div>
         <div className="triage-actions">
-          {item.investigationAvailable ? (
-            <Link className="btn btn-primary btn-sm" to={`/investigations/${control.id}`} state={linkState}>
-              Investigate
-            </Link>
-          ) : (
-            <Link className="btn btn-sm" to={`/metrics/${control.id}`} state={linkState}>
-              Detail only
-            </Link>
-          )}
+          <InvestigationMark access={access} family="data_quality" etaLabel={etaLabel} />
+          <InvestigationActions id={control.id} access={access} state={linkState} length="short" />
           <button type="button" className="btn btn-quiet btn-sm expand" aria-expanded={open} aria-controls={bodyId} onClick={toggle}>
             <span className="chevron" aria-hidden="true" />
             <span className="sr-only">Details for {control.id}</span>

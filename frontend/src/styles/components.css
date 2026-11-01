@@ -20,6 +20,8 @@
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn-primary:hover:not(:disabled) { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
+.btn-outline { background: transparent; border-color: var(--accent); color: var(--accent-strong); }
+.btn-outline:hover:not(:disabled) { background: var(--accent-bg); border-color: var(--accent-strong); color: var(--accent-strong); }
 .btn-quiet { border-color: transparent; background: transparent; color: var(--ink-2); }
 .btn-quiet:hover:not(:disabled) { background: rgba(15, 27, 38, 0.05); border-color: transparent; }
 .btn-sm { min-height: 30px; padding: 4px 10px; font-size: var(--fs-12); }
