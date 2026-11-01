@@ -2,7 +2,10 @@
 .arch-tabs { margin-bottom: var(--s-4); }
 .arch-panel { min-height: calc(100vh - 160px); }
 .arch-panel:focus-visible { box-shadow: none; }
-.arch-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--s-5); align-items: start; }
+.arch-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); align-items: start; }
+@media (min-width: 1680px) {
+  .arch-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+}
 .arch-main { min-width: 0; position: relative; }
 .arch-side { position: static; }
 /* Sticky only when the viewport can show the whole panel; otherwise it flows with the page so nothing is unreachable. */
@@ -44,9 +47,11 @@
   stroke-linejoin: round;
 }
 .arch-edge-group { transition: opacity var(--t-panel) var(--ease); }
-.arch-edge-group.is-traced .arch-edge { stroke-width: 3px; stroke: var(--accent); }
-.arch-scene.is-stepping .arch-edge-group:not(.is-traced) { opacity: 0.45; }
-.arch-scene.is-stepping .arch-node:not(.is-traced) { opacity: 0.45; }
+.arch-edge-group.is-edge-active .arch-edge { stroke-width: 2.5px; stroke: #17663f; stroke-dasharray: 6 4; animation: arch-flow 1.6s linear infinite; }
+.arch-edge-group.is-edge-done .arch-edge { stroke-width: 2px; stroke: #5b6b7a; stroke-dasharray: none; animation: none; }
+@keyframes arch-flow { to { stroke-dashoffset: -20; } }
+.arch-scene.is-stepping .arch-edge-group:not(.is-edge-active):not(.is-edge-done) { opacity: 0.35; }
+.arch-scene.is-stepping .arch-node:not(.is-role-requester):not(.is-role-waiting):not(.is-role-active):not(.is-role-done) { opacity: 0.4; }
 
 .arch-node {
   position: absolute;
@@ -63,22 +68,41 @@
   border-radius: var(--r-control);
   box-shadow: 0 1px 2px rgba(15, 27, 38, 0.08);
   line-height: 1.2;
+  overflow: hidden;
   font-size: 12px;
   font-weight: 600;
   z-index: 1;
-  transition: opacity var(--t-panel) var(--ease), background var(--t-control) var(--ease), box-shadow var(--t-control) var(--ease);
+  transition: opacity 240ms ease, background 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
 }
-.arch-node:hover { background: var(--surface-hover); }
+.arch-node:hover:not(.is-role-requester):not(.is-role-waiting):not(.is-role-active):not(.is-role-done) { background: var(--surface-hover); }
 .arch-node small { font-size: 12px; font-weight: 500; color: var(--ink-3); }
 .arch-node.is-upcoming, .arch-node.is-proposed { border-style: dashed; }
 .arch-node.is-upcoming { border-color: var(--amber); }
 .arch-node.is-proposed { border-color: var(--info); }
-.arch-node.is-traced { border: 2px solid var(--accent); box-shadow: var(--e-3); z-index: 2; }
-.arch-node.is-traced.is-implemented { background: #e9f4ee; }
-.arch-node.is-traced.is-upcoming { background: #fbf3df; }
-.arch-node.is-traced.is-proposed { background: #e9eff6; }
-.arch-node.is-selected { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--accent), 0 0 0 6px #fff, 0 0 0 7px var(--accent); z-index: 3; }
-.arch-node.is-selected > span:not(.arch-step-badge) { font-weight: 700; }
+.arch-node > span { white-space: normal; line-height: 1.15; }
+.arch-node::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 2px; background: var(--data-ink); }
+.arch-node.is-upcoming::before, .arch-node.is-proposed::before { background: transparent; }
+.arch-node.is-role-requester { background: #e8ebf8; color: var(--ink-1); border-color: #3b4fa8; border-style: solid; }
+.arch-node.is-role-requester small { color: var(--ink-2); }
+.arch-node.is-role-requester::before { background: #3b4fa8; }
+.arch-node.is-role-waiting { background: #fbf0dc; color: var(--ink-1); border-color: #a8670f; border-style: solid; animation: arch-wait 1.8s ease-in-out infinite; }
+.arch-node.is-role-waiting small { color: var(--ink-2); }
+.arch-node.is-role-waiting::before { background: #a8670f; }
+.arch-node.is-role-active { background: #d8f3e4; color: var(--ink-1); border-color: #17663f; border-style: solid; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #17663f; z-index: 3; }
+.arch-node.is-role-active small { color: var(--ink-2); }
+.arch-node.is-role-active::before { background: #17663f; }
+.arch-node.is-role-done { background: #eef1f4; color: var(--ink-1); border-color: #5b6b7a; border-style: solid; }
+.arch-node.is-role-done small { color: var(--ink-2); }
+.arch-node.is-role-done::before { background: #5b6b7a; }
+.arch-node.is-selected { outline: 2px solid var(--ink-1); outline-offset: 2px; z-index: 4; }
+@keyframes arch-wait {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(168, 103, 15, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(168, 103, 15, 0.2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arch-edge-group.is-edge-active .arch-edge { animation: none; }
+  .arch-node.is-role-waiting { animation: none; }
+}
 .arch-node:focus-visible { outline: 2px solid var(--ink-1); outline-offset: 3px; border-radius: var(--r-control); }
 .arch-step-badge {
   position: absolute;
@@ -88,22 +112,29 @@
   height: 20px;
   padding: 0 5px;
   border-radius: var(--r-pill);
-  background: var(--accent);
-  color: #fff;
+  background: #17663f;
+  color: #f3faf6;
   font-size: 12px;
   font-weight: 700;
   display: grid;
   place-items: center;
   box-shadow: 0 0 0 2px #fff;
 }
+.arch-step-badge.is-done { background: #5b6b7a; color: #f4f7fa; }
 
-.arch-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; list-style: none; padding: 0; margin: 0 0 var(--s-3); color: var(--ink-2); font-size: var(--fs-12); }
+.arch-legend-block { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5); margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--hairline); }
+.arch-legend-group { display: flex; flex-direction: column; gap: 6px; min-width: min(100%, 200px); }
+.arch-legend-label { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+.arch-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; list-style: none; padding: 0; margin: 0; color: var(--ink-2); font-size: var(--fs-12); }
 .arch-legend li { display: flex; align-items: center; gap: 6px; }
 .arch-key { width: 18px; height: 10px; border-radius: 3px; display: inline-block; background: var(--surface); }
 .arch-key.is-implemented { border: 1.5px solid var(--data-ink); }
 .arch-key.is-upcoming { border: 1.5px dashed var(--amber); }
 .arch-key.is-proposed { border: 1.5px dashed var(--info); }
-.arch-key.is-traced-key { border: 2px solid var(--accent); background: #e9f4ee; }
+.arch-key.is-role-requester { background: #e8ebf8; border: 1.5px solid #3b4fa8; }
+.arch-key.is-role-waiting { background: #fbf0dc; border: 1.5px solid #a8670f; }
+.arch-key.is-role-active { background: #d8f3e4; border: 1.5px solid #17663f; }
+.arch-key.is-role-done { background: #eef1f4; border: 1.5px solid #5b6b7a; }
 .arch-key.edge-data { height: 0; border-top: 2px solid var(--data-ink); background: transparent; }
 .arch-key.edge-control { height: 0; border-top: 2px solid var(--info); background: transparent; }
 .arch-key.edge-async { height: 0; border-top: 2px dashed var(--amber); background: transparent; }
@@ -148,7 +179,7 @@
 .arch-layers section:first-child { border-top: 0; padding-top: 0; }
 .arch-layer-nodes { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin-top: var(--s-2); max-width: 440px; }
 .arch-flow-item { width: 100%; }
-.arch-node-flow { position: relative; width: 100%; height: auto; min-height: 44px; }
+.arch-node-flow { position: relative; width: 100%; height: auto; min-height: 44px; overflow: visible; }
 .arch-flow-link {
   display: flex;
   align-items: center;
@@ -162,9 +193,11 @@
 .arch-flow-stem { width: 0; height: 16px; border-left: 1.5px solid var(--data-ink); }
 .arch-flow-link.edge-control .arch-flow-stem { border-left-color: var(--info); }
 .arch-flow-link.edge-async .arch-flow-stem { border-left-style: dashed; border-left-color: var(--amber); }
-.arch-flow-link.is-traced { color: var(--accent); }
-.arch-flow-link.is-traced .arch-flow-stem { border-left-color: var(--accent); border-left-width: 2px; }
-.arch-layers.is-stepping .arch-node:not(.is-traced) { opacity: 0.45; }
+.arch-flow-link.is-edge-active { color: #17663f; }
+.arch-flow-link.is-edge-active .arch-flow-stem { border-left-color: #17663f; border-left-width: 2px; }
+.arch-flow-link.is-edge-done { color: #5b6b7a; }
+.arch-flow-link.is-edge-done .arch-flow-stem { border-left-color: #5b6b7a; border-left-width: 2px; }
+.arch-layers.is-stepping .arch-node:not(.is-role-requester):not(.is-role-waiting):not(.is-role-active):not(.is-role-done) { opacity: 0.4; }
 .arch-inline-detail { margin-top: var(--s-3); max-width: 440px; }
 
 /* The canvas uses fixed coordinates. Keep it only while the page column can
@@ -182,9 +215,6 @@
   .arch-dock { position: static; }
 }
 
-@media (max-width: 1320px) {
-  .arch-layout { grid-template-columns: minmax(0, 1fr); }
-}
 @media (max-width: 1180px) {
   .arch-scene { display: none; }
   .arch-layers { display: block; }

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import type { EdgeRole, JourneyRole } from './journey'
 import type { ArchEdge, ArchGraph, ArchNode, Side } from './model'
 import { statusShort } from './model'
 
@@ -10,7 +11,9 @@ interface Point {
 interface ArchitectureDiagramProps {
   graph: ArchGraph
   selectedId: string
-  traced: string[]
+  roles: Map<string, JourneyRole>
+  edgeRoles: Map<string, EdgeRole>
+  stepping: boolean
   stepNumber: number
   onSelect: (id: string) => void
   onHold?: (held: boolean) => void
@@ -36,14 +39,31 @@ function useScale(graphWidth: number) {
   return [ref, scale] as const
 }
 
-function nodeClass(node: ArchNode, selectedId: string, tracedSet: Set<string>, extra = '') {
-  return ['arch-node', extra, `is-${node.status}`, node.id === selectedId ? 'is-selected' : '', tracedSet.has(node.id) ? 'is-traced' : '']
+function nodeClass(node: ArchNode, selectedId: string, role: JourneyRole | undefined, extra = '') {
+  return ['arch-node', extra, `is-${node.status}`, node.id === selectedId ? 'is-selected' : '', role ? `is-role-${role}` : '']
     .filter(Boolean)
     .join(' ')
 }
 
-export function ArchitectureDiagram({ graph, selectedId, traced, stepNumber, onSelect, onHold }: ArchitectureDiagramProps) {
-  const tracedSet = new Set(traced)
+function StepMark({ role, stepNumber }: { role: JourneyRole | undefined; stepNumber: number }) {
+  if (role === 'active') {
+    return (
+      <span className="arch-step-badge" aria-hidden="true">
+        {stepNumber}
+      </span>
+    )
+  }
+  if (role === 'done') {
+    return (
+      <span className="arch-step-badge is-done" aria-hidden="true">
+        ✓
+      </span>
+    )
+  }
+  return null
+}
+
+export function ArchitectureDiagram({ graph, selectedId, roles, edgeRoles, stepping, stepNumber, onSelect, onHold }: ArchitectureDiagramProps) {
   const [sceneRef, scale] = useScale(graph.width)
   const labelSize = LABEL_PX / scale
   const byId = new Map(graph.nodes.map((node) => [node.id, node]))
@@ -59,7 +79,7 @@ export function ArchitectureDiagram({ graph, selectedId, traced, stepNumber, onS
     <div
       ref={sceneRef}
       id={`arch-scene-${graph.id}`}
-      className={`arch-scene${traced.length ? ' is-stepping' : ''}`}
+      className={`arch-scene${stepping ? ' is-stepping' : ''}`}
       style={{ aspectRatio: `${graph.width} / ${graph.height}`, '--arch-label': `${labelSize}px`, '--arch-halo': `${4 / scale}px` } as CSSProperties}
       onPointerEnter={() => onHold?.(true)}
       onPointerLeave={() => onHold?.(false)}
@@ -85,10 +105,10 @@ export function ArchitectureDiagram({ graph, selectedId, traced, stepNumber, onS
         {graph.edges.map((item) => {
           const points = routeEdge(item, byId, graph.width, laneSlot.get(item.id) ?? 0)
           if (points.length < 2) return null
-          const hot = tracedSet.has(item.from) && tracedSet.has(item.to)
+          const edgeRole = edgeRoles.get(item.id)
           const labelAt = longestMidpoint(points)
           return (
-            <g key={item.id} className={hot ? 'arch-edge-group is-traced' : 'arch-edge-group'}>
+            <g key={item.id} className={edgeRole ? `arch-edge-group is-edge-${edgeRole}` : 'arch-edge-group'}>
               <path
                 d={toPath(points)}
                 className={`arch-edge edge-${item.kind} edge-${item.status}`}
@@ -105,16 +125,12 @@ export function ArchitectureDiagram({ graph, selectedId, traced, stepNumber, onS
         <button
           key={node.id}
           type="button"
-          className={nodeClass(node, selectedId, tracedSet)}
+          className={nodeClass(node, selectedId, roles.get(node.id))}
           style={nodeStyle(node, graph.width, graph.height)}
           aria-pressed={node.id === selectedId}
           onClick={() => onSelect(node.id)}
         >
-          {tracedSet.has(node.id) && (
-            <span className="arch-step-badge" aria-hidden="true">
-              {stepNumber}
-            </span>
-          )}
+          <StepMark role={roles.get(node.id)} stepNumber={stepNumber} />
           <span>{node.label}</span>
           <small>{statusShort(node.status)}</small>
         </button>
@@ -126,19 +142,20 @@ export function ArchitectureDiagram({ graph, selectedId, traced, stepNumber, onS
 export function ArchitectureList({
   graph,
   selectedId,
-  traced,
+  roles,
+  edgeRoles,
+  stepping,
   stepNumber,
   onSelect,
   detail,
 }: Omit<ArchitectureDiagramProps, 'onHold'> & { detail: ReactNode }) {
-  const tracedSet = new Set(traced)
   const layers: string[] = []
   for (const node of graph.nodes) {
     if (!layers.includes(node.layer)) layers.push(node.layer)
   }
   const selectedLayer = graph.nodes.find((node) => node.id === selectedId)?.layer
   return (
-    <div className={`arch-layers${traced.length ? ' is-stepping' : ''}`} id={`arch-list-${graph.id}`}>
+    <div className={`arch-layers${stepping ? ' is-stepping' : ''}`} id={`arch-list-${graph.id}`}>
       {layers.map((layer) => (
         <section key={layer}>
           <h3>{layer}</h3>
@@ -148,25 +165,21 @@ export function ArchitectureList({
               .map((node, index, layerNodes) => {
                 const next = layerNodes[index + 1]
                 const link = next ? graph.edges.find((edge) => edge.from === node.id && edge.to === next.id) : undefined
-                const linkHot = link ? tracedSet.has(link.from) && tracedSet.has(link.to) : false
+                const edgeRole = link ? edgeRoles.get(link.id) : undefined
                 return (
                   <div key={node.id} className="arch-flow-item">
                     <button
                       type="button"
-                      className={nodeClass(node, selectedId, tracedSet, 'arch-node-flow')}
+                      className={nodeClass(node, selectedId, roles.get(node.id), 'arch-node-flow')}
                       aria-pressed={node.id === selectedId}
                       onClick={() => onSelect(node.id)}
                     >
-                      {tracedSet.has(node.id) && (
-                        <span className="arch-step-badge" aria-hidden="true">
-                          {stepNumber}
-                        </span>
-                      )}
+                      <StepMark role={roles.get(node.id)} stepNumber={stepNumber} />
                       <span>{node.label}</span>
                       <small>{statusShort(node.status)}</small>
                     </button>
                     {link && (
-                      <div className={`arch-flow-link edge-${link.kind}${linkHot ? ' is-traced' : ''}`}>
+                      <div className={`arch-flow-link edge-${link.kind}${edgeRole ? ` is-edge-${edgeRole}` : ''}`}>
                         <span className="arch-flow-stem" aria-hidden="true" />
                         <span>{link.label}</span>
                       </div>
@@ -175,7 +188,7 @@ export function ArchitectureList({
                 )
               })}
           </div>
-          {layer === selectedLayer && <div className="arch-inline-detail">{detail}</div>}
+          {layer === selectedLayer && detail ? <div className="arch-inline-detail">{detail}</div> : null}
         </section>
       ))}
     </div>
@@ -208,7 +221,7 @@ function routeEdge(item: ArchEdge, nodes: Map<string, ArchNode>, width: number, 
     const end = sidePoint(to, goingUp ? 'bottom' : 'top')
     const exit = { x: start.x, y: goingUp ? from.y - 14 : from.y + from.h + 14 }
     const entry = { x: end.x, y: goingUp ? to.y + to.h + 14 : to.y - 14 }
-    const laneX = item.lane === 'east' ? width - 16 - slot * 14 : 12 + slot * 14
+    const laneX = item.lane === 'east' ? width - 8 - slot * 14 : 6 + slot * 14
     return [start, exit, { x: laneX, y: exit.y }, { x: laneX, y: entry.y }, entry, end]
   }
   const start = sidePoint(from, item.fromSide)
