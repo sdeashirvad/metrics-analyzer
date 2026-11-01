@@ -1,0 +1,10 @@
+desk_id,desk_name,business_line,primary_region,volume_share
+DSK01,Equities Cash,Equities,EMEA,0.1600
+DSK02,Equity Derivatives,Equities,EMEA,0.2000
+DSK03,FX Spot & Forwards,FICC,APAC,0.1400
+DSK04,Rates,FICC,EMEA,0.1800
+DSK05,Credit Trading,FICC,AMER,0.1000
+DSK06,Commodities,FICC,AMER,0.0800
+DSK07,Securitised Products,FICC,AMER,0.0400
+DSK08,Prime Services,Prime & Financing,AMER,0.0600
+DSK09,Treasury & Funding,Treasury,EMEA,0.0400

@@ -1,0 +1,6 @@
+control_id,planted_story
+DQ-001,LEI nulls after onboarding migration; Equity Derivatives and Prime Services are the hotspots
+DQ-010,UTI mismatch after TR vendor schema change and duplicate UTI hotfix; Rates and Credit are the hotspots
+DQ-015,Scheduler failure caused late T+1 submissions on all desks; partial recovery 26-27 Oct
+DQ-020,Commodities booking migration not mapped to risk feed; Commodities and Securitised are the hotspots
+DQ-025,Gradual drift: vendor ISIN feed delayed; Equities Cash and Treasury are the hotspots

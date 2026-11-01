@@ -1,0 +1,13 @@
+event_id,event_date,event_type,desk_ids,description,related_control_id
+EVT001,2026-10-12,Migration,"DSK02,DSK08","Client onboarding platform migration cut-over; counterparty LEIs dropped for about 3,100 Equity Derivatives and Prime Services accounts",DQ-001
+EVT002,2026-10-13,Reference Data,ALL,GLEIF lapsed-LEI renewal backlog: 410 counterparties not yet refreshed,DQ-001
+EVT003,2026-10-15,Vendor Change,"DSK04,DSK05",Trade repository vendor changed UTI prefix schema (v2.3); Rates and Credit UTIs no longer pair with counterparty reports,DQ-010
+EVT004,2026-10-16,Config Change,DSK04,UTI generation hotfix deployed late; about 600 duplicate swap UTIs generated,DQ-010
+EVT005,2026-10-19,Migration,"DSK06,DSK07",Commodities booking system migrated to new platform; trades not yet mapped to risk engine feed,DQ-020
+EVT006,2026-10-21,Incident,ALL,INC-30998: regulatory reporting batch scheduler failure overnight; T+1 files not generated before cut-off,DQ-015
+EVT007,2026-10-22,Incident,ALL,INC-31004: rerun partially failed; manual repair queue backlog,DQ-015
+EVT008,2026-10-08,Vendor Feed,"DSK01,DSK09",Security master vendor feed delayed; new ISINs from corporate actions not loaded,DQ-025
+EVT009,2026-09-18,Change,DSK03,FX rate source switched to secondary provider for APAC session,DQ-024
+EVT010,2026-09-29,Org Change,ALL,Regulatory operations attrition; two analyst roles vacant,DQ-017
+EVT011,2026-10-23,Regulatory,ALL,ESMA published updated validation rules; trade repositories enforce from 1 Dec,DQ-016
+EVT012,2026-10-26,Remediation,DSK02,Bulk LEI refresh job started for Equity Derivatives; expected completion 6 Nov,DQ-001
