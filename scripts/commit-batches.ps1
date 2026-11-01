@@ -59,11 +59,11 @@ Assert-NoCoAuthor
 
 $batches = @(
     @{
-        Summary = 'keep the register column header above the rows'
-        Paths   = @('frontend/src/styles/pages.css')
+        Summary = 'document the live ui api and snowflake layout'
+        Paths   = @('README.md', 'backend/README.md', 'snowflake/README.md')
     },
     @{
-        Summary = 'batch commit script for the register header fix'
+        Summary = 'batch commit script for the readme update'
         Paths   = @('scripts/commit-batches.ps1')
     }
 )
