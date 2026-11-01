@@ -35,9 +35,11 @@ function Invoke-MetricsCommit {
     )
     $missing = @()
     foreach ($p in $Paths) {
-        if (-not (Test-Path -LiteralPath (Join-Path $Root $p))) {
-            $missing += $p
-        }
+        if (Test-Path -LiteralPath (Join-Path $Root $p)) { continue }
+        $tracked = git ls-files -- $p 2>$null
+        if ($tracked) { continue }
+        if (git status --porcelain -- $p 2>$null) { continue }
+        $missing += $p
     }
     if ($missing.Count -gt 0) {
         throw "Missing paths for batch '$Summary': $($missing -join ', ')"
@@ -57,34 +59,84 @@ Assert-NoCoAuthor
 
 $batches = @(
     @{
-        Summary = 'snowflake dq tables seeds and smoke test'
-        Paths   = @('snowflake', 'scripts/snowflake_smoke_test.py')
-    },
-    @{
-        Summary = 'fastapi dq api docker and cortex cache'
+        Summary = 'fallback pack tr routes and investigation job concurrency'
         Paths   = @(
-            '.gitignore',
-            'backend/README.md', 'backend/.dockerignore', 'backend/.env.example',
-            'backend/Dockerfile', 'backend/docker-compose.yml', 'backend/requirements.txt', 'backend/pytest.ini',
-            'backend/app', 'backend/tests'
+            'backend/app/analysis/jobs.py',
+            'backend/app/analysis/service.py',
+            'backend/app/analysis/validator.py',
+            'backend/app/db/analyses.py',
+            'backend/app/db/connection.py',
+            'backend/app/dq/router.py',
+            'backend/app/main.py',
+            'backend/app/fallback',
+            'backend/app/fallback_assets',
+            'backend/app/tr',
+            'backend/tests/test_fallback.py',
+            'backend/tests/test_investigation_jobs.py',
+            'backend/tests/test_validator.py'
         )
     },
     @{
-        Summary = 'wire data quality screens to the api'
+        Summary = 'remove frontend mock data and expand live http api'
         Paths   = @(
-            'frontend/.env.development',
             'frontend/src/backend/contracts/types.ts',
-            'frontend/src/backend/services/errors.ts',
-            'frontend/src/backend/services/index.ts',
-            'frontend/src/backend/services/httpApi.ts',
-            'frontend/src/features/metric/MetricDetailPage.tsx',
-            'frontend/src/features/investigation/AnalysisSimulation.tsx',
-            'frontend/src/features/investigation/DqInvestigationView.tsx',
-            'frontend/src/features/investigation/InvestigationPage.tsx'
+            'frontend/src/backend/data',
+            'frontend/src/backend/services',
+            'frontend/src/hooks/useQuery.ts',
+            'frontend/src/components/AppShell.tsx',
+            'frontend/src/components/EnvironmentBar.tsx',
+            'frontend/src/components/NotFoundPage.tsx',
+            'frontend/src/components/ui/SectionState.tsx'
         )
     },
     @{
-        Summary = 'batch commit script'
+        Summary = 'investigation open flow loaders cache probes and eta'
+        Paths   = @(
+            'frontend/package.json',
+            'frontend/package-lock.json',
+            'frontend/src/state',
+            'frontend/src/components/ui/CacheChip.tsx',
+            'frontend/src/features/investigation/openFlow.ts',
+            'frontend/src/features/investigation/openFlow.test.ts',
+            'frontend/src/features/investigation/useDqInvestigation.ts',
+            'frontend/src/features/investigation/LiveInvestigationLoader.tsx',
+            'frontend/src/features/investigation/InvestigationPage.tsx',
+            'frontend/src/features/investigation/DqInvestigationView.tsx',
+            'frontend/src/features/investigation/AnalysisSimulation.tsx',
+            'frontend/src/features/metric/summaryFlow.ts',
+            'frontend/src/features/metric/summaryFlow.test.ts',
+            'frontend/src/features/metric/MetricDetailPage.tsx',
+            'frontend/src/features/glossary/GlossaryPage.tsx',
+            'frontend/src/styles/base.css'
+        )
+    },
+    @{
+        Summary = 'uniform investigation actions on register triage and dashboard'
+        Paths   = @(
+            'frontend/src/features/investigation/access.ts',
+            'frontend/src/features/investigation/access.test.ts',
+            'frontend/src/features/investigation/AccessControls.tsx',
+            'frontend/src/features/register/RegisterPage.tsx',
+            'frontend/src/features/overview/TriageQueue.tsx',
+            'frontend/src/features/dashboard/DashboardPage.tsx',
+            'frontend/src/styles/components.css',
+            'frontend/src/styles/pages.css',
+            'frontend/.env.development'
+        )
+    },
+    @{
+        Summary = 'architecture journey play roles legend and vitest'
+        Paths   = @(
+            'frontend/src/features/architecture/journey.ts',
+            'frontend/src/features/architecture/journey.test.ts',
+            'frontend/src/features/architecture/model.ts',
+            'frontend/src/features/architecture/ArchitectureDiagram.tsx',
+            'frontend/src/features/architecture/ArchitecturePage.tsx',
+            'frontend/src/styles/architecture.css'
+        )
+    },
+    @{
+        Summary = 'batch commit script for release batches'
         Paths   = @('scripts/commit-batches.ps1')
     }
 )
