@@ -105,7 +105,7 @@
 .results-line { font-size: var(--fs-13); color: var(--ink-2); font-weight: 500; }
 .toolbar-spacer { flex: 1; }
 .register-table .table-wrap { overflow-x: auto; }
-.register-table .data-table thead th { top: var(--toolbar-h, 0px); }
+.register-table .data-table thead th { top: 0; }
 .reg-metric a { display: flex; flex-direction: column; text-decoration: none; color: var(--ink-1); }
 .reg-metric a:hover .reg-name { color: var(--accent-strong); text-decoration: underline; }
 .reg-name { font-weight: 600; }
