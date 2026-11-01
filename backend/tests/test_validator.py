@@ -61,6 +61,32 @@ def test_accepts_a_narrative_that_uses_snapshot_facts():
     assert_supported(narrative, facts, "DQ-020")
 
 
+def test_accepts_the_rounded_share_of_two_supplied_desk_failures():
+    facts = {
+        "controlId": "DQ-020",
+        "snapshot": {"rag": "red", "failed": 3161, "total": 173463, "passRate": 98.178, "asOf": "2026-10-28"},
+        "desks": [
+            {"deskName": "Commodities", "failed": 2361, "total": 12788, "passRate": 81.537},
+            {"deskName": "Securitised Products", "failed": 397, "total": 7075, "passRate": 94.389},
+        ],
+    }
+    narrative = parse_narrative(
+        '{"hypothesis":["The supplied desk rows concentrate the failures."],'
+        '"validationSteps":["Compare the supplied desk failed counts with 3161."],'
+        '"implications":"Commodities and Securitised Products account for 87.3% of the 3161 failures. The status is red."}',
+        "INVESTIGATION",
+    )
+    assert_supported(narrative, facts, "DQ-020")
+    invented = parse_narrative(
+        '{"hypothesis":["The supplied desk rows concentrate the failures."],'
+        '"validationSteps":["Compare the supplied desk failed counts with 3161."],'
+        '"implications":"Those desks account for 12.5% of failures. The status is red."}',
+        "INVESTIGATION",
+    )
+    with pytest.raises(ValidationError):
+        assert_supported(invented, facts, "DQ-020")
+
+
 def test_discrepancy_uses_desk_names_without_a_fixed_control():
     names = ["Commodities", "Securitised Products", "Treasury & Funding"]
     story = desk_names_in("Commodities and Securitised are the hotspots", names)

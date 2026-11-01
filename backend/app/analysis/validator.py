@@ -82,7 +82,7 @@ def assert_supported(narrative: dict, facts: dict, control_id: str) -> None:
         if cited not in allowed_dates:
             raise ValidationError("Narrative cites a date that was not retrieved")
     for token in _NUMBER.findall(blob):
-        if not _number_allowed(token, allowed_numbers, allowed_text):
+        if not _number_allowed(token, allowed_numbers, allowed_text) and not _desk_failure_share_allowed(token, facts):
             raise ValidationError("Narrative cites a value that was not retrieved")
     _assert_rag(blob, facts)
     _assert_labeled_counts(blob, allowed_numbers, allowed_text)
@@ -159,6 +159,44 @@ def _assert_labeled_counts(blob: str, allowed_numbers: set[str], allowed_text: s
         token = next(group for group in match.groups() if group)
         if not _number_allowed(token, allowed_numbers, allowed_text):
             raise ValidationError("Narrative cites a count that was not retrieved")
+
+
+def _desk_failure_share_allowed(token: str, facts: dict) -> bool:
+    """Allow a rounded percentage of snapshot failures explained by supplied desk rows."""
+    try:
+        claimed = float(token.replace(",", ""))
+    except ValueError:
+        return False
+    snapshot = facts.get("snapshot") if isinstance(facts.get("snapshot"), dict) else {}
+    total = _whole_number(snapshot.get("failed"))
+    counts = [
+        count
+        for row in facts.get("desks") or []
+        if isinstance(row, dict)
+        for count in [_whole_number(row.get("failed"))]
+        if count is not None and count >= 0
+    ]
+    if total is None or total <= 0 or not counts or len(counts) > 16:
+        return False
+    sums = {0}
+    for count in counts:
+        sums |= {existing + count for existing in sums}
+    for part in sums:
+        if part <= 0:
+            continue
+        share = 100 * part / total
+        if any(abs(claimed - round(share, places)) < 0.001 for places in (1, 2)):
+            return True
+    return False
+
+
+def _whole_number(value) -> int | None:
+    if isinstance(value, bool) or not isinstance(value, (int, float, Decimal)):
+        return None
+    number = float(value)
+    if not number.is_integer():
+        return None
+    return int(number)
 
 
 def _number_allowed(token: str, allowed_numbers: set[str], allowed_text: str) -> bool:

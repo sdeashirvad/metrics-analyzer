@@ -7,7 +7,9 @@ from fastapi.responses import JSONResponse
 from app.config import Settings, load_settings
 from app.core.errors import AppError
 from app.core.logging import configure_logging
-from app.dq.router import router
+from app.dq.router import router as dq_router
+from app.fallback.assets import read_json
+from app.tr.router import router as tr_router
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +17,8 @@ logger = logging.getLogger(__name__)
 def create_app(settings: Settings | None = None) -> FastAPI:
     configure_logging()
     resolved = settings or load_settings()
-    app = FastAPI(title="Metrics Analyzer Data Quality", docs_url=None, redoc_url=None, openapi_url=None)
+    read_json("manifest")
+    app = FastAPI(title="Metrics Analyzer", docs_url=None, redoc_url=None, openapi_url=None)
     app.state.settings = resolved
     app.add_middleware(
         CORSMiddleware,
@@ -24,7 +27,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         allow_methods=["GET", "POST"],
         allow_headers=["Content-Type"],
     )
-    app.include_router(router)
+    app.include_router(dq_router)
+    app.include_router(tr_router)
 
     @app.exception_handler(AppError)
     async def app_error(_request, exc: AppError):
