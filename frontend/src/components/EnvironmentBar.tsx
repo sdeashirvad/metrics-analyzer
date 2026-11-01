@@ -1,4 +1,4 @@
-export const ENVIRONMENT_NOTICE = 'Demo environment · No live SMARTS, Snowflake, or Cortex connection'
+export const ENVIRONMENT_NOTICE = 'Technology Risk is illustrative scenario data, not live Snowflake telemetry. Data Quality is read live from Snowflake.'
 
 export function EnvironmentBar() {
   return (

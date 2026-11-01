@@ -6,7 +6,7 @@ export function NotFoundPage() {
     <div className="page page-narrow">
       <section className="state-card">
         <p className="eyebrow">Not found</p>
-        <h1>This page is not in the demo</h1>
+        <h1>This page is not in Metrics Analyzer</h1>
         <p className="lede">
           <span className="mono">{location.pathname}</span> does not match a Metrics Analyzer route.
         </p>

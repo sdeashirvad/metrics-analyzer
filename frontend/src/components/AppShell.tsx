@@ -30,7 +30,7 @@ export function AppShell() {
         </nav>
         <div className="sidebar-foot">
           <div>Policy Control Office</div>
-          <div>Stakeholder demonstration</div>
+          <div>Data Quality from Snowflake</div>
         </div>
       </aside>
       <div className="main-col">

@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+const FRESH_MS = 60_000
+
 interface Entry {
   data?: unknown
   promise?: Promise<unknown>
+  at?: number
 }
 
 const cache = new Map<string, Entry>()
@@ -46,17 +49,34 @@ export function useQuery<T>(scope: string, key: string, loader: () => Promise<T>
   useEffect(() => {
     let live = true
     const hit = cache.get(id)
-    if (hit && 'data' in hit) {
+    const fresh = hit && 'data' in hit && hit.at != null && Date.now() - hit.at < FRESH_MS
+    if (hit && 'data' in hit && fresh) {
       setSettled({ id, scope, data: hit.data, error: null })
-      return
+      const wait = Math.max(0, FRESH_MS - (Date.now() - (hit.at ?? 0)))
+      const refreshTimer = window.setTimeout(() => {
+        if (live) setAttempt((value) => value + 1)
+      }, wait)
+      return () => {
+        live = false
+        window.clearTimeout(refreshTimer)
+      }
+    }
+    if (hit && 'data' in hit && hit.data !== undefined) {
+      setSettled({ id, scope, data: hit.data, error: null })
     }
     let promise = hit?.promise
     if (!promise) {
       promise = loaderRef.current()
-      cache.set(id, { promise })
+      cache.set(id, { ...hit, promise })
       promise.then(
-        (data) => cache.set(id, { data }),
-        () => cache.delete(id),
+        (data) => cache.set(id, { data, at: Date.now() }),
+        () => {
+          const current = cache.get(id)
+          if (current?.promise === promise) {
+            if ('data' in (current ?? {}) && current?.data !== undefined) cache.set(id, { data: current.data, at: current.at })
+            else cache.delete(id)
+          }
+        },
       )
     }
     promise.then(

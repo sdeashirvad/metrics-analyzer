@@ -208,6 +208,7 @@ export interface DqSummary {
   thresholdPosition: string
   implications: string
   disclaimer: string
+  source?: 'cortex' | 'deterministic' | 'previous_cortex'
   cached: boolean
   generatedAt: string | null
 }
@@ -337,6 +338,11 @@ export interface DqInvestigation {
   name: string
   dimension: string
   readme: string
+  summary?: string
+  whatChanged?: string
+  whyItMatters?: string
+  hypotheses?: string[]
+  validationSteps?: string[]
   established: string[]
   hypothesis: string[]
   notSupplied: string[]
@@ -345,6 +351,20 @@ export interface DqInvestigation {
   desks: DeskBreakdown
   notes: ControlNote
   exceptions: { total: number; open: number; oldestAge: number | null }
+  source?: 'cortex' | 'deterministic' | 'previous_cortex'
+  stale?: boolean
+  cached?: boolean
+  generatedAt?: string | null
+}
+
+export interface AnalysisOperation {
+  status: 'IDLE' | 'RUNNING' | 'COMPLETED' | 'FAILED'
+  runId?: string
+  controlId: string
+  analysisType: 'INVESTIGATION' | 'SUMMARY'
+  cached: boolean
+  message?: string
+  result?: DqInvestigation
 }
 
 export interface TrendResponse {

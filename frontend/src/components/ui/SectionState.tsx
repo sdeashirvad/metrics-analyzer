@@ -55,10 +55,10 @@ export function PageLoading({ label }: { label: string }) {
   )
 }
 
-export function PageError({ message, onRetry }: { message: string; onRetry: () => void }) {
+export function PageError({ title = 'This view could not be loaded', message, onRetry }: { title?: string; message: string; onRetry: () => void }) {
   return (
     <div className="page page-narrow">
-      <SectionError title="This view could not be loaded" message={message} onRetry={onRetry} />
+      <SectionError title={title} message={message} onRetry={onRetry} />
     </div>
   )
 }
