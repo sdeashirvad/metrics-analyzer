@@ -1,0 +1,48 @@
+{
+  "role": "assistant",
+  "status": "completed",
+  "schema_version": "v2",
+  "metadata": {
+    "thread_id": "thread-captured"
+  },
+  "content": [
+    {
+      "type": "tool_use",
+      "name": "tool",
+      "text": "tool trace DQ-999"
+    },
+    {
+      "type": "tool_result",
+      "text": "tool result DQ-999"
+    },
+    {
+      "type": "tool_use",
+      "name": "tool",
+      "text": "tool trace DQ-999"
+    },
+    {
+      "type": "tool_result",
+      "text": "tool result DQ-999"
+    },
+    {
+      "type": "thinking",
+      "text": "planning text"
+    },
+    {
+      "type": "text",
+      "text": "Five controls currently have a Red RAG status in the latest snapshot. All five are as of 28 October 2026:\n\n**DQ-001, DQ-007, DQ-010, DQ-020, DQ-025**\n\n"
+    },
+    {
+      "type": "table",
+      "text": "other trace"
+    },
+    {
+      "type": "text",
+      "text": "\n\nThis list only covers controls in the current snapshot. Any control without results isn't in the snapshot, so its status is unknown, not Green."
+    },
+    {
+      "type": "suggested_queries",
+      "text": "other trace"
+    }
+  ]
+}

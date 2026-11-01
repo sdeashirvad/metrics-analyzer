@@ -11,6 +11,10 @@ backend/target/
 backend/build/
 backend/.gradle/
 
+# Local connection settings. Never commit.
+.env
+backend/.env
+
 __pycache__
 *.pyc
 *.local
