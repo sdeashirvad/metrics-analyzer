@@ -1,6 +1,6 @@
 # Data Quality Snowflake scripts
 
-Executable scripts for the approved contract in `DQ_SNOWFLAKE_CONTRACT.md` (parent of this repo). Nothing here has been run against Snowflake.
+Executable scripts for the approved contract in `DQ_SNOWFLAKE_CONTRACT.md` (parent of this repo). The FastAPI service reads the database these scripts build. Run them again only when reseeding or changing the schema.
 
 Run in one session, in this order:
 
@@ -239,7 +239,7 @@ Do not use `FORCE = TRUE` while a staging table still has rows. `FORCE` loads th
 
 ## Cache lookup
 
-Spring uses this after a reseed. The cache key is the current snapshot's `CONTROL_DATA_VERSION`, plus `ANALYSIS_TYPE`, `PROMPT_VERSION`, `CALCULATION_VERSION`, and `MODEL`. `DATASET_VERSION` stays on the run as provenance and is not part of the key. Only a `COMPLETED` row whose JSON already passed validation is eligible. This query is not run by these scripts.
+The API uses this after a reseed. The cache key is the current snapshot's `CONTROL_DATA_VERSION`, plus `ANALYSIS_TYPE`, `PROMPT_VERSION`, `CALCULATION_VERSION`, and `MODEL`. `DATASET_VERSION` stays on the run as provenance and is not part of the key. Only a `COMPLETED` row whose JSON already passed validation is eligible. This query is not run by these scripts.
 
 ```sql
 SELECT run.RESULT
