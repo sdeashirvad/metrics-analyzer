@@ -14,7 +14,7 @@ import { PageError, PageLoading } from '../../components/ui/SectionState'
 import { displayOrMissing, formatDate, formatNumber } from '../../domain/format'
 import { useBackTarget, useLinkState, type BackTarget } from '../../hooks/useOrigin'
 import { useQuery } from '../../hooks/useQuery'
-import { DqInvestigationView } from './DqInvestigationView'
+import { DQ_STAGES, DqInvestigationView } from './DqInvestigationView'
 import { AnalysisSimulation } from './AnalysisSimulation'
 import { BackButton, InvestigationCrumbs } from './InvestigationChrome'
 
@@ -50,11 +50,23 @@ export function InvestigationPage() {
       />
     )
   }
+  if (metricId.startsWith('DQ-') && !investigationQuery.data && !investigationQuery.error) {
+    return (
+      <div className="page investigation">
+        <AnalysisSimulation
+          stages={DQ_STAGES}
+          hold
+          onDone={() => undefined}
+          note="The published Cortex Agent is writing the narrative. These stages stay on screen until that response is ready. Pass rate, RAG, and counts still come from Snowflake."
+        />
+      </div>
+    )
+  }
   if (!detailQuery.data || !investigationQuery.data) return <PageLoading label="Loading investigation" />
 
   const investigation = investigationQuery.data
   const detail = detailQuery.data
-  if ('kind' in investigation) return <DqInvestigationView key={metricId} pack={investigation} detail={detail} back={back} />
+  if ('kind' in investigation) return <DqInvestigationView key={metricId} pack={investigation} detail={detail} back={back} revealImmediately />
   return <TechInvestigationView key={metricId} investigation={investigation} detail={detail} back={back} />
 }
 

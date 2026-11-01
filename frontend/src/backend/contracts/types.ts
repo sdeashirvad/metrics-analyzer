@@ -198,6 +198,18 @@ export interface MetricDetailResponse {
   trendCaption: string | null
   investigationAvailable: boolean
   workbook?: WorkbookControlInfo
+  snapshotUnavailable?: boolean
+}
+
+export interface DqSummary {
+  controlId: string
+  text: string
+  movement: string
+  thresholdPosition: string
+  implications: string
+  disclaimer: string
+  cached: boolean
+  generatedAt: string | null
 }
 
 export interface DeskBreakdownRow {

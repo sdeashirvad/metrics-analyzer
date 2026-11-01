@@ -11,7 +11,7 @@ import { useLinkState, type BackTarget } from '../../hooks/useOrigin'
 import { AnalysisSimulation } from './AnalysisSimulation'
 import { BackButton, InvestigationCrumbs } from './InvestigationChrome'
 
-const DQ_STAGES = [
+export const DQ_STAGES = [
   'Reading the control definition, check logic and thresholds from the workbook',
   'Loading the supplied pass-rate results and locating the first red date',
   'Checking whether a desk split and exception rows were supplied',
@@ -19,8 +19,18 @@ const DQ_STAGES = [
   'Tagging each line as established, hypothesis or not supplied',
 ]
 
-export function DqInvestigationView({ pack, detail, back }: { pack: DqInvestigation; detail: MetricDetailResponse; back: BackTarget }) {
-  const [revealed, setRevealed] = useState(false)
+export function DqInvestigationView({
+  pack,
+  detail,
+  back,
+  revealImmediately = false,
+}: {
+  pack: DqInvestigation
+  detail: MetricDetailResponse
+  back: BackTarget
+  revealImmediately?: boolean
+}) {
+  const [revealed, setRevealed] = useState(revealImmediately)
   const { metric, reading } = detail
   const workbook = detail.workbook
   const linkState = useLinkState(`${metric.id} investigation`)
@@ -60,7 +70,7 @@ export function DqInvestigationView({ pack, detail, back }: { pack: DqInvestigat
       />
 
       {!revealed ? (
-        <AnalysisSimulation stages={DQ_STAGES} onDone={() => setRevealed(true)} note="Working through a fixed sequence in the browser over the supplied workbook data. This does not call Snowflake Cortex, a model, or SMARTS." />
+        <AnalysisSimulation stages={DQ_STAGES} onDone={() => setRevealed(true)} note="The published Cortex Agent is writing the narrative. Pass rate, RAG, counts, and dates stay on the Snowflake rows." />
       ) : (
         <>
       {pack.discrepancy && (

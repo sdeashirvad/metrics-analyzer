@@ -1,8 +1,8 @@
 export class ApiError extends Error {
-  code: 'NOT_FOUND' | 'BAD_REQUEST'
+  code: 'NOT_FOUND' | 'BAD_REQUEST' | 'UPSTREAM'
   status: number
 
-  constructor(code: 'NOT_FOUND' | 'BAD_REQUEST', message: string, status: number) {
+  constructor(code: 'NOT_FOUND' | 'BAD_REQUEST' | 'UPSTREAM', message: string, status: number) {
     super(message)
     this.name = 'ApiError'
     this.code = code

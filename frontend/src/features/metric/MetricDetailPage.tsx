@@ -1,12 +1,14 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import type { MetricDetailResponse } from '../../backend/contracts/types'
-import { api } from '../../backend/services'
+import type { DqSummary, MetricDetailResponse } from '../../backend/contracts/types'
+import { api, generateDqSummary, getDqSummary } from '../../backend/services'
 import { StatusBadge } from '../../components/StatusBadge'
 import { ThresholdScale } from '../../components/ThresholdScale'
 import { TrendChart } from '../../components/TrendChart'
 import { Breadcrumbs } from '../../components/ui/Breadcrumbs'
 import { PageHeader } from '../../components/ui/PageHeader'
 import { FamilyChip, ProvenanceChip, provenanceOf } from '../../components/ui/ProvenanceChip'
+import { ApiError } from '../../backend/services/errors'
 import { PageError, PageLoading, SectionUnavailable } from '../../components/ui/SectionState'
 import { directionLabel, displayOrMissing, formatDate, formatNumber } from '../../domain/format'
 import { useBackTarget, useLinkState } from '../../hooks/useOrigin'
@@ -57,7 +59,7 @@ function DetailView({ data, back }: { data: MetricDetailResponse; back: ReturnTy
           </>
         }
         actions={
-          data.investigationAvailable ? (
+          data.family === 'data_quality' || data.investigationAvailable ? (
             <Link className="btn btn-primary" to={`/investigations/${metric.id}`} state={linkState}>
               Open investigation
             </Link>
@@ -98,6 +100,7 @@ function DetailView({ data, back }: { data: MetricDetailResponse; back: ReturnTy
 
       <div className="detail-layout">
         <div className="detail-main">
+          {workbook ? <DqSummaryCard controlId={metric.id} snapshotUnavailable={data.snapshotUnavailable} /> : null}
           {workbook ? <DqTrendCard data={data} /> : <TrendCard data={data} />}
           {workbook ? (
             <>
@@ -158,6 +161,86 @@ function DetailView({ data, back }: { data: MetricDetailResponse; back: ReturnTy
         </aside>
       </div>
     </div>
+  )
+}
+
+function DqSummaryCard({ controlId, snapshotUnavailable }: { controlId: string; snapshotUnavailable?: boolean }) {
+  const [summary, setSummary] = useState<DqSummary | null>(null)
+  const [missing, setMissing] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [pending, setPending] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    setSummary(null)
+    setMissing(false)
+    setError(null)
+    if (snapshotUnavailable) return
+    getDqSummary(controlId)
+      .then((found) => {
+        if (!cancelled) setSummary(found)
+      })
+      .catch((reason: unknown) => {
+        if (cancelled) return
+        if (reason instanceof ApiError && reason.status === 404) setMissing(true)
+        else setError(reason instanceof Error ? reason.message : 'Summary could not be loaded.')
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [controlId, snapshotUnavailable])
+
+  async function generate(forceRefresh: boolean) {
+    setPending(true)
+    setError(null)
+    try {
+      setSummary(await generateDqSummary(controlId, forceRefresh))
+      setMissing(false)
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : 'Summary could not be generated.')
+    } finally {
+      setPending(false)
+    }
+  }
+
+  return (
+    <section className="card" aria-labelledby="summary-title">
+      <div className="card-head">
+        <h2 id="summary-title">Summary</h2>
+        <ProvenanceChip kind="workbook" />
+      </div>
+      {snapshotUnavailable ? (
+        <p>No snapshot is stored for this control, so a summary is not generated.</p>
+      ) : summary ? (
+        <>
+          <p>{summary.text}</p>
+          <dl className="kv">
+            <dt>Movement</dt>
+            <dd>{summary.movement}</dd>
+            <dt>Threshold position</dt>
+            <dd>{summary.thresholdPosition}</dd>
+            <dt>Implications</dt>
+            <dd>{summary.implications}</dd>
+          </dl>
+          <p className="fine">{summary.disclaimer}</p>
+          <div className="actions">
+            <button type="button" className="btn" disabled={pending} onClick={() => generate(true)}>
+              {pending ? 'Refreshing…' : 'Force refresh'}
+            </button>
+          </div>
+        </>
+      ) : error ? (
+        <p>{error}</p>
+      ) : missing ? (
+        <div className="actions">
+          <button type="button" className="btn btn-primary" disabled={pending} onClick={() => generate(false)}>
+            {pending ? 'Generating…' : 'Generate summary'}
+          </button>
+        </div>
+      ) : (
+        <p className="fine">Checking for a stored summary…</p>
+      )}
+    </section>
   )
 }
 
