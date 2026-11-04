@@ -89,7 +89,6 @@ $batches = @(
             'frontend/src/v2/components/Skeleton.tsx'
             'frontend/src/v2/components/present.tsx'
             'frontend/src/v2/shell/V2Shell.tsx'
-            'frontend/src/v2/styles/components.css'
         )
     },
     @{
@@ -139,6 +138,10 @@ $batches = @(
             'frontend/src/v2/api/query.test.ts'
             'frontend/src/v2/scopePath.ts'
         )
+    },
+    @{
+        Summary = 'v2 scope toolbar align more filters with dropdown controls'
+        Paths   = @('frontend/src/v2/styles/components.css')
     },
     @{
         Summary = 'snowflake mock data setup scripts'
