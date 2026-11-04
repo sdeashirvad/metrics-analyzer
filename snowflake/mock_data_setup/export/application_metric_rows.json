@@ -1,0 +1,28 @@
+[
+  {
+    "EON_ID": "EON611195",
+    "METRIC_ID": "M328814",
+    "METRIC_DATE": "2026-10-31",
+    "COMPLIANCE_STATUS": "Compliant",
+    "COMPLIANCE_REASON": "Compensating_Control_Accepted",
+    "TEST_STATUS": "Test_Complete",
+    "TEST_RESULT": "Fail",
+    "IS_NUMERATOR": 1,
+    "IS_DENOMINATOR": 1,
+    "RFB": 0,
+    "TOTAL_RFB": 3
+  },
+  {
+    "EON_ID": "EON611195",
+    "METRIC_ID": "M334559",
+    "METRIC_DATE": "2026-10-31",
+    "COMPLIANCE_STATUS": "Non_Compliant",
+    "COMPLIANCE_REASON": "Test_Failed",
+    "TEST_STATUS": "Test_Complete",
+    "TEST_RESULT": "Fail",
+    "IS_NUMERATOR": 0,
+    "IS_DENOMINATOR": 1,
+    "RFB": 2,
+    "TOTAL_RFB": 3
+  }
+]

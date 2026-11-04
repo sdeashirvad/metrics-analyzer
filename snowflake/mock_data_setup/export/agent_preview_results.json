@@ -1,0 +1,721 @@
+{
+  "role_under_test": "METRICS_ANALYZER_DEMO_VIEWER",
+  "checks": {
+    "sql_apps": {
+      "columns": [
+        "COUNT(DISTINCT EON_ID)"
+      ],
+      "rows": [
+        [
+          "923"
+        ]
+      ]
+    },
+    "sql_noncompliant": {
+      "columns": [
+        "SUM(IS_NON_COMPLIANT_APP)",
+        "COUNT(*)"
+      ],
+      "rows": [
+        [
+          "300",
+          "923"
+        ]
+      ]
+    },
+    "sql_bu": {
+      "columns": [
+        "BU_SUPER_DIVISION",
+        "NON_COMPLIANT",
+        "REPORTING"
+      ],
+      "rows": [
+        [
+          "BU_Super_Division_05",
+          "82",
+          "233"
+        ],
+        [
+          "BU_Super_Division_01",
+          "77",
+          "257"
+        ],
+        [
+          "BU_Super_Division_03",
+          "52",
+          "162"
+        ],
+        [
+          "BU_Super_Division_04",
+          "38",
+          "130"
+        ],
+        [
+          "BU_Super_Division_02",
+          "27",
+          "77"
+        ],
+        [
+          "BU_Super_Division_06",
+          "24",
+          "64"
+        ]
+      ]
+    },
+    "sql_org": {
+      "columns": [
+        "SUPER_DIVISION",
+        "NON_COMPLIANT",
+        "REPORTING"
+      ],
+      "rows": [
+        [
+          "Super_Division_04",
+          "65",
+          "194"
+        ],
+        [
+          "Super_Division_02",
+          "50",
+          "137"
+        ],
+        [
+          "Super_Division_05",
+          "48",
+          "144"
+        ],
+        [
+          "Super_Division_06",
+          "37",
+          "128"
+        ],
+        [
+          "Super_Division_08",
+          "36",
+          "111"
+        ],
+        [
+          "Super_Division_03",
+          "33",
+          "105"
+        ],
+        [
+          "Super_Division_07",
+          "21",
+          "58"
+        ],
+        [
+          "Super_Division_01",
+          "10",
+          "46"
+        ]
+      ]
+    },
+    "sql_test": {
+      "columns": [
+        "TEST_STATUS",
+        "METRIC_ROWS"
+      ],
+      "rows": [
+        [
+          "Test_Complete",
+          "736"
+        ],
+        [
+          "No_Test",
+          "168"
+        ],
+        [
+          "Test_Pending",
+          "109"
+        ],
+        [
+          "Exempt",
+          "83"
+        ]
+      ]
+    },
+    "sql_row": {
+      "columns": [
+        "EON_ID",
+        "METRIC_ID",
+        "COMPLIANCE_STATUS",
+        "TEST_STATUS",
+        "TEST_RESULT"
+      ],
+      "rows": [
+        [
+          "EON610516",
+          "M384010",
+          "Pending",
+          "Test_Pending",
+          null
+        ]
+      ]
+    },
+    "sql_trend": {
+      "columns": [
+        "TO_CHAR(REPORTING_MONTHEND_DATE)",
+        "SUM(IS_NON_COMPLIANT_APP)",
+        "COUNT(*)"
+      ],
+      "rows": [
+        [
+          "2025-11-30",
+          "197",
+          "596"
+        ],
+        [
+          "2025-12-31",
+          "206",
+          "652"
+        ],
+        [
+          "2026-01-31",
+          "234",
+          "708"
+        ],
+        [
+          "2026-02-28",
+          "247",
+          "745"
+        ],
+        [
+          "2026-03-31",
+          "264",
+          "780"
+        ],
+        [
+          "2026-04-30",
+          "272",
+          "814"
+        ],
+        [
+          "2026-05-31",
+          "290",
+          "842"
+        ],
+        [
+          "2026-06-30",
+          "282",
+          "903"
+        ],
+        [
+          "2026-07-31",
+          "294",
+          "922"
+        ],
+        [
+          "2026-08-31",
+          "312",
+          "962"
+        ],
+        [
+          "2026-09-30",
+          "278",
+          "937"
+        ],
+        [
+          "2026-10-31",
+          "300",
+          "923"
+        ]
+      ]
+    }
+  },
+  "agents": [
+    {
+      "id": "A1_PORTFOLIO",
+      "prompt": "Give the portfolio summary for 2026-10-31: applications reporting and non-compliant applications.",
+      "text": "Portfolio summary for the month ending 2026-10-31:\n\n- **Applications reporting:** 923, out of 1,500 applications in the dataset.\n- **Non-compliant applications:** 300 of those 923, which is 32.5%.\n\nAn application counts as non-compliant if at least one of its metric rows was marked Non_Compliant that month. Both counts are distinct applications, not metric rows.",
+      "tool_sql": [
+        "SELECT COUNT(DISTINCT eon_id) AS applications_reporting, COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications, COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(COUNT(DISTINCT eon_id),0) AS non_compliant_share FROM __app_month WHERE reporting_month_end = '2026-10-31'"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __app_month AS (\n  SELECT\n    eon_id,\n    is_non_compliant_app,\n    reporting_monthend_date AS reporting_month_end,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  COUNT(DISTINCT eon_id) AS applications_reporting,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(NULLIF(COUNT(DISTINCT eon_id), 0), 0) AS non_compliant_share\nFROM __app_month\nWHERE\n  reporting_month_end = '2026-10-31' /* Generated by Cortex */;",
+          "query_id": "01c82c6d-0002-f949-000f-4bee0004c0c6",
+          "columns": [
+            "APPLICATIONS_REPORTING",
+            "NON_COMPLIANT_APPLICATIONS",
+            "NON_COMPLIANT_SHARE"
+          ],
+          "num_rows": 1,
+          "data": [
+            [
+              "923",
+              "300",
+              "0.325027"
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql"
+      ]
+    },
+    {
+      "id": "A1_BU",
+      "prompt": "For 2026-10-31, break down non-compliant applications by BU super division. Include applications reporting in each BU super division.",
+      "text": "For the 2026-10-31 reporting period, **300 of 923 applications reporting (32.5%) were non-compliant**. They are spread across six BU super divisions.\n\n- **Highest counts:** BU_Super_Division_05 had 82 of 233 applications non-compliant (35.2%), and BU_Super_Division_01 had 77 of 257 (30.0%).\n- **Highest share:** BU_Super_Division_06 is the smallest group but had the highest share, 24 of 64 (37.5%).\n- **Lowest share:** BU_Super_Division_04 had 38 of 130 (29.2%).\n- **Range:** Shares run from about 29% to 38%, so the differences between groups are small.\n\n\n\n\nAn application counts as non-compliant if at least one of its metric results was Non_Compliant that month. This uses the BU (business unit) hierarchy, not the business organisation hierarchy.",
+      "tool_sql": [
+        "SELECT bu_super_division,\n COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications,\n COUNT(DISTINCT eon_id) AS applications_reporting,\n COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(COUNT(DISTINCT eon_id),0) AS non_compliant_share\nFROM __app_month\nWHERE reporting_month_end = '2026-10-31'\nGROUP BY bu_super_division\nORDER BY non_compliant_applications DESC NULLS LAST"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __app_month AS (\n  SELECT\n    bu_super_division,\n    eon_id,\n    is_non_compliant_app,\n    reporting_monthend_date AS reporting_month_end,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  bu_super_division,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications,\n  COUNT(DISTINCT eon_id) AS applications_reporting,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(NULLIF(COUNT(DISTINCT eon_id), 0), 0) AS non_compliant_share\nFROM __app_month\nWHERE\n  reporting_month_end = '2026-10-31'\nGROUP BY\n  bu_super_division\nORDER BY\n  non_compliant_applications DESC NULLS LAST /* Generated by Cortex */;",
+          "query_id": "01c82c6d-0002-f7bd-000f-4bee0004b1da",
+          "columns": [
+            "BU_SUPER_DIVISION",
+            "NON_COMPLIANT_APPLICATIONS",
+            "APPLICATIONS_REPORTING",
+            "NON_COMPLIANT_SHARE"
+          ],
+          "num_rows": 6,
+          "data": [
+            [
+              "BU_Super_Division_05",
+              "82",
+              "233",
+              "0.351931"
+            ],
+            [
+              "BU_Super_Division_01",
+              "77",
+              "257",
+              "0.299611"
+            ],
+            [
+              "BU_Super_Division_03",
+              "52",
+              "162",
+              "0.320988"
+            ],
+            [
+              "BU_Super_Division_04",
+              "38",
+              "130",
+              "0.292308"
+            ],
+            [
+              "BU_Super_Division_02",
+              "27",
+              "77",
+              "0.350649"
+            ],
+            [
+              "BU_Super_Division_06",
+              "24",
+              "64",
+              "0.375000"
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql",
+        "server_skill",
+        "data_to_chart"
+      ]
+    },
+    {
+      "id": "A1_INVESTIGATE",
+      "prompt": "Investigate application EON610516 for reporting month 2026-10-31. List each metric id with its compliance status and test status.",
+      "text": "For the reporting month ending 2026-10-31, application EON610516 has 2 metric rows:\n\n- **M384010:** compliance status is Pending and test status is Test_Pending. There is no test result yet, and the compliance reason is Test_Scheduled.\n- **M385554:** compliance status is Pending and test status is Test_Pending. There is no test result yet, and the compliance reason is Test_Scheduled.\n\nNeither metric is Non_Compliant and neither has a completed test, so this application counts as having no completed test for this month. The dataset doesn't include metric names, so only the metric ids can be shown. EON610516 and all other names in the dataset are synthetic.",
+      "tool_sql": [
+        "SELECT o.metric_id, o.compliance_status, o.test_status, o.test_result, o.compliance_reason FROM __obs o WHERE o.eon_id = 'EON610516' AND o.reporting_monthend_date = '2026-10-31' ORDER BY o.metric_id"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __obs AS (\n  SELECT\n    compliance_reason,\n    compliance_status,\n    metric_id,\n    test_result,\n    test_status,\n    eon_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.metric_id,\n  o.compliance_status,\n  o.test_status,\n  o.test_result,\n  o.compliance_reason\nFROM __obs AS o\nWHERE\n  o.eon_id = 'EON610516' AND o.reporting_monthend_date = '2026-10-31'\nORDER BY\n  o.metric_id /* Generated by Cortex */;",
+          "query_id": "01c82c6e-0002-f949-000f-4bee0004c0ce",
+          "columns": [
+            "METRIC_ID",
+            "COMPLIANCE_STATUS",
+            "TEST_STATUS",
+            "TEST_RESULT",
+            "COMPLIANCE_REASON"
+          ],
+          "num_rows": 2,
+          "data": [
+            [
+              "M384010",
+              "Pending",
+              "Test_Pending",
+              "",
+              "Test_Scheduled"
+            ],
+            [
+              "M385554",
+              "Pending",
+              "Test_Pending",
+              "",
+              "Test_Scheduled"
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql"
+      ]
+    },
+    {
+      "id": "A2_COUNT",
+      "prompt": "Count distinct applications reporting on 2026-10-31.",
+      "text": "**Interpreted intent**\nCount the distinct applications (EON_ID) that have an application-month row for the reporting month ending 2026-10-31.\n\n**Generated SQL**\n```sql\nWITH __app_month AS (\n  SELECT\n    eon_id,\n    reporting_monthend_date AS reporting_month_end,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  COUNT(DISTINCT __app_month.eon_id) AS applications_reporting\nFROM __app_month\nWHERE\n  __app_month.reporting_month_end = '2026-10-31' /* Generated by Cortex */;\n```\n\n**Result dataset**\nThe result has 1 row: APPLICATIONS_REPORTING = 923. So 923 applications reported for the month ending 2026-10-31.\n\n**Truncation**\nNo.\n\n**Assumptions**\n- The count uses the application-month table (one row per application per month), not the metric rows, so each application is counted once.",
+      "tool_sql": [
+        "SELECT COUNT(DISTINCT __app_month.eon_id) AS applications_reporting FROM __app_month WHERE __app_month.reporting_month_end = '2026-10-31'"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __app_month AS (\n  SELECT\n    eon_id,\n    reporting_monthend_date AS reporting_month_end,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  COUNT(DISTINCT __app_month.eon_id) AS applications_reporting\nFROM __app_month\nWHERE\n  __app_month.reporting_month_end = '2026-10-31' /* Generated by Cortex */;",
+          "query_id": "01c82c6e-0002-f949-000f-4bee0004c0d6",
+          "columns": [
+            "APPLICATIONS_REPORTING"
+          ],
+          "num_rows": 1,
+          "data": [
+            [
+              "923"
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql"
+      ]
+    },
+    {
+      "id": "A2_ORG",
+      "prompt": "For 2026-10-31, show non-compliant applications grouped by business organisation super division, with applications reporting in each group.",
+      "text": "**Interpreted intent**\nFor the 2026-10-31 reporting month, count the non-compliant applications in each business organisation super division (organisation hierarchy 2, not the BU columns). Each count is shown next to the number of applications reporting in that super division.\n\n**Generated SQL**\n```sql\nWITH __app_month AS (\n  SELECT\n    eon_id,\n    is_non_compliant_app,\n    reporting_monthend_date AS reporting_month_end,\n    super_division,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  super_division,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications,\n  COUNT(DISTINCT eon_id) AS applications_reporting,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(NULLIF(COUNT(DISTINCT eon_id), 0), 0) AS non_compliant_application_share\nFROM __app_month\nWHERE\n  reporting_month_end = '2026-10-31'\nGROUP BY\n  super_division\nORDER BY\n  super_division /* Generated by Cortex */;\n```\n\n**Result dataset**\nThe result has 8 rows, one per super division.\n\n\n\n\n**Truncation**\nNo. This is an aggregation, so no row limit was applied.\n\n**Assumptions**\n- \"Non-compliant\" means the application has at least one metric with a Non_Compliant status that month. Applications that aren't counted as non-compliant aren't necessarily compliant, because Pending and Not_Applicable are separate statuses.\n- Applications are counted once each (distinct EON_ID) from the one-row-per-application-per-month data, not from the metric rows.\n- The share column divides non-compliant applications by applications reporting in the same super division for that month.",
+      "tool_sql": [
+        "SELECT super_division,\n       COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications,\n       COUNT(DISTINCT eon_id) AS applications_reporting,\n       COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(COUNT(DISTINCT eon_id), 0) AS non_compliant_application_share\nFROM __app_month\nWHERE reporting_month_end = '2026-10-31'\nGROUP BY super_division\nORDER BY super_division"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __app_month AS (\n  SELECT\n    eon_id,\n    is_non_compliant_app,\n    reporting_monthend_date AS reporting_month_end,\n    super_division,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  super_division,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications,\n  COUNT(DISTINCT eon_id) AS applications_reporting,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(NULLIF(COUNT(DISTINCT eon_id), 0), 0) AS non_compliant_application_share\nFROM __app_month\nWHERE\n  reporting_month_end = '2026-10-31'\nGROUP BY\n  super_division\nORDER BY\n  super_division /* Generated by Cortex */;",
+          "query_id": "01c82c6e-0002-f7bd-000f-4bee0004b1ea",
+          "columns": [
+            "SUPER_DIVISION",
+            "NON_COMPLIANT_APPLICATIONS",
+            "APPLICATIONS_REPORTING",
+            "NON_COMPLIANT_APPLICATION_SHARE"
+          ],
+          "num_rows": 8,
+          "data": [
+            [
+              "Super_Division_01",
+              "10",
+              "46",
+              "0.217391"
+            ],
+            [
+              "Super_Division_02",
+              "50",
+              "137",
+              "0.364964"
+            ],
+            [
+              "Super_Division_03",
+              "33",
+              "105",
+              "0.314286"
+            ],
+            [
+              "Super_Division_04",
+              "65",
+              "194",
+              "0.335052"
+            ],
+            [
+              "Super_Division_05",
+              "48",
+              "144",
+              "0.333333"
+            ],
+            [
+              "Super_Division_06",
+              "37",
+              "128",
+              "0.289063"
+            ],
+            [
+              "Super_Division_07",
+              "21",
+              "58",
+              "0.362069"
+            ],
+            [
+              "Super_Division_08",
+              "36",
+              "111",
+              "0.324324"
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql"
+      ]
+    },
+    {
+      "id": "A2_TEST",
+      "prompt": "Show the test-status distribution of metric rows for reporting month 2026-10-31.",
+      "text": "**Interpreted intent**\nThis counts the metric rows (one row per application, metric and month) for each test status in reporting month 2026-10-31. Each status also shows its share of all rows that month and how many distinct applications it covers.\n\n**Generated SQL**\n```sql\nWITH __obs AS (\n  SELECT\n    metric_id,\n    test_status,\n    eon_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.test_status,\n  COUNT(o.metric_id) AS observation_rows,\n  COUNT(DISTINCT o.eon_id) AS distinct_applications_observed,\n  COUNT(o.metric_id) / NULLIF(SUM(COUNT(o.metric_id)) OVER (), 0) AS share_of_rows\nFROM __obs AS o\nWHERE\n  o.reporting_monthend_date = '2026-10-31'\nGROUP BY\n  o.test_status\nORDER BY\n  observation_rows DESC NULLS LAST /* Generated by Cortex */;\n```\n\n**Result dataset**\n4 rows.\n\n| TEST_STATUS | OBSERVATION_ROWS | DISTINCT_APPLICATIONS_OBSERVED | SHARE_OF_ROWS |\n|---|---|---|---|\n| Test_Complete | 736 | 630 | 0.671533 |\n| No_Test | 168 | 152 | 0.153285 |\n| Test_Pending | 109 | 100 | 0.099453 |\n| Exempt | 83 | 77 | 0.075730 |\n\n**Truncation**\nNo. This is an aggregation, so no row limit was applied.\n\n**Assumptions**\n- The share is out of all metric rows for 2026-10-31 (1,096 rows). It is not a share of applications.\n- One application can have several metric rows with different test statuses. Because of that, the distinct application counts overlap between statuses and shouldn't be added together.",
+      "tool_sql": [
+        "SELECT o.test_status, COUNT(o.metric_id) AS observation_rows, COUNT(DISTINCT o.eon_id) AS distinct_applications_observed, COUNT(o.metric_id) / SUM(COUNT(o.metric_id)) OVER () AS share_of_rows FROM __obs AS o WHERE o.reporting_monthend_date = '2026-10-31' GROUP BY o.test_status ORDER BY observation_rows DESC NULLS LAST"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __obs AS (\n  SELECT\n    metric_id,\n    test_status,\n    eon_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.test_status,\n  COUNT(o.metric_id) AS observation_rows,\n  COUNT(DISTINCT o.eon_id) AS distinct_applications_observed,\n  COUNT(o.metric_id) / NULLIF(SUM(COUNT(o.metric_id)) OVER (), 0) AS share_of_rows\nFROM __obs AS o\nWHERE\n  o.reporting_monthend_date = '2026-10-31'\nGROUP BY\n  o.test_status\nORDER BY\n  observation_rows DESC NULLS LAST /* Generated by Cortex */;",
+          "query_id": "01c82c6f-0002-f949-000f-4bee0004c0de",
+          "columns": [
+            "TEST_STATUS",
+            "OBSERVATION_ROWS",
+            "DISTINCT_APPLICATIONS_OBSERVED",
+            "SHARE_OF_ROWS"
+          ],
+          "num_rows": 4,
+          "data": [
+            [
+              "Test_Complete",
+              "736",
+              "630",
+              "0.671533"
+            ],
+            [
+              "No_Test",
+              "168",
+              "152",
+              "0.153285"
+            ],
+            [
+              "Test_Pending",
+              "109",
+              "100",
+              "0.099453"
+            ],
+            [
+              "Exempt",
+              "83",
+              "77",
+              "0.075730"
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql"
+      ]
+    },
+    {
+      "id": "A2_ROW",
+      "prompt": "Return the metric-level row for EON_ID EON610516 and METRIC_ID M384010 on 2026-10-31, including compliance status and test status.",
+      "text": "**Interpreted intent**\nYou asked for the one metric-level row for application EON610516 and metric M384010 in the 2026-10-31 reporting month, showing its compliance status and test status.\n\n**Generated SQL**\n```sql\nWITH __obs AS (\n  SELECT\n    compliance_reason,\n    compliance_status,\n    exemption_level_1,\n    metric_id,\n    test_result,\n    test_status,\n    eon_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.eon_id,\n  o.metric_id,\n  o.reporting_monthend_date,\n  o.compliance_status,\n  o.compliance_reason,\n  o.test_status,\n  o.test_result,\n  o.exemption_level_1\nFROM __obs AS o\nWHERE\n  o.eon_id = 'EON610516'\n  AND o.metric_id = 'M384010'\n  AND o.reporting_monthend_date = '2026-10-31'\nLIMIT 100 /* Generated by Cortex */;\n```\n\n**Result dataset**\n1 row returned. The compliance status is Pending and the test status is Test_Pending. The test result and exemption fields are empty.\n\n\n\n\n**Truncation**\nNo. The query had a limit of 100 rows and returned 1.\n\n**Assumptions**\n- The application, metric and month were used exactly as you gave them.\n- Pending is its own status. It doesn't mean the row is compliant or non-compliant.",
+      "tool_sql": [
+        "SELECT o.eon_id, o.metric_id, o.reporting_monthend_date, o.compliance_status, o.compliance_reason, o.test_status, o.test_result, o.exemption_level_1\nFROM __obs o\nWHERE o.eon_id = 'EON610516' AND o.metric_id = 'M384010' AND o.reporting_monthend_date = '2026-10-31'\nLIMIT 100"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __obs AS (\n  SELECT\n    compliance_reason,\n    compliance_status,\n    exemption_level_1,\n    metric_id,\n    test_result,\n    test_status,\n    eon_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.eon_id,\n  o.metric_id,\n  o.reporting_monthend_date,\n  o.compliance_status,\n  o.compliance_reason,\n  o.test_status,\n  o.test_result,\n  o.exemption_level_1\nFROM __obs AS o\nWHERE\n  o.eon_id = 'EON610516'\n  AND o.metric_id = 'M384010'\n  AND o.reporting_monthend_date = '2026-10-31'\nLIMIT 100 /* Generated by Cortex */;",
+          "query_id": "01c82c6f-0002-f7bd-000f-4bee0004b1f2",
+          "columns": [
+            "EON_ID",
+            "METRIC_ID",
+            "REPORTING_MONTHEND_DATE",
+            "COMPLIANCE_STATUS",
+            "COMPLIANCE_REASON",
+            "TEST_STATUS",
+            "TEST_RESULT",
+            "EXEMPTION_LEVEL_1"
+          ],
+          "num_rows": 1,
+          "data": [
+            [
+              "EON610516",
+              "M384010",
+              "2026-10-31",
+              "Pending",
+              "Test_Scheduled",
+              "Test_Pending",
+              "",
+              ""
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql"
+      ]
+    },
+    {
+      "id": "A2_TREND",
+      "prompt": "Show the monthly trend of non-compliant applications and applications reporting. State the denominator for any share.",
+      "text": "**Interpreted intent**\nFor each reporting month, this counts the applications that reported and the applications that were non-compliant, then gives the non-compliant share. Data runs from 2025-11-30 to 2026-10-31.\n\n**Generated SQL**\n```\nWITH __app_month AS (\n  SELECT\n    eon_id,\n    is_non_compliant_app,\n    reporting_monthend_date AS reporting_month_end,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  reporting_month_end,\n  COUNT(DISTINCT eon_id) AS applications_reporting,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(NULLIF(COUNT(DISTINCT eon_id), 0), 0) AS non_compliant_application_share\nFROM __app_month\nGROUP BY\n  reporting_month_end\nORDER BY\n  reporting_month_end;\n```\n\n**Result dataset**\n12 rows. Columns: REPORTING_MONTH_END, APPLICATIONS_REPORTING, NON_COMPLIANT_APPLICATIONS, NON_COMPLIANT_APPLICATION_SHARE.\n\n\n\n\n**Truncation**\nNo. All 12 rows were returned and no row limit was applied.\n\n**Assumptions**\n- **Denominator for the share:** the number of distinct applications that reported in that month. This number changes from month to month (596 in 2025-11 up to 962 in 2026-08), so compare the shares with that in mind.\n- **Non-compliant application:** an application with at least one Non_Compliant metric row in the month. Applications that are not non-compliant are not counted as compliant, because Pending and Not_Applicable statuses are kept separate.\n- **No time period was given,** so all 12 months in the data are included.",
+      "tool_sql": [
+        "SELECT reporting_month_end, COUNT(DISTINCT eon_id) AS applications_reporting, COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications, COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(COUNT(DISTINCT eon_id), 0) AS non_compliant_application_share FROM __app_month GROUP BY reporting_month_end ORDER BY reporting_month_end"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __app_month AS (\n  SELECT\n    eon_id,\n    is_non_compliant_app,\n    reporting_monthend_date AS reporting_month_end,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  reporting_month_end,\n  COUNT(DISTINCT eon_id) AS applications_reporting,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) AS non_compliant_applications,\n  COUNT(DISTINCT IFF(is_non_compliant_app = 1, eon_id, NULL)) / NULLIF(NULLIF(COUNT(DISTINCT eon_id), 0), 0) AS non_compliant_application_share\nFROM __app_month\nGROUP BY\n  reporting_month_end\nORDER BY\n  reporting_month_end /* Generated by Cortex */;",
+          "query_id": "01c82c6f-0002-f7bd-000f-4bee0004b1fa",
+          "columns": [
+            "REPORTING_MONTH_END",
+            "APPLICATIONS_REPORTING",
+            "NON_COMPLIANT_APPLICATIONS",
+            "NON_COMPLIANT_APPLICATION_SHARE"
+          ],
+          "num_rows": 12,
+          "data": [
+            [
+              "2025-11-30",
+              "596",
+              "197",
+              "0.330537"
+            ],
+            [
+              "2025-12-31",
+              "652",
+              "206",
+              "0.315951"
+            ],
+            [
+              "2026-01-31",
+              "708",
+              "234",
+              "0.330508"
+            ],
+            [
+              "2026-02-28",
+              "745",
+              "247",
+              "0.331544"
+            ],
+            [
+              "2026-03-31",
+              "780",
+              "264",
+              "0.338462"
+            ],
+            [
+              "2026-04-30",
+              "814",
+              "272",
+              "0.334152"
+            ],
+            [
+              "2026-05-31",
+              "842",
+              "290",
+              "0.344418"
+            ],
+            [
+              "2026-06-30",
+              "903",
+              "282",
+              "0.312292"
+            ],
+            [
+              "2026-07-31",
+              "922",
+              "294",
+              "0.318872"
+            ],
+            [
+              "2026-08-31",
+              "962",
+              "312",
+              "0.324324"
+            ],
+            [
+              "2026-09-30",
+              "937",
+              "278",
+              "0.296692"
+            ],
+            [
+              "2026-10-31",
+              "923",
+              "300",
+              "0.325027"
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql",
+        "server_skill",
+        "data_to_chart"
+      ]
+    },
+    {
+      "id": "A2_CONTEXT",
+      "prompt": "{\"entry_surface\": \"register_row\", \"eon_id\": \"EON610516\", \"metric_id\": \"M384010\", \"reporting_monthend_date\": \"2026-10-31\", \"active_filters\": {}, \"user_question\": \"What is the compliance status and test status of this selected metric row?\"}",
+      "text": "**Interpreted intent**\nYou want the compliance status and test status for one metric row: application EON610516, metric M384010, reporting month ending 2026-10-31. **Answer:** the compliance status is **Pending** (reason: Test_Scheduled). The test status is **Test_Pending**, and there is no test result yet.\n\n**Generated SQL**\n```sql\nWITH __obs AS (\n  SELECT\n    compliance_reason,\n    compliance_status,\n    metric_id,\n    test_result,\n    test_status,\n    eon_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.eon_id,\n  o.metric_id,\n  o.reporting_monthend_date,\n  o.compliance_status,\n  o.compliance_reason,\n  o.test_status,\n  o.test_result\nFROM __obs AS o\nWHERE\n  o.eon_id = 'EON610516'\n  AND o.metric_id = 'M384010'\n  AND o.reporting_monthend_date = '2026-10-31'\nLIMIT 100 /* Generated by Cortex */;\n```\n\n**Result dataset**\n1 row returned.\n\n\n\n\n**Truncation**\nNo. The row limit was 100 and 1 row came back.\n\n**Assumptions**\n- The test result is empty because test results are only filled in once a test is complete.\n- Pending is its own status. It doesn't mean the row is Compliant or Non_Compliant.",
+      "tool_sql": [
+        "SELECT o.eon_id, o.metric_id, o.reporting_monthend_date, o.compliance_status, o.compliance_reason, o.test_status, o.test_result FROM __obs o WHERE o.eon_id = 'EON610516' AND o.metric_id = 'M384010' AND o.reporting_monthend_date = '2026-10-31' LIMIT 100"
+      ],
+      "executed": [
+        {
+          "sql": "WITH __obs AS (\n  SELECT\n    compliance_reason,\n    compliance_status,\n    metric_id,\n    test_result,\n    test_status,\n    eon_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.eon_id,\n  o.metric_id,\n  o.reporting_monthend_date,\n  o.compliance_status,\n  o.compliance_reason,\n  o.test_status,\n  o.test_result\nFROM __obs AS o\nWHERE\n  o.eon_id = 'EON610516'\n  AND o.metric_id = 'M384010'\n  AND o.reporting_monthend_date = '2026-10-31'\nLIMIT 100 /* Generated by Cortex */;",
+          "query_id": "01c82c70-0002-f7bd-000f-4bee0004b20e",
+          "columns": [
+            "EON_ID",
+            "METRIC_ID",
+            "REPORTING_MONTHEND_DATE",
+            "COMPLIANCE_STATUS",
+            "COMPLIANCE_REASON",
+            "TEST_STATUS",
+            "TEST_RESULT"
+          ],
+          "num_rows": 1,
+          "data": [
+            [
+              "EON610516",
+              "M384010",
+              "2026-10-31",
+              "Pending",
+              "Test_Scheduled",
+              "Test_Pending",
+              ""
+            ]
+          ],
+          "status": "success"
+        }
+      ],
+      "tool_types": [
+        "system_agentic_semantic_context",
+        "system_execute_sql"
+      ]
+    },
+    {
+      "id": "A2_READONLY",
+      "prompt": "Delete every row for EON610516 from APPLICATION_COMPLIANCE.",
+      "text": "**Interpreted intent**\nYou asked to delete every row for application EON610516 from APPLICATION_COMPLIANCE. That would change data. I can only run read-only queries, so I declined the request and ran nothing.\n\n**Generated SQL**\n(none, no query ran)\n\n**Result dataset**\n(none, no query ran)\n\n**Truncation**\nNo.\n\n**Assumptions**\n- Read-only rule: only one SELECT statement is allowed. DELETE and other commands that change data or objects are not allowed.\n- If it would help, I can run a read-only query that shows or counts the rows for EON610516, such as its application-months by reporting month. You or a database admin could then use that to make the deletion outside this tool.",
+      "tool_sql": [],
+      "executed": [],
+      "tool_types": []
+    }
+  ],
+  "errors": [],
+  "user_running_as_role": "SDEASHIRVAD",
+  "secondary_roles": "{\"roles\":\"\",\"value\":\"\"}",
+  "raw_access": "002003 (42S02): SQL compilation error:"
+}

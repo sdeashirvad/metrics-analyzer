@@ -1,0 +1,50 @@
+[
+  {
+    "id": "G01",
+    "question": "How many applications reported in the latest month (2026-10-31)?",
+    "thread_id": null,
+    "answer": "In the month ending 2026-10-31, **923 applications** reported. The dataset holds 1,500 applications in total, so that's 923 of 1,500.\n\nEach application is counted once, no matter how many metric rows it reported that month."
+  },
+  {
+    "id": "G02",
+    "question": "How many applications are non-compliant in the latest month?",
+    "thread_id": null,
+    "answer": "In the latest month, 300 of 923 applications were non-compliant (about 32.5%). The latest month is the one ending 2026-10-31.\n\nAn application counts as non-compliant if at least one of its metric rows was marked Non_Compliant that month. Each application is counted once, however many of its metrics were non-compliant."
+  },
+  {
+    "id": "G03",
+    "question": "Which super divisions have the most non-compliant applications in the latest month? Show the top 6 with the share of their applications.",
+    "thread_id": null,
+    "answer": "In the latest month (2026-10-31), Super_Division_04 has the most non-compliant applications: 65 of its 194 applications (33.5%). Super_Division_02 has the second-highest count, 50 of 137 (36.5%). That is the highest share among the six, even though its count is lower.\n- **Shares:** between 29% and 37% of each super division's applications are non-compliant. Super_Division_06 has the lowest share in this group (37 of 128, 28.9%).\n- **Ranking:** super divisions are ordered by the number of non-compliant applications. Because they differ a lot in size (105 to 194 applications), the share is the better way to compare them.\n- **Definition:** an application counts as non-compliant if at least one of its metrics was non-compliant that month."
+  },
+  {
+    "id": "G05",
+    "question": "How many applications have no completed test in the latest month?",
+    "thread_id": null,
+    "answer": "In the latest month (2026-10-31), **293 of 923 applications** had no completed test. That's about 32% of the applications reporting that month.\n\nAn application counts here if none of its metric rows that month had a test status of Test_Complete. Its other rows could be pending, exempt or have no test."
+  },
+  {
+    "id": "G06",
+    "question": "Show the monthly trend of non-compliant applications and applications reporting.",
+    "thread_id": null,
+    "answer": "Over the 12 month-ends from 2025-11-30 to 2026-10-31, the number of non-compliant applications grew, but their share of applications reporting stayed between about 30% and 34%. In the latest month, 2026-10-31, 300 of 923 applications (32.5%) were non-compliant. In 2025-11-30 it was 197 of 596 (33.1%).\n\n- **Applications reporting:** This rose from 596 to a peak of 962 at 2026-08-31, then eased to 937 and then 923. This growth is built into the dataset, so the raw counts mostly show more applications reporting, not more non-compliance.\n- **Non-compliant applications:** These rose from 197 to a peak of 312 at 2026-08-31. They dropped to 278 at 2026-09-30, which was also the lowest share in the period (29.7%), then rose to 300 at 2026-10-31.\n- **Highest share:** 2026-05-31, with 290 of 842 (34.4%).\n\nAn application counts as non-compliant in a month if it has at least one non-compliant metric record that month. Because the population keeps growing, the share is the better measure for comparing months."
+  },
+  {
+    "id": "G07",
+    "question": "How many completed tests failed in the latest month?",
+    "thread_id": null,
+    "answer": "In the latest month (period ending 2026-10-31), **273 of the 736 completed tests failed**.\n\n- **Failure rate:** 4 of the 736 completed tests have no Pass or Fail result. Of the 732 that do, 273 failed, which is a 37.3% failure rate.\n- **Applications affected:** 247 of the 923 applications reporting that month had at least one failed completed test.\n\nThe 273 counts metric-level test records, not applications. One application can fail tests on more than one metric, which is why the application count (247) is lower."
+  },
+  {
+    "id": "G08",
+    "question": "What is the distribution of compliance status across metric rows in the latest month?",
+    "thread_id": null,
+    "answer": "In the latest month (2026-10-31), 42.2% of metric rows were Compliant. That's 463 of 1,096 rows, which cover 923 applications.\n\n- **Compliant:** 463 rows (42.2%)\n- **Non_Compliant:** 324 rows (29.6%), across 300 of the 923 applications\n- **Pending:** 183 rows (16.7%)\n- **Not_Applicable:** 126 rows (11.5%)\nEach row is one metric for one application in that month, and one application can have several rows. That's why the application counts per status add up to more than 923: some applications appear under more than one status."
+  },
+  {
+    "id": "G10",
+    "question": "What are the open findings in the latest month?",
+    "thread_id": null,
+    "answer": "In the latest month (2026-10-31), there were **1,870 open findings**. This figure is provisional.\n\n- Those findings sit with **638 of the 923 applications** that reported that month. The other 285 had none.\n- That works out to about 2.0 open findings per reporting application, or about 2.9 per application that has findings.\n\n**About this figure:**\n- The open findings figure is provisional because the exact business meaning of the underlying findings field (RFB) hasn't been supplied. Each application's findings were counted once for the month, even though the value repeats on every metric row.\n- It covers this one month only. Monthly open findings totals can't be added together across months.\n\nI can break this down by super division or division, legal entity, owner, or metric, or show the trend over the past 12 months."
+  }
+]

@@ -1,0 +1,121 @@
+-- =====================================================================================
+-- 03_create_raw_tables.sql
+-- Raw landing table + the two operational tables (load audit, rejected rows).
+-- All CREATE ... IF NOT EXISTS: re-running never drops or empties loaded data.
+-- Status: UNEXECUTED.
+-- =====================================================================================
+-- Set these two values ONCE per worksheet, then run the whole file.
+SET SETUP_ROLE = 'ACCOUNTADMIN';          -- a role that can create objects in METRICS_ANALYZER (from 00_preflight 0.4)
+SET WH_NAME    = 'COMPUTE_WH';      -- an existing warehouse (from 00_preflight 0.2)
+USE ROLE IDENTIFIER($SETUP_ROLE);
+USE WAREHOUSE IDENTIFIER($WH_NAME);
+USE DATABASE METRICS_ANALYZER;
+USE SCHEMA METRICS_ANALYZER.MOCK_DATA;
+
+-- One row per load attempt. Statuses advance:
+--   STARTED > RAW_LOADED > STAGED > VALIDATED > PROMOTED > RECONCILED   (or FAILED / RECONCILED_WITH_REJECTS)
+CREATE TABLE IF NOT EXISTS DATASET_LOAD_AUDIT (
+    LOAD_BATCH_ID        VARCHAR       NOT NULL,
+    DATASET_VERSION      VARCHAR       NOT NULL,
+    SOURCE_FILE_NAME     VARCHAR       NOT NULL,
+    SOURCE_FILE_SHA256   VARCHAR,
+    EXPECTED_ROWS        NUMBER(10,0)  NOT NULL,
+    EXPECTED_COLUMNS     NUMBER(4,0)   NOT NULL,
+    ROWS_RAW             NUMBER(10,0),
+    ROWS_STG             NUMBER(10,0),
+    ROWS_FINAL           NUMBER(10,0),
+    ROWS_REJECTED        NUMBER(10,0),
+    STATUS               VARCHAR       NOT NULL,
+    NOTES                VARCHAR,
+    CREATED_AT           TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP(),
+    UPDATED_AT           TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP()
+) COMMENT = 'One row per load batch of the synthetic application compliance dataset.';
+
+-- Rows that fail type conversion or a row-level validation rule. Never silently dropped.
+CREATE TABLE IF NOT EXISTS DATASET_REJECTED_ROWS (
+    LOAD_BATCH_ID           VARCHAR  NOT NULL,
+    SOURCE_FILE_ROW_NUMBER  NUMBER(10,0),
+    EON_ID                  VARCHAR,
+    METRIC_ID               VARCHAR,
+    METRIC_DATE_RAW         VARCHAR,
+    REJECT_REASONS          ARRAY    NOT NULL,
+    RAW_RECORD              OBJECT,
+    REJECTED_AT             TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP()
+) COMMENT = 'Quarantine for rows that failed conversion or row-level validation, with reasons.';
+
+-- Raw landing: the 57 source columns exactly as supplied (all VARCHAR; blank CSV field = NULL),
+-- followed by 4 ingestion-metadata columns. The metadata columns are NOT part of the client specification.
+CREATE TABLE IF NOT EXISTS RAW_APPLICATION_COMPLIANCE (
+    METRIC_ID VARCHAR,
+    METRIC_DATE VARCHAR,
+    METRIC_DATE_TYPE VARCHAR,
+    IS_NUMERATOR VARCHAR,
+    IS_DENOMINATOR VARCHAR,
+    EON_ID VARCHAR,
+    BUILDING_NAME VARCHAR,
+    EVENT_LOCATION VARCHAR,
+    APPLICATION_TIER VARCHAR,
+    EXEMPTION_LEVEL_1 VARCHAR,
+    TEST_STATUS VARCHAR,
+    TEST_RESULT VARCHAR,
+    SYSTEM_RTC VARCHAR,
+    RFB VARCHAR,
+    TOTAL_RFB VARCHAR,
+    COMPLIANCE_STATUS VARCHAR,
+    COMPLIANCE_REASON VARCHAR,
+    RTO_CHANGE_DATE VARCHAR,
+    GRN VARCHAR,
+    APPLICATION_NAME VARCHAR,
+    APPLICATION_RTO VARCHAR,
+    HAS_CTIRICAL_KBS VARCHAR,
+    LIFECYCLE_PHASE VARCHAR,
+    ASSET_RISK_RATING_2 VARCHAR,
+    ARR_AVAILABILITY VARCHAR,
+    ARR_CONFIDENTIALITY VARCHAR,
+    ARR_INTEGRITY VARCHAR,
+    IS_MERGERS_ACQUISITIONS_ASSET VARCHAR,
+    ACQUIRED_ENTITY VARCHAR,
+    BU_SUPER_DIVISION VARCHAR,
+    BU_DIVISION VARCHAR,
+    BU_SUPER_DEPARTMENT VARCHAR,
+    BU_DEPARTMENT VARCHAR,
+    ORG_GROUP_TYPE VARCHAR,
+    SUPER_DIVISION VARCHAR,
+    DIVISION VARCHAR,
+    SUPER_DEPARTMENT VARCHAR,
+    DEPARTMENT VARCHAR,
+    BUS_ORG_LG_NM VARCHAR,
+    COST_CENTER_CODE VARCHAR,
+    COST_CENTER_NAME VARCHAR,
+    EMPLOYEE_BUILDING_NAME VARCHAR,
+    EMPLOYEE_COUNTRY_NAME VARCHAR,
+    PRIMARY_BUS_FIRST_NAME VARCHAR,
+    PRIMARY_BUS_LAST_NAME VARCHAR,
+    PRIMARY_IT_FIRST_NAME VARCHAR,
+    PRIMARY_IT_LAST_NAME VARCHAR,
+    LEGAL_ENTITY_CODE VARCHAR,
+    LEGAL_ENTITY_NAME VARCHAR,
+    IS_USBANKS VARCHAR,
+    IS_MSBNA VARCHAR,
+    IS_MSPBNA VARCHAR,
+    USBANKS_LE_LIST VARCHAR,
+    KBS_FLAG_FLAG VARCHAR,
+    REPORTING_MONTHEND_DATE VARCHAR,
+    REPORTING_MONTH VARCHAR,
+    REPORTING_YEAR VARCHAR,
+    -- ingestion metadata (not source columns)
+    SOURCE_FILE_NAME        VARCHAR,
+    SOURCE_FILE_ROW_NUMBER  NUMBER(10,0),
+    LOAD_BATCH_ID           VARCHAR,
+    LOADED_AT               TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP()
+) COMMENT = 'Raw landing of synthetic_enterprise_data.csv. 57 source columns as VARCHAR plus 4 ingestion metadata columns.';
+
+-- Checkpoint 03
+SHOW TABLES IN SCHEMA METRICS_ANALYZER.MOCK_DATA;
+-- Expected: DATASET_LOAD_AUDIT, DATASET_REJECTED_ROWS, RAW_APPLICATION_COMPLIANCE.
+SELECT COUNT(*) AS raw_columns_incl_metadata
+FROM METRICS_ANALYZER.INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = 'MOCK_DATA' AND TABLE_NAME = 'RAW_APPLICATION_COMPLIANCE';
+-- Expected: 61  (57 source + 4 metadata)
+SELECT COUNT(*) AS raw_rows FROM RAW_APPLICATION_COMPLIANCE;
+-- Expected: 0 on first run.
