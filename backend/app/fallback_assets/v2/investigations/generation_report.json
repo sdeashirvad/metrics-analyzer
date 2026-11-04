@@ -1,0 +1,269 @@
+{
+  "month": "2026-10-31",
+  "metrics": [
+    {
+      "metricId": "M314650",
+      "status": "published",
+      "threadId": 65698398653,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:14:51Z"
+    },
+    {
+      "metricId": "M324043",
+      "status": "published",
+      "threadId": 65698398581,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:03:19Z"
+    },
+    {
+      "metricId": "M325402",
+      "status": "published",
+      "threadId": 65698398649,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:14:49Z"
+    },
+    {
+      "metricId": "M325951",
+      "status": "published",
+      "threadId": 65698398577,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:03:13Z"
+    },
+    {
+      "metricId": "M327707",
+      "status": "published",
+      "threadId": 65698398585,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:03:49Z"
+    },
+    {
+      "metricId": "M328162",
+      "status": "published",
+      "threadId": 65698398589,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:04:00Z"
+    },
+    {
+      "metricId": "M328814",
+      "status": "published",
+      "threadId": 65698398657,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:15:46Z"
+    },
+    {
+      "metricId": "M331979",
+      "status": "published",
+      "threadId": 65698398661,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:15:43Z"
+    },
+    {
+      "metricId": "M333387",
+      "status": "published",
+      "threadId": 65698398601,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:05:16Z"
+    },
+    {
+      "metricId": "M333622",
+      "status": "published",
+      "threadId": 65698398605,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:05:46Z"
+    },
+    {
+      "metricId": "M334559",
+      "status": "published",
+      "threadId": 65698398609,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:06:09Z"
+    },
+    {
+      "metricId": "M337379",
+      "status": "published",
+      "threadId": 65698398613,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:06:28Z"
+    },
+    {
+      "metricId": "M340202",
+      "status": "published",
+      "threadId": 65698398709,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:26:01Z"
+    },
+    {
+      "metricId": "M343112",
+      "status": "published",
+      "threadId": 65698398617,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:07:17Z"
+    },
+    {
+      "metricId": "M343367",
+      "status": "published",
+      "threadId": 65698398701,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:24:13Z"
+    },
+    {
+      "metricId": "M344745",
+      "status": "published",
+      "threadId": 65698398693,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:20:39Z"
+    },
+    {
+      "metricId": "M346318",
+      "status": "published",
+      "threadId": 65698398673,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:17:31Z"
+    },
+    {
+      "metricId": "M366104",
+      "status": "published",
+      "threadId": 65698398677,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:17:27Z"
+    },
+    {
+      "metricId": "M366446",
+      "status": "published",
+      "threadId": 65698398629,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:08:28Z"
+    },
+    {
+      "metricId": "M369375",
+      "status": "published",
+      "threadId": 65698398681,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:18:09Z"
+    },
+    {
+      "metricId": "M384010",
+      "status": "published",
+      "threadId": 65698398705,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:24:05Z"
+    },
+    {
+      "metricId": "M384271",
+      "status": "published",
+      "threadId": 65698398637,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:09:09Z"
+    },
+    {
+      "metricId": "M385554",
+      "status": "published",
+      "threadId": 65698398641,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:10:00Z"
+    },
+    {
+      "metricId": "M385945",
+      "status": "published",
+      "threadId": 65698398645,
+      "error": null,
+      "context_reconciliation": "PASS",
+      "source_fact_validation": "PARTIAL",
+      "band_consistency": "PASS",
+      "agent_response_status": "COMPLETED",
+      "startedAt": "2026-11-04T14:10:10Z"
+    }
+  ]
+}

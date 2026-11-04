@@ -1,0 +1,612 @@
+{
+  "metricId": "M340202",
+  "displayName": "M340202",
+  "scopeType": "metric",
+  "reportingDate": "2026-10-31",
+  "dataAsOf": "2026-10-31",
+  "rag": "green",
+  "scope": {
+    "orgTree": "BUSINESS_ORG",
+    "l1": [],
+    "l2": [],
+    "legalEntity": [],
+    "tier": [],
+    "risk": [],
+    "lifecycle": [],
+    "ma": null
+  },
+  "datasetVersion": "v1-seed20261103",
+  "definitionsVersion": "pd-1",
+  "sourceSnapshot": {
+    "version": "v1-seed20261103",
+    "generatedAt": "2026-11-03T22:36:09Z",
+    "sourceRowCount": 9784
+  },
+  "agent": "METRICS_ANALYZER.MOCK_DATA.AGENT_APPLICATION_COMPLIANCE_V1",
+  "generatedAt": "2026-11-04T14:26:01Z",
+  "threadId": 65698398709,
+  "conversationId": "v1.eyJ0aHJlYWRJZCI6NjU2OTgzOTg3MDksImFnZW50S2V5IjoiYW5hbHlzaXMiLCJjcmVhdGVkQXQiOiIyMDI2LTExLTA0VDE0OjI1OjEyWiJ9.ah6kk9ziPn_mZa3ZyxoyFQ",
+  "runId": "v1.eyJ0aHJlYWRJZCI6NjU2OTgzOTg3MDksImFnZW50S2V5IjoiYW5hbHlzaXMiLCJ1c2VyTWVzc2FnZUlkIjoiNjU2OTg0MDkwMzMiLCJzbm93Zmxha2VSdW5JZCI6IjY1Njk4Mzk4NzA5LTY1Njk4NDA5MDMzIiwic3VibWl0dGVkQXQiOiIyMDI2LTExLTA0VDE0OjI1OjEyWiJ9.8CzuiVHg5yR8BdYqugngJA",
+  "messageId": "65698407525",
+  "context_reconciliation": "PASS",
+  "source_fact_validation": "PARTIAL",
+  "band_consistency": "PASS",
+  "source_fact_limitation": "The supplied source figures appear. These other figures were not tied to a source query: 340202, 10, 31, 1, 340202, 44, 51, 2.",
+  "agent_response_status": "COMPLETED",
+  "content": {
+    "kind": "analysis",
+    "text": "**Investigation note: metric M340202, reporting month 2026-10-31**\n\n**1. Executive finding**\nM340202's provisional rate is 44.5% (69 of 155). That puts it in the Green (healthy) provisional band, which covers anything below 45%. The band is provisional and is not a client target. Last month the rate was 51.6%, in the Amber band, so this month is a move back into Green.\n\n**2. Current status and period (2026-10-31)**\n- 174 metric rows in scope, one for each of 174 applications.\n- 50 of 174 rows are Non_Compliant and 36 are Pending. The inferred denominator scope is INCLUDES_PENDING, so Pending rows count in the denominator.\n- Testing: 115 rows have a completed test (42 of them failed), 31 have no test, 18 have a test pending and 10 are exempt.\n\n**3. Movement against the prior month (2026-09-30)**\n- The provisional rate fell by 7.08 percentage points, from 51.6% (81 of 157) to 44.5% (69 of 155). On this metric a higher rate is worse.\n- The numerator dropped by 12 and the denominator by 2. Metric rows went from 180 to 174.\n- Non-compliant rows rose from 46 to 50, and failed completed tests rose from 32 to 42. So the rate fell even though both of these counts went up.\n- Across the 12 months the rate ranged from 36.4% (2026-02) to 51.6% (2026-09). Rows in scope grew from 120 to 174, which partly reflects how the dataset was built.\n**4. Main contributors (non-compliant rows, 2026-10-31)**\nBy super division, using the business organisation hierarchy:\n- Super_Division_04 has 11 non-compliant rows out of 31 applications, and Super_Division_02 has 11 out of 26. Together they make up 22 of the 50 non-compliant rows.\n- Super_Division_01 has none (0 of 7).\n- Among legal entities, Legal_Entity_34 has the most, with 7 non-compliant rows out of 9 applications.\n**5. Testing and exception observations**\nThese are the reasons recorded against the 50 non-compliant rows:\nOpen_Findings_Outstanding (17 rows) and Remediation_Overdue (13 rows) are the most common. Only 1 non-compliant row cites Exemption_Expired.\n\n**6. Areas for further investigation (hypotheses, not validated)**\n- **Why the rate fell while non-compliant and failed counts rose.** This could mean the numerator is not the same thing as \"non-compliant\". The PD-14 and PD-15 breakdowns (which applications changed status, and which reported in only one of the two months) could test this.\n- **The concentration in Legal_Entity_34**, with 7 of its 9 applications non-compliant.\n- **The 31 No_Test and 18 Test_Pending rows.** These could move the rate in a future month.\n\n**7. Limitations**\n- The rate and the band are both provisional. What the numerator and denominator mean in business terms has not been confirmed.\n- The INCLUDES_PENDING scope is inferred from Pending rows only.\n- There is no metric name or business family in the data.\n- The counts above are metric rows. They match application counts here only because this metric has one row per application.\n- Nothing in the data shows causes, owners or completed remediation.",
+    "evidence": [
+      {
+        "index": 0,
+        "toolUseId": "toolu_bdrk_01JpoDLeSf7ajb72yYG6UqpM",
+        "toolName": "system_execute_sql",
+        "sql": "WITH __obs AS (\n  SELECT\n    compliance_reason,\n    compliance_status,\n    metric_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.compliance_reason,\n  COUNT(o.metric_id) AS nc_rows\nFROM __obs AS o\nWHERE\n  o.metric_id = 'M340202'\n  AND o.reporting_monthend_date = '2026-10-31'\n  AND o.compliance_status = 'Non_Compliant'\nGROUP BY\n  1\nORDER BY\n  2 DESC /* Generated by Cortex */;",
+        "queryId": "01c83001-0002-fd3d-000f-4bee0005d616",
+        "status": "success",
+        "error": null,
+        "columns": [
+          {
+            "name": "COMPLIANCE_REASON",
+            "type": "text",
+            "nullable": false,
+            "scale": 0
+          },
+          {
+            "name": "NC_ROWS",
+            "type": "fixed",
+            "nullable": false,
+            "scale": 0
+          }
+        ],
+        "rows": [
+          [
+            "Open_Findings_Outstanding",
+            "17"
+          ],
+          [
+            "Remediation_Overdue",
+            "13"
+          ],
+          [
+            "Test_Failed",
+            "11"
+          ],
+          [
+            "No_Test_Performed",
+            "7"
+          ],
+          [
+            "Exemption_Expired",
+            "1"
+          ],
+          [
+            "Test_Overdue",
+            "1"
+          ]
+        ],
+        "rowCount": 6,
+        "rowsReturned": 6,
+        "truncated": false,
+        "truncation": {
+          "reason": null,
+          "limit": null,
+          "note": null
+        },
+        "exportable": true
+      },
+      {
+        "index": 1,
+        "toolUseId": "toolu_bdrk_013xUiKaKMttmWuf1M4RxD32",
+        "toolName": "system_execute_sql",
+        "sql": "WITH __obs AS (\n  SELECT\n    compliance_status,\n    metric_id,\n    eon_id,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n), __app_month AS (\n  SELECT\n    eon_id,\n    legal_entity_name,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  a.legal_entity_name,\n  COUNT(DISTINCT o.eon_id) AS apps,\n  COUNT_IF(o.compliance_status = 'Non_Compliant') AS nc_rows\nFROM __obs AS o\nLEFT JOIN __app_month AS a\n  ON o.eon_id = a.eon_id AND o.reporting_monthend_date = a.reporting_monthend_date\nWHERE\n  o.metric_id = 'M340202' AND o.reporting_monthend_date = '2026-10-31'\nGROUP BY\n  1\nORDER BY\n  nc_rows DESC NULLS LAST\nLIMIT 5 /* Generated by Cortex */;",
+        "queryId": "01c83001-0002-fd3d-000f-4bee0005d612",
+        "status": "success",
+        "error": null,
+        "columns": [
+          {
+            "name": "LEGAL_ENTITY_NAME",
+            "type": "text",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "APPS",
+            "type": "fixed",
+            "nullable": false,
+            "scale": 0
+          },
+          {
+            "name": "NC_ROWS",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          }
+        ],
+        "rows": [
+          [
+            "Legal_Entity_34",
+            "9",
+            "7"
+          ],
+          [
+            "Legal_Entity_31",
+            "7",
+            "4"
+          ],
+          [
+            "Legal_Entity_39",
+            "10",
+            "3"
+          ],
+          [
+            "Legal_Entity_08",
+            "9",
+            "3"
+          ],
+          [
+            "Legal_Entity_18",
+            "5",
+            "3"
+          ]
+        ],
+        "rowCount": 5,
+        "rowsReturned": 5,
+        "truncated": true,
+        "truncation": {
+          "reason": "AGENT_ROW_LIMIT",
+          "limit": 5,
+          "note": "The query ends with a row limit, so the total number of matching rows is unknown."
+        },
+        "exportable": true
+      },
+      {
+        "index": 2,
+        "toolUseId": "toolu_bdrk_01TCEZqaxV4GNkNR9V4zUdzZ",
+        "toolName": "system_execute_sql",
+        "sql": "WITH __obs AS (\n  SELECT\n    compliance_status,\n    metric_id,\n    eon_id,\n    reporting_monthend_date,\n    is_denominator AS denominator_flag,\n    is_numerator AS numerator_flag\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n), __app_month AS (\n  SELECT\n    eon_id,\n    super_division,\n    reporting_monthend_date\n  FROM METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS\n)\nSELECT\n  a.super_division,\n  COUNT(DISTINCT o.eon_id) AS apps,\n  COUNT_IF(o.compliance_status = 'Non_Compliant') AS nc_rows,\n  SUM(o.numerator_flag) AS num,\n  SUM(o.denominator_flag) AS den\nFROM __obs AS o\nLEFT JOIN __app_month AS a\n  ON o.eon_id = a.eon_id AND o.reporting_monthend_date = a.reporting_monthend_date\nWHERE\n  o.metric_id = 'M340202' AND o.reporting_monthend_date = '2026-10-31'\nGROUP BY\n  1\nORDER BY\n  nc_rows DESC NULLS LAST /* Generated by Cortex */;",
+        "queryId": "01c83001-0002-fd3d-000f-4bee0005d61e",
+        "status": "success",
+        "error": null,
+        "columns": [
+          {
+            "name": "SUPER_DIVISION",
+            "type": "text",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "APPS",
+            "type": "fixed",
+            "nullable": false,
+            "scale": 0
+          },
+          {
+            "name": "NC_ROWS",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "NUM",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "DEN",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          }
+        ],
+        "rows": [
+          [
+            "Super_Division_04",
+            "31",
+            "11",
+            "10",
+            "27"
+          ],
+          [
+            "Super_Division_02",
+            "26",
+            "11",
+            "10",
+            "23"
+          ],
+          [
+            "Super_Division_06",
+            "28",
+            "7",
+            "14",
+            "27"
+          ],
+          [
+            "Super_Division_03",
+            "18",
+            "7",
+            "7",
+            "17"
+          ],
+          [
+            "Super_Division_08",
+            "16",
+            "6",
+            "5",
+            "14"
+          ],
+          [
+            "Super_Division_05",
+            "30",
+            "4",
+            "12",
+            "26"
+          ],
+          [
+            "Super_Division_07",
+            "18",
+            "4",
+            "7",
+            "16"
+          ],
+          [
+            "Super_Division_01",
+            "7",
+            "0",
+            "4",
+            "5"
+          ]
+        ],
+        "rowCount": 8,
+        "rowsReturned": 8,
+        "truncated": false,
+        "truncation": {
+          "reason": null,
+          "limit": null,
+          "note": null
+        },
+        "exportable": true
+      },
+      {
+        "index": 3,
+        "toolUseId": "toolu_bdrk_01P2itcAgEBDYTkpvZHGEcs7",
+        "toolName": "system_execute_sql",
+        "sql": "WITH __obs AS (\n  SELECT\n    compliance_status,\n    metric_id,\n    test_result,\n    test_status,\n    eon_id,\n    reporting_monthend_date,\n    is_denominator AS denominator_flag,\n    is_numerator AS numerator_flag\n  FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE\n)\nSELECT\n  o.reporting_monthend_date AS month_end,\n  SUM(o.numerator_flag) AS num,\n  SUM(o.denominator_flag) AS den,\n  SUM(o.numerator_flag) / NULLIF(NULLIF(SUM(o.denominator_flag), 0), 0) AS prov_rate,\n  COUNT(o.metric_id) AS metric_rows,\n  COUNT(DISTINCT o.eon_id) AS apps,\n  COUNT_IF(o.compliance_status = 'Non_Compliant') AS nc_rows,\n  COUNT_IF(o.compliance_status = 'Pending') AS pending_rows,\n  COUNT_IF(o.test_status = 'Test_Complete') AS completed,\n  COUNT_IF(o.test_status = 'Test_Complete' AND o.test_result = 'Fail') AS failed,\n  COUNT_IF(o.test_status = 'Exempt') AS exempt,\n  COUNT_IF(o.test_status = 'No_Test') AS no_test,\n  COUNT_IF(o.test_status = 'Test_Pending') AS test_pending\nFROM __obs AS o\nWHERE\n  o.metric_id = 'M340202'\nGROUP BY\n  1\nORDER BY\n  1 DESC /* Generated by Cortex */;",
+        "queryId": "01c83001-0002-fd3d-000f-4bee0005d61a",
+        "status": "success",
+        "error": null,
+        "columns": [
+          {
+            "name": "MONTH_END",
+            "type": "date",
+            "nullable": false,
+            "scale": 0
+          },
+          {
+            "name": "NUM",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "DEN",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "PROV_RATE",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 6
+          },
+          {
+            "name": "METRIC_ROWS",
+            "type": "fixed",
+            "nullable": false,
+            "scale": 0
+          },
+          {
+            "name": "APPS",
+            "type": "fixed",
+            "nullable": false,
+            "scale": 0
+          },
+          {
+            "name": "NC_ROWS",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "PENDING_ROWS",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "COMPLETED",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "FAILED",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "EXEMPT",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "NO_TEST",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          },
+          {
+            "name": "TEST_PENDING",
+            "type": "fixed",
+            "nullable": true,
+            "scale": 0
+          }
+        ],
+        "rows": [
+          [
+            "2026-10-31",
+            "69",
+            "155",
+            "0.445161",
+            "174",
+            "174",
+            "50",
+            "36",
+            "115",
+            "42",
+            "10",
+            "31",
+            "18"
+          ],
+          [
+            "2026-09-30",
+            "81",
+            "157",
+            "0.515924",
+            "180",
+            "180",
+            "46",
+            "30",
+            "117",
+            "32",
+            "15",
+            "31",
+            "17"
+          ],
+          [
+            "2026-08-31",
+            "79",
+            "170",
+            "0.464706",
+            "192",
+            "192",
+            "61",
+            "30",
+            "129",
+            "46",
+            "15",
+            "26",
+            "22"
+          ],
+          [
+            "2026-07-31",
+            "72",
+            "167",
+            "0.431138",
+            "184",
+            "184",
+            "58",
+            "37",
+            "120",
+            "41",
+            "15",
+            "27",
+            "22"
+          ],
+          [
+            "2026-06-30",
+            "88",
+            "171",
+            "0.514620",
+            "186",
+            "186",
+            "52",
+            "31",
+            "132",
+            "42",
+            "8",
+            "24",
+            "22"
+          ],
+          [
+            "2026-05-31",
+            "67",
+            "160",
+            "0.418750",
+            "172",
+            "172",
+            "61",
+            "32",
+            "116",
+            "45",
+            "8",
+            "28",
+            "20"
+          ],
+          [
+            "2026-04-30",
+            "61",
+            "150",
+            "0.406667",
+            "165",
+            "165",
+            "55",
+            "34",
+            "113",
+            "57",
+            "7",
+            "25",
+            "20"
+          ],
+          [
+            "2026-03-31",
+            "58",
+            "144",
+            "0.402778",
+            "159",
+            "159",
+            "48",
+            "38",
+            "110",
+            "48",
+            "7",
+            "22",
+            "20"
+          ],
+          [
+            "2026-02-28",
+            "51",
+            "140",
+            "0.364286",
+            "153",
+            "153",
+            "54",
+            "35",
+            "94",
+            "41",
+            "8",
+            "26",
+            "25"
+          ],
+          [
+            "2026-01-31",
+            "58",
+            "125",
+            "0.464000",
+            "142",
+            "142",
+            "46",
+            "21",
+            "92",
+            "36",
+            "8",
+            "21",
+            "21"
+          ],
+          [
+            "2025-12-31",
+            "45",
+            "115",
+            "0.391304",
+            "128",
+            "128",
+            "52",
+            "18",
+            "85",
+            "43",
+            "8",
+            "22",
+            "13"
+          ],
+          [
+            "2025-11-30",
+            "41",
+            "108",
+            "0.379630",
+            "120",
+            "120",
+            "47",
+            "20",
+            "75",
+            "33",
+            "8",
+            "25",
+            "12"
+          ]
+        ],
+        "rowCount": 12,
+        "rowsReturned": 12,
+        "truncated": false,
+        "truncation": {
+          "reason": null,
+          "limit": null,
+          "note": null
+        },
+        "exportable": true
+      }
+    ],
+    "toolActivity": [
+      {
+        "toolUseId": "toolu_bdrk_018AuAdsmdZMzEfkMQzT1S8F",
+        "toolType": "system_agentic_semantic_context",
+        "toolName": "ApplicationComplianceAnalyst",
+        "status": "RESULT"
+      },
+      {
+        "toolUseId": "toolu_bdrk_01JpoDLeSf7ajb72yYG6UqpM",
+        "toolType": "system_execute_sql",
+        "toolName": "system_execute_sql",
+        "status": "RESULT"
+      },
+      {
+        "toolUseId": "toolu_bdrk_01P2itcAgEBDYTkpvZHGEcs7",
+        "toolType": "system_execute_sql",
+        "toolName": "system_execute_sql",
+        "status": "RESULT"
+      },
+      {
+        "toolUseId": "toolu_bdrk_01TCEZqaxV4GNkNR9V4zUdzZ",
+        "toolType": "system_execute_sql",
+        "toolName": "system_execute_sql",
+        "status": "RESULT"
+      },
+      {
+        "toolUseId": "toolu_bdrk_013xUiKaKMttmWuf1M4RxD32",
+        "toolType": "system_execute_sql",
+        "toolName": "system_execute_sql",
+        "status": "RESULT"
+      },
+      {
+        "toolUseId": "toolu_bdrk_01UgAgrvMqJ2gFbzRhiWcoqR",
+        "toolType": "data_to_chart",
+        "toolName": "data_to_chart",
+        "status": "RESULT"
+      }
+    ],
+    "suggestedFollowUps": [
+      "For M340202, which applications became newly non-compliant and which were resolved between 2026-09-30 and 2026-10-31?",
+      "Which applications under Legal_Entity_34 are non-compliant on M340202 in 2026-10-31, and what compliance reasons and test results do they show?",
+      "How do M340202's non-compliant rows and failed tests break down by division within Super_Division_04 and Super_Division_02 for 2026-10-31?"
+    ],
+    "notices": [
+      {
+        "code": "AGENT_GENERATED",
+        "text": "Agent-generated. Explanations of cause are hypotheses until validated."
+      }
+    ],
+    "warnings": [
+      {
+        "code": "MULTIPLE_QUERIES",
+        "message": "More than one query was returned."
+      },
+      {
+        "code": "TRUNCATED",
+        "message": "At least one query was truncated."
+      }
+    ]
+  }
+}

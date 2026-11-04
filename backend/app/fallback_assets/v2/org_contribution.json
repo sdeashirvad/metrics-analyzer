@@ -1,0 +1,2762 @@
+[
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 95,
+    "NON_COMPLIANT_APPLICATIONS": 30,
+    "OPEN_FINDINGS": 159
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_02",
+    "APPLICATIONS_REPORTING": 82,
+    "NON_COMPLIANT_APPLICATIONS": 24,
+    "OPEN_FINDINGS": 164
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_02",
+    "APPLICATIONS_REPORTING": 57,
+    "NON_COMPLIANT_APPLICATIONS": 17,
+    "OPEN_FINDINGS": 104
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_02",
+    "APPLICATIONS_REPORTING": 52,
+    "NON_COMPLIANT_APPLICATIONS": 16,
+    "OPEN_FINDINGS": 108
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_03",
+    "APPLICATIONS_REPORTING": 37,
+    "NON_COMPLIANT_APPLICATIONS": 9,
+    "OPEN_FINDINGS": 72
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 13,
+    "NON_COMPLIANT_APPLICATIONS": 8,
+    "OPEN_FINDINGS": 33
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_01",
+    "APPLICATIONS_REPORTING": 19,
+    "NON_COMPLIANT_APPLICATIONS": 8,
+    "OPEN_FINDINGS": 36
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_02",
+    "APPLICATIONS_REPORTING": 15,
+    "NON_COMPLIANT_APPLICATIONS": 7,
+    "OPEN_FINDINGS": 39
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_01",
+    "APPLICATIONS_REPORTING": 21,
+    "NON_COMPLIANT_APPLICATIONS": 7,
+    "OPEN_FINDINGS": 40
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 14,
+    "NON_COMPLIANT_APPLICATIONS": 7,
+    "OPEN_FINDINGS": 30
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 14,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 36
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_02",
+    "APPLICATIONS_REPORTING": 13,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 33
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_02",
+    "APPLICATIONS_REPORTING": 10,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 34
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_03",
+    "APPLICATIONS_REPORTING": 15,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 36
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_02",
+    "APPLICATIONS_REPORTING": 9,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 34
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 16,
+    "NON_COMPLIANT_APPLICATIONS": 5,
+    "OPEN_FINDINGS": 30
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_01",
+    "APPLICATIONS_REPORTING": 11,
+    "NON_COMPLIANT_APPLICATIONS": 5,
+    "OPEN_FINDINGS": 25
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_01",
+    "APPLICATIONS_REPORTING": 9,
+    "NON_COMPLIANT_APPLICATIONS": 5,
+    "OPEN_FINDINGS": 24
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 15,
+    "NON_COMPLIANT_APPLICATIONS": 5,
+    "OPEN_FINDINGS": 36
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 15,
+    "NON_COMPLIANT_APPLICATIONS": 5,
+    "OPEN_FINDINGS": 39
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 14,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 26
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_02",
+    "APPLICATIONS_REPORTING": 14,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 32
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_03",
+    "APPLICATIONS_REPORTING": 15,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 25
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 19
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 11,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 20
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_03",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 30
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_03",
+    "APPLICATIONS_REPORTING": 12,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 24
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_03",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 21
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_03",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 17
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 17
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_01",
+    "APPLICATIONS_REPORTING": 12,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_03",
+    "APPLICATIONS_REPORTING": 9,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 12,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 24
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_03",
+    "APPLICATIONS_REPORTING": 10,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 20
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_03",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_02",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_03",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_03",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 14
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 11
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_01",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_02",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_01",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 23
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_01",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 17
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_03",
+    "APPLICATIONS_REPORTING": 9,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 13
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 11
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_01",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_03",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 11
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_01",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 11
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_01",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_01",
+    "LEVEL_2": "BU_Division_01_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_02",
+    "LEVEL_2": "BU_Division_02_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_03",
+    "LEVEL_2": "BU_Division_03_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_01",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_01",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_04",
+    "LEVEL_2": "BU_Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_05",
+    "LEVEL_2": "BU_Division_05_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BU",
+    "LEVEL_1": "BU_Super_Division_06",
+    "LEVEL_2": "BU_Division_06_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 68,
+    "NON_COMPLIANT_APPLICATIONS": 18,
+    "OPEN_FINDINGS": 124
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 34,
+    "NON_COMPLIANT_APPLICATIONS": 11,
+    "OPEN_FINDINGS": 74
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 28,
+    "NON_COMPLIANT_APPLICATIONS": 11,
+    "OPEN_FINDINGS": 48
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_02",
+    "APPLICATIONS_REPORTING": 24,
+    "NON_COMPLIANT_APPLICATIONS": 7,
+    "OPEN_FINDINGS": 38
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 20,
+    "NON_COMPLIANT_APPLICATIONS": 7,
+    "OPEN_FINDINGS": 39
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_04",
+    "APPLICATIONS_REPORTING": 11,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 28
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 10,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 21
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 13,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 33
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_02",
+    "APPLICATIONS_REPORTING": 13,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 32
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 15,
+    "NON_COMPLIANT_APPLICATIONS": 6,
+    "OPEN_FINDINGS": 36
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_01",
+    "APPLICATIONS_REPORTING": 9,
+    "NON_COMPLIANT_APPLICATIONS": 5,
+    "OPEN_FINDINGS": 14
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 18
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 20
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_02",
+    "APPLICATIONS_REPORTING": 10,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 18
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 10,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 25
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_02",
+    "APPLICATIONS_REPORTING": 13,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 25
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 24
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 11,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 20
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_04",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 4,
+    "OPEN_FINDINGS": 22
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 20
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 14
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 17
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 17
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 14
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 3,
+    "OPEN_FINDINGS": 18
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 10,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 14
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_02",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 18
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_01",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 14
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 19
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_01",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 13
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 12
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 8,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 11
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 6,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 13
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 16
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 11
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 10,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 20
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_04",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 2,
+    "OPEN_FINDINGS": 12
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 11
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 15
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_04",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 12
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 10
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 11
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 12
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 12
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 1,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 8
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_01",
+    "LEVEL_2": "Division_01_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_02",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_02",
+    "LEVEL_2": "Division_02_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_03",
+    "LEVEL_2": "Division_03_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_04",
+    "LEVEL_2": "Division_04_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_01",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 5
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_05",
+    "LEVEL_2": "Division_05_04",
+    "APPLICATIONS_REPORTING": 4,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 5,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 7
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_06",
+    "LEVEL_2": "Division_06_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 6
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_07",
+    "LEVEL_2": "Division_07_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_01",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 2
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_01",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_02",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 3
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 7,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 9
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 1
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_03",
+    "APPLICATIONS_REPORTING": 2,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_04",
+    "APPLICATIONS_REPORTING": 3,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 4
+  },
+  {
+    "HIERARCHY_NAME": "BUSINESS_ORG",
+    "LEVEL_1": "Super_Division_08",
+    "LEVEL_2": "Division_08_04",
+    "APPLICATIONS_REPORTING": 1,
+    "NON_COMPLIANT_APPLICATIONS": 0,
+    "OPEN_FINDINGS": 0
+  }
+]
