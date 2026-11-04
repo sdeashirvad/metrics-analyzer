@@ -5,15 +5,16 @@ import { Card, Provisional, QueryPanel } from '../../components/present'
 import { formatMonth } from '../../format'
 import { useApiQuery } from '../../hooks/useApiQuery'
 import { scopeKey } from '../../scopePath'
+import { Skeleton } from '../../components/Skeleton'
 
 export function MetricTrendCard({ metricId, filters }: { metricId: string; filters: ScopeFilters }) {
-  const query = useApiQuery('metric-trend', `${metricId}|${scopeKey(filters)}`, () => getMetricTrend(metricId, filters))
+  const query = useApiQuery('metric-trend', `${metricId}|${scopeKey(filters)}`, () => getMetricTrend(metricId, filters), { keep: metricId })
   return (
     <Card title="Rate over time">
       <p className="fine">
         <Provisional id="PD-01" of="trend note" /> A gap is a month that was not observed. It is not shown as zero.
       </p>
-      <QueryPanel query={query}>
+      <QueryPanel query={query} skeleton={<Skeleton shape="chart" label="Loading the rate over time" />}>
         {(data) => {
           const missing = data.points.filter((point) => !point.observed)
           return (

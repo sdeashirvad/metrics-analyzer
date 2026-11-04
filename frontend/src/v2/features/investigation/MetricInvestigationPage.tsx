@@ -12,6 +12,7 @@ import { scopeKey, scopedTo } from '../../scopePath'
 import { AskAgentLink } from '../../components/ui/AskAgentLink'
 import { MetricPath } from './PathToGreen'
 import { PreparedAnalysis } from './PreparedAnalysis'
+import { Skeleton } from '../../components/Skeleton'
 
 export function MetricInvestigationPage() {
   const { metricId = '' } = useParams()
@@ -20,9 +21,12 @@ export function MetricInvestigationPage() {
   const linkState = useLinkState('Back')
   const appsPage = readPositiveInt(params, 'appsPage', 1)
   const key = `${metricId}|${scopeKey(filters)}`
-  const query = useApiQuery('metric-investigation', key, () => getMetricInvestigation(metricId, filters))
-  const applications = useApiQuery('metric-investigation-apps', `${key}|${appsPage}`, () =>
-    getMetricApplications(metricId, filters, { page: appsPage, pageSize: 15 }),
+  const query = useApiQuery('metric-investigation', key, () => getMetricInvestigation(metricId, filters), { keep: metricId })
+  const applications = useApiQuery(
+    'metric-investigation-apps',
+    `${key}|${appsPage}`,
+    () => getMetricApplications(metricId, filters, { page: appsPage, pageSize: 15 }),
+    { keep: metricId },
   )
 
   return (
@@ -37,10 +41,10 @@ export function MetricInvestigationPage() {
         {metricId}
       </p>
       <ScopeBar mode="compact" />
-      <QueryPanel query={query}>
+      <PageHeader eyebrow="Investigation" title={metricId} subtitle="What is affected, what changed, and what would move this toward green." actions={<AskAgentLink />} />
+      <QueryPanel query={query} skeleton={<Skeleton shape="investigation" label={`Loading the ${metricId} investigation`} />}>
         {(data) => (
           <div className="stack">
-            <PageHeader eyebrow="Investigation" title={metricId} subtitle="What is affected, what changed, and what would move this toward green." actions={<AskAgentLink />} />
             <PreparedAnalysis
               analysis={data.agentAnalysis}
               emptyText="No prepared investigation covers this scope. Prepared investigations cover the default scope for the latest reporting month. Use Ask Agent to explore this scope."
@@ -96,7 +100,7 @@ export function MetricInvestigationPage() {
             <MetricPath data={data} />
             <Card title="Affected applications">
               <p className="fine">Choose an application to open its investigation. This page does not pick one for you.</p>
-              <QueryPanel query={applications}>
+              <QueryPanel query={applications} skeleton={<Skeleton shape="table" rows={8} label="Loading affected applications" />}>
                 {(rows) => (
                   <>
                     <div className="table-wrap">

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { getDefinitions } from '../../api/portfolio'
 import { QueryPanel } from '../../components/present'
+import { Skeleton } from '../../components/Skeleton'
 import { PageHeader } from '../../components/ui/PageHeader'
 import { useApiQuery } from '../../hooks/useApiQuery'
 
@@ -52,7 +53,7 @@ export function DefinitionsPage() {
         title="Definitions & conventions"
         subtitle="Provisional rates, denominator variants, and derived metrics stay visible and are labelled from the API."
       />
-      <QueryPanel query={query}>
+      <QueryPanel query={query} skeleton={<Skeleton shape="lines" rows={8} label="Loading definitions" />}>
         {(data) => {
           const groups = groupDefinitions(data.definitions)
           return (

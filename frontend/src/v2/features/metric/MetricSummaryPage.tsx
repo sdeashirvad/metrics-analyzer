@@ -13,6 +13,7 @@ import { scopeKey, scopedTo } from '../../scopePath'
 import { AskAgentLink } from '../../components/ui/AskAgentLink'
 import { MetricFunnel } from './MetricFunnel'
 import { MetricTrendCard } from './MetricTrendCard'
+import { Skeleton } from '../../components/Skeleton'
 
 const DIMENSIONS: MetricBreakdownDimension[] = ['org', 'legalEntity', 'tier', 'risk', 'lifecycle', 'complianceReason', 'testStatus']
 
@@ -29,9 +30,12 @@ export function MetricSummaryPage() {
   const dimension: MetricBreakdownDimension = isDimension(breakdownParam) ? breakdownParam : 'org'
   const level = params.get('breakdownLevel') === '2' ? 2 : 1
   const key = `${metricId}|${scopeKey(filters)}`
-  const summary = useApiQuery('metric', key, () => getMetric(metricId, filters))
-  const breakdown = useApiQuery('metric-breakdown', `${key}|${dimension}|${level}`, () =>
-    getMetricBreakdowns(metricId, filters, { dimension, level: dimension === 'org' ? level : undefined }),
+  const summary = useApiQuery('metric', key, () => getMetric(metricId, filters), { keep: metricId })
+  const breakdown = useApiQuery(
+    'metric-breakdown',
+    `${key}|${dimension}|${level}`,
+    () => getMetricBreakdowns(metricId, filters, { dimension, level: dimension === 'org' ? level : undefined }),
+    { keep: `${metricId}|${dimension}|${level}` },
   )
   const investigation = scopedTo(`/investigate/metrics/${encodeURIComponent(metricId)}`, filters)
 
@@ -72,7 +76,15 @@ export function MetricSummaryPage() {
       >
         <ScopeBar mode="compact" />
       </PageHeader>
-      <QueryPanel query={summary}>
+      <QueryPanel
+        query={summary}
+        skeleton={
+          <div className="sk-stack">
+            <Skeleton shape="kpis" label={`Loading the ${metricId} summary`} />
+            <Skeleton shape="investigation" label="Loading the calculation" />
+          </div>
+        }
+      >
         {(data) => (
           <div className="stack">
             {data.provisional.length > 0 && (
@@ -172,7 +184,7 @@ export function MetricSummaryPage() {
           </div>
         )}
         <p className="fine">Bar length is non-compliant applications, scaled to the largest group. The percent is the provisional rate.</p>
-        <QueryPanel query={breakdown}>
+        <QueryPanel query={breakdown} skeleton={<Skeleton shape="bars" rows={6} label="Loading the breakdown" />}>
           {(data) => (
             <BarList
               items={data.items.map((item) => ({

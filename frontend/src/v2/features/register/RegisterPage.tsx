@@ -11,6 +11,7 @@ import { useApiQuery } from '../../hooks/useApiQuery'
 import { useScopeFilters } from '../../hooks/useScopeFilters'
 import { scopeKey } from '../../scopePath'
 import { PreviewModal } from './PreviewModal'
+import { Skeleton } from '../../components/Skeleton'
 
 const SORTS = ['applications:desc', 'nonCompliant:desc', 'rate:desc', 'rateDelta:desc', 'rag:desc', 'metricId:asc'] as const
 const RAGS: RagStatus[] = ['red', 'amber', 'green', 'unclassified']
@@ -47,6 +48,7 @@ export function RegisterPage() {
       hasNonCompliant: hasNonCompliant || undefined,
       denominatorScope: denominatorScope.length ? denominatorScope : undefined,
     }),
+    { keep: 'register' },
   )
 
   // One filter surface: search, scope, register filters and ordering live together; paging sits with the table.
@@ -117,7 +119,7 @@ export function RegisterPage() {
       <PageHeader eyebrow="Metric register" title="Metric register" subtitle="Search and filter the register. Preview opens over the table." />
       <ScopeBar search={search} extra={registerFilters} />
       <p className="fine">Provisional bands on the fractional rate: Healthy below 45%, Watch below 60%, Needs attention at 60% and above. A missing rate stays unclassified.</p>
-      <QueryPanel query={query}>
+      <QueryPanel query={query} skeleton={<Skeleton shape="table" rows={Math.min(pageSize, 12)} label="Loading the register" />}>
         {(data) => (
           <>
             <div className="table-wrap metric-register-wrap">

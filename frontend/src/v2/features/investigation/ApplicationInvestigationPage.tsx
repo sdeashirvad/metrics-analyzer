@@ -12,6 +12,7 @@ import { scopeKey, scopedTo } from '../../scopePath'
 import { AskAgentLink } from '../../components/ui/AskAgentLink'
 import { ApplicationPath } from './PathToGreen'
 import { PreparedAnalysis } from './PreparedAnalysis'
+import { Skeleton } from '../../components/Skeleton'
 
 
 export function ApplicationInvestigationPage() {
@@ -23,6 +24,7 @@ export function ApplicationInvestigationPage() {
   const linkState = useLinkState('Back')
   const query = useApiQuery('application-investigation', `${eonId}|${scopeKey(filters)}|${metricId ?? ''}|${includeOwners}`, () =>
     getApplicationInvestigation(eonId, filters, { metricId, includeOwners }),
+    { keep: `${eonId}|${metricId ?? ''}` },
   )
 
   return (
@@ -40,7 +42,7 @@ export function ApplicationInvestigationPage() {
           </>
         )}
       </p>
-      <QueryPanel query={query}>
+      <QueryPanel query={query} skeleton={<Skeleton shape="investigation" label={`Loading application ${eonId}`} />}>
         {(data) => {
           const application = data.application
           return (
