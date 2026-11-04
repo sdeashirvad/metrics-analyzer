@@ -1,0 +1,549 @@
+/*
+ * Compliance Health dashboard visual system
+ * Import from DashboardPage.tsx. All selectors are scoped to .compliance-dashboard.
+ * Existing API, routing, query and chart behavior remains in DashboardPage.tsx.
+ */
+
+ .compliance-dashboard {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    color: var(--ink-1);
+    box-sizing: border-box;
+  }
+  
+  .compliance-dashboard *,
+  .compliance-dashboard *::before,
+  .compliance-dashboard *::after {
+    box-sizing: border-box;
+  }
+  
+  .compliance-dashboard .dashboard-page-header {
+    margin-bottom: 12px;
+    min-width: 0;
+  }
+  
+  .compliance-dashboard .dashboard-scope-bar {
+    margin: 0 0 16px;
+    min-width: 0;
+  }
+  
+  .compliance-dashboard .dashboard-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0 0 16px;
+    align-items: stretch;
+  }
+  
+  .compliance-dashboard .dashboard-kpis .kpi {
+    display: flex;
+    min-width: 0;
+    min-height: 116px;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 9px;
+    padding: 18px 19px;
+    color: inherit;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-card);
+    box-shadow: var(--e-2);
+    transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  }
+  
+  .compliance-dashboard .dashboard-kpis .kpi:hover {
+    border-color: #c6d5f2;
+    box-shadow: 0 8px 22px rgba(32, 69, 132, 0.09);
+    transform: translateY(-1px);
+  }
+  
+  .compliance-dashboard .kpi-label {
+    color: var(--ink-3);
+    font-size: 12px;
+    font-weight: 550;
+    line-height: 1.4;
+  }
+  
+  .compliance-dashboard .kpi-value {
+    color: var(--ink-1);
+    font-size: clamp(25px, 2vw, 32px);
+    font-weight: 730;
+    letter-spacing: -0.045em;
+    line-height: 1.05;
+  }
+  
+  .compliance-dashboard .kpi-delta {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .compliance-dashboard .dashboard-analytics-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: stretch;
+    min-width: 0;
+  }
+
+  /* Full-width trend and the organisation / legal pair sit on their own rows. */
+  .compliance-dashboard > .dashboard-panel-trend,
+  .compliance-dashboard > .dashboard-pair {
+    margin-top: 16px;
+  }
+
+  .compliance-dashboard .dashboard-pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: stretch;
+    min-width: 0;
+  }
+
+  .compliance-dashboard .dashboard-pair-single {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .compliance-dashboard .dashboard-pair > .dashboard-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* The last card of each column absorbs any height difference so both columns end on one line. */
+  .compliance-dashboard .dashboard-column > .dashboard-panel:last-child,
+  .compliance-dashboard .dashboard-pair > .dashboard-panel {
+    flex: 1 1 auto;
+  }
+
+  .compliance-dashboard .dashboard-column > .dashboard-panel:last-child,
+  .compliance-dashboard .dashboard-pair > .dashboard-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .compliance-dashboard .dashboard-column > .dashboard-panel:last-child > .card,
+  .compliance-dashboard .dashboard-pair > .dashboard-panel > .card {
+    flex: 1 1 auto;
+  }
+  
+  .compliance-dashboard .dashboard-column {
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  
+  /* Cards should size to their content; do not stretch a short list into a tall blank panel. */
+  .compliance-dashboard .dashboard-panel {
+    display: block;
+    flex: 0 0 auto;
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    align-self: stretch;
+  }
+  
+  .compliance-dashboard .dashboard-panel > * {
+    min-width: 0;
+    height: auto;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-card);
+    background: var(--surface);
+    box-shadow: var(--e-2);
+  }
+  
+  .compliance-dashboard .dashboard-panel .fine {
+    color: var(--ink-3);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  
+  .compliance-dashboard .dashboard-panel .num {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .compliance-dashboard .dashboard-panel .spread {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  
+  .compliance-dashboard .dashboard-panel .btn {
+    min-height: 31px;
+    border-color: var(--hairline-strong);
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 620;
+    transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+  }
+  
+  .compliance-dashboard .dashboard-panel .btn:hover {
+    border-color: #b9c9e6;
+    background: var(--accent-bg);
+    color: #204da9;
+  }
+  
+  /* Analytical lists: compact, aligned and predictable. */
+  .compliance-dashboard .dashboard-panel-org .bar-list,
+  .compliance-dashboard .dashboard-panel-legal .bar-list {
+    width: 100%;
+    min-width: 0;
+  }
+  
+  .compliance-dashboard .dashboard-panel-org .bar-list > *,
+  .compliance-dashboard .dashboard-panel-legal .bar-list > * {
+    min-width: 0;
+  }
+  
+  .compliance-dashboard .dashboard-panel-org .card-head,
+  .compliance-dashboard .dashboard-panel-legal .card-head {
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  /* Row grid: label | bar | count and share. Shared column widths keep all rows aligned. */
+  .compliance-dashboard .dashboard-panel-org .hbar,
+  .compliance-dashboard .dashboard-panel-legal .hbar {
+    grid-template-columns: minmax(96px, 150px) minmax(0, 1fr) 84px;
+    gap: 14px;
+    min-height: 34px;
+    padding: 6px 8px;
+  }
+
+  .compliance-dashboard .dashboard-panel-org .hbar > span:first-child,
+  .compliance-dashboard .dashboard-panel-legal .hbar > span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  .compliance-dashboard .dashboard-panel-org .bar-track,
+  .compliance-dashboard .dashboard-panel-legal .bar-track {
+    height: 8px;
+    border-radius: 4px;
+  }
+
+  .compliance-dashboard .dashboard-panel-org .bar-fill,
+  .compliance-dashboard .dashboard-panel-legal .bar-fill {
+    border-radius: 4px;
+  }
+
+  .compliance-dashboard .dashboard-panel-org .hbar .num,
+  .compliance-dashboard .dashboard-panel-legal .hbar .num {
+    text-align: right;
+    white-space: nowrap;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .compliance-dashboard .dashboard-panel-org .spread,
+  .compliance-dashboard .dashboard-panel-legal .spread {
+    margin-top: 10px;
+  }
+
+  .compliance-dashboard .dashboard-panel-org .seg,
+  .compliance-dashboard .dashboard-panel-legal .seg {
+    flex-shrink: 0;
+  }
+  
+  .compliance-dashboard .dashboard-panel-org .seg button,
+  .compliance-dashboard .dashboard-panel-legal .seg button {
+    min-height: 32px;
+    padding-inline: 12px;
+    border-radius: 9px;
+    font-size: 12px;
+  }
+  
+  .compliance-dashboard .dashboard-panel-org .fine,
+  .compliance-dashboard .dashboard-panel-legal .fine {
+    margin-bottom: 12px;
+  }
+  
+  /* Testing distribution has two distinct measurement groups. */
+  .compliance-dashboard .dashboard-panel-testing .stack {
+    gap: 12px;
+  }
+  
+  .compliance-dashboard .dashboard-panel-testing .stack > .fine:not(:last-child) {
+    margin-bottom: 0;
+  }
+  
+  .compliance-dashboard .dashboard-panel-testing .stack > .fine:nth-of-type(2) {
+    padding-top: 10px;
+    border-top: 1px solid var(--hairline);
+  }
+  
+  /* When the column is taller than this card, share the extra height between its blocks
+     instead of leaving a blank band at the bottom. */
+  .compliance-dashboard .dashboard-panel-testing > .card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .compliance-dashboard .dashboard-panel-testing > .card > .stack {
+    flex: 1 1 auto;
+    justify-content: space-between;
+  }
+
+  /* Compliance mix: keep the breakdown compact and readable. */
+  .compliance-dashboard .dashboard-panel-compliance .list {
+    margin-block: 12px;
+  }
+  
+  .compliance-dashboard .dashboard-panel-compliance .list > li {
+    min-height: 31px;
+    gap: 12px;
+    border-bottom: 1px solid #f0f2f6;
+  }
+  
+  .compliance-dashboard .dashboard-panel-compliance .list > li:last-child {
+    border-bottom: 0;
+  }
+  
+  /* Movement and attention. */
+  .compliance-dashboard .dashboard-movement-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  
+  .compliance-dashboard .move-bad,
+  .compliance-dashboard .move-good {
+    min-width: 0;
+    padding: 13px 15px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+  }
+  
+  .compliance-dashboard .move-bad {
+    background: var(--red-bg);
+    border-color: #f8dddd;
+    color: var(--red);
+  }
+  
+  .compliance-dashboard .move-good {
+    background: var(--green-bg);
+    border-color: #d7eee1;
+    color: var(--green);
+  }
+  
+  .compliance-dashboard .move-bad .num,
+  .compliance-dashboard .move-good .num {
+    margin-top: 4px;
+    font-size: 23px;
+    font-weight: 730;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .compliance-dashboard .dashboard-attention-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--hairline);
+    border-radius: 11px;
+    background: #f1f4f8;
+  }
+  
+  .compliance-dashboard .dashboard-attention-tabs button {
+    min-height: 31px;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #58677a;
+    font-size: 12px;
+    font-weight: 560;
+    white-space: nowrap;
+  }
+  
+  .compliance-dashboard .dashboard-attention-tabs button.on {
+    border-color: var(--hairline);
+    background: #fff;
+    color: var(--ink-1);
+    box-shadow: 0 1px 2px rgba(20, 35, 55, 0.06);
+  }
+  
+  .compliance-dashboard .dashboard-attention-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .compliance-dashboard .attention-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 11px 0;
+    border-bottom: 1px solid #edf0f4;
+  }
+  
+  .compliance-dashboard .attention-row:last-child {
+    border-bottom: 0;
+  }
+  
+  .compliance-dashboard .attention-id {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+  }
+  
+  .compliance-dashboard .attention-id .t-title {
+    overflow: hidden;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 650;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .compliance-dashboard .attention-id .fine {
+    font-size: 12px;
+  }
+  
+  .compliance-dashboard .attention-row .num {
+    min-width: 18px;
+    text-align: right;
+    font-size: 12px;
+  }
+  
+  /* Trend chart area. */
+  .compliance-dashboard .dashboard-panel-trend {
+    min-width: 0;
+  }
+  
+  .compliance-dashboard .dashboard-panel-trend svg,
+  .compliance-dashboard .dashboard-panel-trend canvas {
+    max-width: 100%;
+  }
+  
+  /* Expanded views use the same page width and surface treatment. */
+  .compliance-dashboard .dashboard-panel-expanded {
+    width: 100%;
+  }
+  
+  /* Better focus visibility for keyboard users. */
+  .compliance-dashboard button:focus-visible,
+  .compliance-dashboard a:focus-visible {
+    outline: 3px solid rgba(40, 89, 197, 0.25);
+    outline-offset: 2px;
+  }
+  
+  /* Laptop and compact desktop. */
+  @media (max-width: 1200px) {
+    .compliance-dashboard .dashboard-kpis {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  
+    .compliance-dashboard .dashboard-analytics-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  
+    .compliance-dashboard .attention-row {
+      gap: 8px;
+    }
+  }
+  
+  /* Tablet: one analytical column when two columns become cramped. */
+  @media (max-width: 900px) {
+    .compliance-dashboard .dashboard-analytics-grid,
+    .compliance-dashboard .dashboard-pair {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .compliance-dashboard .dashboard-column {
+      gap: 14px;
+    }
+  }
+  
+  /* Mobile. */
+  @media (max-width: 600px) {
+    .compliance-dashboard .dashboard-kpis {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+  
+    .compliance-dashboard .dashboard-kpis .kpi {
+      min-height: 105px;
+      padding: 14px;
+    }
+  
+    .compliance-dashboard .kpi-value {
+      font-size: 25px;
+    }
+  
+    .compliance-dashboard .dashboard-analytics-grid {
+      gap: 12px;
+    }
+  
+    .compliance-dashboard .dashboard-column {
+      gap: 12px;
+    }
+  
+    .compliance-dashboard .dashboard-movement-stats {
+      gap: 8px;
+    }
+  
+    .compliance-dashboard .move-bad,
+    .compliance-dashboard .move-good {
+      padding: 11px;
+    }
+  
+    .compliance-dashboard .dashboard-attention-tabs {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      scrollbar-width: thin;
+    }
+  
+    .compliance-dashboard .dashboard-attention-tabs button {
+      flex: 0 0 auto;
+    }
+  
+    .compliance-dashboard .attention-row {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 7px;
+    }
+  
+    .compliance-dashboard .attention-row .status-chip,
+    .compliance-dashboard .attention-row .chip {
+      max-width: 112px;
+    }
+  }
+  
+  @media (max-width: 380px) {
+    .compliance-dashboard .dashboard-kpis {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  
+    .compliance-dashboard .attention-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  
+    .compliance-dashboard .attention-row .num {
+      grid-column: 2;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .compliance-dashboard *,
+    .compliance-dashboard *::before,
+    .compliance-dashboard *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+  

@@ -1,0 +1,224 @@
+.architecture .page-header { margin-bottom: var(--s-3); }
+.arch-tabs { margin-bottom: var(--s-4); }
+.arch-panel { min-height: calc(100vh - 160px); }
+.arch-panel:focus-visible { box-shadow: none; }
+.arch-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); align-items: start; }
+@media (min-width: 1680px) {
+  .arch-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+}
+.arch-main { min-width: 0; position: relative; }
+.arch-side { position: static; }
+/* Sticky only when the viewport can show the whole panel; otherwise it flows with the page so nothing is unreachable. */
+@media (min-height: 760px) {
+  .arch-side { position: sticky; top: var(--s-4); }
+}
+@media (max-height: 640px) {
+  .arch-dock { bottom: var(--s-2); }
+  .arch-dock-row { padding: 8px var(--s-3); gap: var(--s-2); }
+}
+
+.arch-scene {
+  position: relative;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-tile);
+  box-shadow: var(--e-2);
+}
+.arch-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: visible; }
+.arch-band { fill: rgba(243, 245, 248, 0.6); stroke: var(--hairline-strong); vector-effect: non-scaling-stroke; }
+.band-implemented { stroke: rgba(23, 102, 63, 0.45); }
+.band-upcoming { fill: rgba(122, 82, 0, 0.04); stroke: rgba(122, 82, 0, 0.5); stroke-dasharray: 6 4; }
+.band-proposed { fill: rgba(31, 78, 121, 0.04); stroke: rgba(31, 78, 121, 0.45); stroke-dasharray: 6 4; }
+.arch-band-label { fill: var(--ink-2); font-size: var(--arch-label, 12px); font-weight: 600; font-family: var(--font); }
+.arch-edge { fill: none; stroke-width: 1.5px; vector-effect: non-scaling-stroke; transition: opacity var(--t-panel) var(--ease), stroke-width var(--t-control) var(--ease); }
+.edge-data { stroke: var(--data-ink); }
+.edge-control { stroke: var(--info); }
+.edge-async { stroke: var(--amber); stroke-dasharray: 5 4; }
+.edge-upcoming { stroke-dasharray: 4 3; }
+.arch-arrow { fill: var(--data-ink); }
+.arch-edge-label {
+  fill: var(--ink-1);
+  font-size: var(--arch-label, 12px);
+  font-family: var(--font);
+  stroke: #fff;
+  stroke-width: var(--arch-halo, 4px);
+  paint-order: stroke;
+  stroke-linejoin: round;
+}
+.arch-edge-group { transition: opacity var(--t-panel) var(--ease); }
+.arch-edge-group.is-edge-active .arch-edge { stroke-width: 2.5px; stroke: #17663f; stroke-dasharray: 6 4; animation: arch-flow 1.6s linear infinite; }
+.arch-edge-group.is-edge-done .arch-edge { stroke-width: 2px; stroke: #5b6b7a; stroke-dasharray: none; animation: none; }
+@keyframes arch-flow { to { stroke-dashoffset: -20; } }
+.arch-scene.is-stepping .arch-edge-group:not(.is-edge-active):not(.is-edge-done) { opacity: 0.35; }
+.arch-scene.is-stepping .arch-node:not(.is-role-requester):not(.is-role-waiting):not(.is-role-active):not(.is-role-done) { opacity: 0.4; }
+
+.arch-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  min-width: 0;
+  padding: 4px 9px;
+  text-align: left;
+  background: var(--surface);
+  color: var(--ink-1);
+  border: 1.5px solid var(--data-ink);
+  border-radius: var(--r-control);
+  box-shadow: 0 1px 2px rgba(15, 27, 38, 0.08);
+  line-height: 1.2;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1;
+  transition: opacity 240ms ease, background 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+.arch-node:hover:not(.is-role-requester):not(.is-role-waiting):not(.is-role-active):not(.is-role-done) { background: var(--surface-hover); }
+.arch-node small { font-size: 12px; font-weight: 500; color: var(--ink-3); }
+.arch-node.is-upcoming, .arch-node.is-proposed { border-style: dashed; }
+.arch-node.is-upcoming { border-color: var(--amber); }
+.arch-node.is-proposed { border-color: var(--info); }
+.arch-node > span { white-space: normal; line-height: 1.15; }
+.arch-node::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 2px; background: var(--data-ink); }
+.arch-node.is-upcoming::before, .arch-node.is-proposed::before { background: transparent; }
+.arch-node.is-role-requester { background: #e8ebf8; color: var(--ink-1); border-color: #3b4fa8; border-style: solid; }
+.arch-node.is-role-requester small { color: var(--ink-2); }
+.arch-node.is-role-requester::before { background: #3b4fa8; }
+.arch-node.is-role-waiting { background: #fbf0dc; color: var(--ink-1); border-color: #a8670f; border-style: solid; animation: arch-wait 1.8s ease-in-out infinite; }
+.arch-node.is-role-waiting small { color: var(--ink-2); }
+.arch-node.is-role-waiting::before { background: #a8670f; }
+.arch-node.is-role-active { background: #d8f3e4; color: var(--ink-1); border-color: #17663f; border-style: solid; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #17663f; z-index: 3; }
+.arch-node.is-role-active small { color: var(--ink-2); }
+.arch-node.is-role-active::before { background: #17663f; }
+.arch-node.is-role-done { background: #eef1f4; color: var(--ink-1); border-color: #5b6b7a; border-style: solid; }
+.arch-node.is-role-done small { color: var(--ink-2); }
+.arch-node.is-role-done::before { background: #5b6b7a; }
+.arch-node.is-selected { outline: 2px solid var(--ink-1); outline-offset: 2px; z-index: 4; }
+@keyframes arch-wait {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(168, 103, 15, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(168, 103, 15, 0.2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arch-edge-group.is-edge-active .arch-edge { animation: none; }
+  .arch-node.is-role-waiting { animation: none; }
+}
+.arch-node:focus-visible { outline: 2px solid var(--ink-1); outline-offset: 3px; border-radius: var(--r-control); }
+.arch-step-badge {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--r-pill);
+  background: #17663f;
+  color: #f3faf6;
+  font-size: 12px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 2px #fff;
+}
+.arch-step-badge.is-done { background: #5b6b7a; color: #f4f7fa; }
+
+.arch-legend-block { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5); margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--hairline); }
+.arch-legend-group { display: flex; flex-direction: column; gap: 6px; min-width: min(100%, 200px); }
+.arch-legend-label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+.arch-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; list-style: none; padding: 0; margin: 0; color: var(--ink-2); font-size: var(--fs-12); }
+.arch-legend li { display: flex; align-items: center; gap: 6px; }
+.arch-key { width: 18px; height: 10px; border-radius: 3px; display: inline-block; background: var(--surface); }
+.arch-key.is-implemented { border: 1.5px solid var(--data-ink); }
+.arch-key.is-upcoming { border: 1.5px dashed var(--amber); }
+.arch-key.is-proposed { border: 1.5px dashed var(--info); }
+.arch-key.is-role-requester { background: #e8ebf8; border: 1.5px solid #3b4fa8; }
+.arch-key.is-role-waiting { background: #fbf0dc; border: 1.5px solid #a8670f; }
+.arch-key.is-role-active { background: #d8f3e4; border: 1.5px solid #17663f; }
+.arch-key.is-role-done { background: #eef1f4; border: 1.5px solid #5b6b7a; }
+.arch-key.edge-data { height: 0; border-top: 2px solid var(--data-ink); background: transparent; }
+.arch-key.edge-control { height: 0; border-top: 2px solid var(--info); background: transparent; }
+.arch-key.edge-async { height: 0; border-top: 2px dashed var(--amber); background: transparent; }
+
+.arch-detail { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-card); box-shadow: var(--e-2); padding: var(--s-4) var(--s-5); }
+.arch-detail h2 { margin-bottom: 6px; }
+.arch-detail h3 { margin-top: var(--s-3); font-size: var(--fs-13); color: var(--ink-2); }
+.arch-detail ul { margin: 4px 0 0; padding-left: 18px; font-size: var(--fs-13); }
+.arch-detail li + li { margin-top: 3px; }
+.arch-status { display: inline-block; margin-bottom: 6px; padding: 1px 9px; border-radius: var(--r-pill); font-size: var(--fs-12); font-weight: 700; }
+.arch-status.is-implemented { background: var(--green-bg); color: var(--green); }
+.arch-status.is-upcoming { background: var(--amber-bg); color: var(--amber); }
+.arch-status.is-proposed { background: var(--info-bg); color: var(--info); }
+
+.arch-dock {
+  position: static;
+  z-index: 1;
+  margin-top: 0;
+  margin-bottom: var(--s-3);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-tile);
+  box-shadow: var(--e-3);
+  background: var(--glass-fallback);
+  overflow: hidden;
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .arch-dock {
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: var(--glass-filter);
+    backdrop-filter: var(--glass-filter);
+  }
+}
+.arch-dock-progress { height: 3px; background: rgba(15, 27, 38, 0.06); }
+.arch-dock-progress span { display: block; height: 100%; background: var(--accent); transition: width var(--t-panel) var(--ease); }
+.arch-dock-row { display: flex; gap: var(--s-4); align-items: center; justify-content: space-between; padding: var(--s-3) var(--s-4); flex-wrap: wrap; }
+.arch-dock-caption { flex: 1 1 320px; min-width: 0; font-size: var(--fs-13); }
+.arch-dock-title { font-weight: 600; font-size: var(--fs-14); }
+.arch-dock-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.arch-layers { display: none; }
+.arch-layers section { padding: var(--s-3) 0; border-top: 1px solid var(--hairline); }
+.arch-layers section:first-child { border-top: 0; padding-top: 0; }
+.arch-layer-nodes { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin-top: var(--s-2); max-width: 440px; }
+.arch-flow-item { width: 100%; }
+.arch-node-flow { position: relative; width: 100%; height: auto; min-height: 44px; overflow: visible; }
+.arch-flow-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 22px;
+  margin-left: 22px;
+  color: var(--ink-3);
+  font-size: var(--fs-12);
+  font-weight: 600;
+}
+.arch-flow-stem { width: 0; height: 16px; border-left: 1.5px solid var(--data-ink); }
+.arch-flow-link.edge-control .arch-flow-stem { border-left-color: var(--info); }
+.arch-flow-link.edge-async .arch-flow-stem { border-left-style: dashed; border-left-color: var(--amber); }
+.arch-flow-link.is-edge-active { color: #17663f; }
+.arch-flow-link.is-edge-active .arch-flow-stem { border-left-color: #17663f; border-left-width: 2px; }
+.arch-flow-link.is-edge-done { color: #5b6b7a; }
+.arch-flow-link.is-edge-done .arch-flow-stem { border-left-color: #5b6b7a; border-left-width: 2px; }
+.arch-layers.is-stepping .arch-node:not(.is-role-requester):not(.is-role-waiting):not(.is-role-active):not(.is-role-done) { opacity: 0.4; }
+.arch-inline-detail { margin-top: var(--s-3); max-width: 440px; }
+
+/* The canvas uses fixed coordinates. Keep it only while the page column can
+   hold the diagram beside the detail panel, or alone at a readable scale. */
+.architecture { container-type: inline-size; container-name: archpage; }
+
+@container archpage (max-width: 1040px) {
+  .arch-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@container archpage (max-width: 900px) {
+  .arch-scene { display: none; }
+  .arch-layers { display: block; }
+  .arch-side { display: none; }
+  .arch-panel { min-height: 0; }
+  .arch-dock { position: static; }
+}
+
+@media (max-width: 1180px) {
+  .arch-scene { display: none; }
+  .arch-layers { display: block; }
+  .arch-side { display: none; }
+  .arch-panel { min-height: 0; }
+  .arch-dock { position: static; }
+}

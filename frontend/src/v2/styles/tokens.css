@@ -1,0 +1,11 @@
+/* Ported from resources/Metrics Analyzer proposed design.html */
+:root{--canvas:#f3f5f8;--canvas-tint:radial-gradient(1200px 480px at 30% -120px,rgba(59,75,168,.07),transparent 70%);--surface:#fff;--surface-2:#f7f9fb;--surface-hover:#f2f5f9;--glass:rgba(255,255,255,.72);--ink-1:#0f1b26;--ink-2:#3d4c5b;--ink-3:#5b6877;--hairline:rgba(15,27,38,.1);--hairline-strong:rgba(15,27,38,.18);--red:#a1262d;--red-bg:#fbeaea;--amber:#7a5200;--amber-bg:#fbf2dc;--green:#17663f;--green-bg:#e6f3eb;--na:#46525f;--na-bg:#eef1f4;--na-hatch:repeating-linear-gradient(135deg,#dde3e9 0 3px,#f3f5f8 3px 7px);--tech:#3b4ba8;--tech-bg:#eceefa;--dq:#0f6f73;--dq-bg:#e3f2f2;--accent:#2357c5;--accent-bg:rgba(35,87,197,.1);--accent-strong:#1a449c;--info:#1f4e79;--info-bg:#e7eef5;--data-track:#e8edf2;--font:-apple-system,"SF Pro Text","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif;--mono:ui-monospace,"Cascadia Mono","SFMono-Regular",Consolas,monospace;--e-2:0 1px 2px rgba(15,27,38,.06),0 8px 24px rgba(15,27,38,.06);--e-3:0 2px 6px rgba(15,27,38,.08),0 16px 40px rgba(15,27,38,.12);--ease:cubic-bezier(.2,.8,.2,1);
+  --data-ink:#4a5a6b;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px; --s-10:40px; --s-14:56px;
+  --r-control:8px; --r-card:12px; --r-tile:16px; --r-pill:999px;
+  --fs-12:12px; --fs-13:13px; --fs-14:14px; --fs-16:16px;
+  --t-control:160ms; --t-panel:240ms;
+  --glass-fallback:#fbfcfd; --glass-strong:rgba(255,255,255,.86); --glass-filter:blur(20px) saturate(160%);
+  --sidebar:232px; --env-h:28px; --content-max:1360px;
+  --focus-ring:0 0 0 2px #fff, 0 0 0 4px var(--accent);
+}
