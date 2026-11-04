@@ -6,6 +6,7 @@ import type { ScopeFilters } from '../../api/types'
 import { LineChart } from '../../components/charts/Charts'
 import { Dash, Provisional, QueryPanel, RagPill, useFocusContain } from '../../components/present'
 import { describeFilters, useLegalEntityNames } from '../../components/scopeLabels'
+import { Skeleton } from '../../components/Skeleton'
 import { AskAgentLink } from '../../components/ui/AskAgentLink'
 import { formatInt, formatMonth, formatPercent, formatPp, labelOf } from '../../format'
 import { useApiQuery } from '../../hooks/useApiQuery'
@@ -28,6 +29,7 @@ export function PreviewModal({
   onClose: () => void
 }) {
   const linkState = useLinkState('Back')
+  const agentState = useLinkState(`Back to ${metricId}`)
   const ref = useRef<HTMLDivElement>(null)
   const titleId = useId()
   useFocusContain(ref, onClose)
@@ -62,7 +64,7 @@ export function PreviewModal({
           </div>
         </header>
         <div className="modal-body">
-          <QueryPanel query={query}>
+          <QueryPanel query={query} skeleton={<Skeleton shape="preview" label="Loading the preview" />}>
             {(data) => (
               <>
                 <dl className="preview-meta">
@@ -146,7 +148,12 @@ export function PreviewModal({
           <Link className="btn" to={investigation} state={linkState}>
             Open Investigation
           </Link>
-          <AskAgentLink to={scopedTo('/agent', filters, { focusMetric: metricId, ctx: 'preview' })} label="Chat with Agent" variant="button" />
+          <AskAgentLink
+            to={scopedTo('/agent', filters, { focusMetric: metricId, ctx: 'preview' })}
+            label="Chat with Agent"
+            variant="button"
+            state={agentState}
+          />
         </footer>
       </div>
     </div>,
