@@ -83,8 +83,52 @@ $batches = @(
         Paths   = @('frontend/src/bootstrap', 'frontend/src/legacy-entry.tsx', 'frontend/src/App.tsx', 'frontend/src/main.tsx', 'frontend/.env.production')
     },
     @{
-        Summary = 'v2 frontend app shell pages and agent workspace'
-        Paths   = @('frontend/src/v2')
+        Summary = 'v2 loading skeletons stale panels and centred content'
+        Paths   = @(
+            'frontend/src/v2/hooks/useApiQuery.ts'
+            'frontend/src/v2/components/Skeleton.tsx'
+            'frontend/src/v2/components/present.tsx'
+            'frontend/src/v2/shell/V2Shell.tsx'
+            'frontend/src/v2/styles/components.css'
+        )
+    },
+    @{
+        Summary = 'v2 agent answer-first rendering for analysis and data explorer'
+        Paths   = @(
+            'frontend/src/v2/features/agent/MessageViews.tsx'
+            'frontend/src/v2/features/agent/MessageViews.test.tsx'
+        )
+    },
+    @{
+        Summary = 'v2 agent workspace layout waiting state and preview continuity'
+        Paths   = @(
+            'frontend/src/v2/features/agent/AgentPages.tsx'
+            'frontend/src/v2/components/ui/AskAgentLink.tsx'
+            'frontend/src/v2/features/register/PreviewModal.tsx'
+            'frontend/src/v2/styles/pages.css'
+        )
+    },
+    @{
+        Summary = 'v2 dashboard movement attention rows and shaped panel loading'
+        Paths   = @(
+            'frontend/src/v2/features/dashboard/DashboardPage.tsx'
+            'frontend/src/v2/features/dashboard/DashboardPage.css'
+        )
+    },
+    @{
+        Summary = 'v2 register investigation and metric pages with skeleton keep'
+        Paths   = @(
+            'frontend/src/v2/features/register/RegisterPage.tsx'
+            'frontend/src/v2/features/investigation/MetricInvestigationPage.tsx'
+            'frontend/src/v2/features/investigation/ApplicationInvestigationPage.tsx'
+            'frontend/src/v2/features/metric/MetricSummaryPage.tsx'
+            'frontend/src/v2/features/metric/MetricTrendCard.tsx'
+            'frontend/src/v2/features/definitions/DefinitionsPage.tsx'
+        )
+    },
+    @{
+        Summary = 'v2 architecture copy for browser conversation storage'
+        Paths   = @('frontend/src/v2/features/architecture/model.ts')
     },
     @{
         Summary = 'snowflake mock data setup scripts'
