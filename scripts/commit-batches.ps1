@@ -59,12 +59,44 @@ Assert-NoCoAuthor
 
 $batches = @(
     @{
-        Summary = 'document the live ui api and snowflake layout'
-        Paths   = @('README.md', 'backend/README.md', 'snowflake/README.md')
+        Summary = 'portfolio runtime with offline snapshots and gate'
+        Paths   = @('backend/app/portfolio', 'backend/app/common', 'backend/app/main.py')
     },
     @{
-        Summary = 'batch commit script for the readme update'
-        Paths   = @('scripts/commit-batches.ps1')
+        Summary = 'agent registry context builder and prepared investigations'
+        Paths   = @('backend/app/agents')
+    },
+    @{
+        Summary = 'packaged offline snapshots and investigation bundles'
+        Paths   = @('backend/app/fallback_assets/v2')
+    },
+    @{
+        Summary = 'backend export and outage walk scripts'
+        Paths   = @('backend/scripts')
+    },
+    @{
+        Summary = 'backend v2 tests'
+        Paths   = @('backend/tests/v2')
+    },
+    @{
+        Summary = 'frontend bootstrap and production api base'
+        Paths   = @('frontend/src/bootstrap', 'frontend/src/legacy-entry.tsx', 'frontend/src/App.tsx', 'frontend/src/main.tsx', 'frontend/.env.production')
+    },
+    @{
+        Summary = 'v2 frontend app shell pages and agent workspace'
+        Paths   = @('frontend/src/v2')
+    },
+    @{
+        Summary = 'snowflake mock data setup scripts'
+        Paths   = @('snowflake/mock_data_setup')
+    },
+    @{
+        Summary = 'docs and v2 resources'
+        Paths   = @('docs', 'resources')
+    },
+    @{
+        Summary = 'ignore tsbuildinfo and add deploy batch script'
+        Paths   = @('.gitignore', 'scripts/commit-batches.ps1')
     }
 )
 
