@@ -1,18 +1,21 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { RouterProvider } from 'react-router-dom'
-import { router } from './App'
-import './styles/tokens.css'
-import './styles/base.css'
-import './styles/components.css'
-import './styles/pages.css'
-import './styles/architecture.css'
+import { resolveEntry } from './bootstrap/resolveEntry'
 
-const root = document.getElementById('root')
-if (!root) throw new Error('Root element missing')
+const decision = resolveEntry(window.location.pathname)
 
-createRoot(root).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-)
+if (decision === 'redirect') {
+  const { pathname, search, hash } = window.location
+  window.location.replace(`/legacy${pathname}${search}${hash}`)
+} else {
+  const root = document.getElementById('root')
+  if (!root) throw new Error('Root element missing')
+  const loading = decision === 'legacy' ? import('./legacy-entry') : import('./v2/entry')
+  void loading.then(({ Entry }) => {
+    createRoot(root).render(
+      <StrictMode>
+        <Entry />
+      </StrictMode>,
+    )
+  })
+}
