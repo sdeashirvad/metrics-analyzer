@@ -1,0 +1,31 @@
+Metrics Analyzer V2 — single owners for the coming parallel wave.
+
+Later agents must not edit another lane's files or these frozen files.
+
+FROZEN (nobody edits after this step):
+- frontend/src/v2/api/types.ts
+- resources/metrics_analyzer_v2/baseline/*
+
+Legacy mount lane (not this step):
+- frontend/src/main.tsx
+- frontend/src/App.tsx
+- frontend/src/legacy-entry.tsx
+- frontend/src/bootstrap/resolveEntry.ts
+
+Frontend platform lane:
+- frontend/src/v2/** except api/types.ts and except features/ written by the page lane
+
+Page lane:
+- frontend/src/v2/features/**
+- frontend/src/v2/routes.tsx
+
+Portfolio backend lane:
+- backend/app/portfolio/**
+- backend/app/common/**
+
+Agent backend lane:
+- backend/app/agents/**
+
+Integration owner only:
+- backend/app/main.py (one register_v2 line, later)
+- package.json (test deps later)

@@ -1,0 +1,3014 @@
+{
+  "generator_version": "1.0.0",
+  "seed": 20261103,
+  "rows": 11399,
+  "columns": 57,
+  "csv_sha256": "08df1af542daf11c496355680d21de5d01618bf9220c965cdc75ac74c0cfbca3",
+  "overall_validation": "PASS",
+  "repairs_applied": {
+    "metric_date_realigned": 0,
+    "month_year_rederived": 0,
+    "rto_change_date_nulled": 0,
+    "test_result_nulled_without_test": 0,
+    "total_rfb_raised_to_rfb": 0,
+    "numerator_clipped": 0,
+    "department_nulled_at_super_level": 0,
+    "bank_list_rederived": 0,
+    "acquired_entity_inconsistent": 0
+  },
+  "note": "All statistics describe the SYNTHETIC output only; they are not properties of any client source data.",
+  "profile": {
+    "shape": {
+      "rows": 11399,
+      "columns": 57
+    },
+    "columns": {
+      "METRIC_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 24,
+        "top1_share": 0.171506,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "M340202",
+            0.171506
+          ],
+          [
+            "M384010",
+            0.114747
+          ],
+          [
+            "M346318",
+            0.092113
+          ],
+          [
+            "M325402",
+            0.068778
+          ],
+          [
+            "M314650",
+            0.055707
+          ]
+        ]
+      },
+      "METRIC_DATE": {
+        "dtype": "datetime64[us]",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 12,
+        "top1_share": 0.097991,
+        "tail_share_lt_1pct": 0.0
+      },
+      "METRIC_DATE_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 1,
+        "top1_share": 1.0,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "Monthend",
+            1.0
+          ]
+        ]
+      },
+      "IS_NUMERATOR": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.58549,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "0",
+            0.58549
+          ],
+          [
+            "1",
+            0.41451
+          ]
+        ]
+      },
+      "IS_DENOMINATOR": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.798842,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "1",
+            0.798842
+          ],
+          [
+            "0",
+            0.201158
+          ]
+        ]
+      },
+      "EON_ID": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 1500,
+        "top1_share": 0.003158,
+        "tail_share_lt_1pct": 1.0
+      },
+      "BUILDING_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 45,
+        "top1_share": 0.101325,
+        "tail_share_lt_1pct": 0.4222,
+        "top_values": [
+          [
+            "Building_042",
+            0.101325
+          ],
+          [
+            "Building_006",
+            0.071059
+          ],
+          [
+            "Building_020",
+            0.048952
+          ],
+          [
+            "Building_033",
+            0.044828
+          ],
+          [
+            "Building_037",
+            0.044302
+          ]
+        ]
+      },
+      "EVENT_LOCATION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 32,
+        "top1_share": 0.110536,
+        "tail_share_lt_1pct": 0.2188,
+        "top_values": [
+          [
+            "Location_010",
+            0.110536
+          ],
+          [
+            "Location_006",
+            0.080533
+          ],
+          [
+            "Location_005",
+            0.067813
+          ],
+          [
+            "Location_001",
+            0.053777
+          ],
+          [
+            "Location_002",
+            0.050092
+          ]
+        ]
+      },
+      "APPLICATION_TIER": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 4,
+        "top1_share": 0.385472,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "3",
+            0.385472
+          ],
+          [
+            "2",
+            0.309062
+          ],
+          [
+            "4",
+            0.205106
+          ],
+          [
+            "1",
+            0.10036
+          ]
+        ]
+      },
+      "EXEMPTION_LEVEL_1": {
+        "dtype": "object",
+        "null_count": 10254,
+        "null_rate": 0.899553,
+        "distinct": 12,
+        "top1_share": 0.033775,
+        "tail_share_lt_1pct": 0.75,
+        "top_values": [
+          [
+            "Exemption_09",
+            0.033775
+          ],
+          [
+            "Exemption_12",
+            0.018598
+          ],
+          [
+            "Exemption_01",
+            0.010176
+          ],
+          [
+            "Exemption_07",
+            0.007632
+          ],
+          [
+            "Exemption_03",
+            0.005878
+          ]
+        ]
+      },
+      "TEST_STATUS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 4,
+        "top1_share": 0.664444,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "Test_Complete",
+            0.664444
+          ],
+          [
+            "No_Test",
+            0.151241
+          ],
+          [
+            "Test_Pending",
+            0.100096
+          ],
+          [
+            "Exempt",
+            0.084218
+          ]
+        ]
+      },
+      "TEST_RESULT": {
+        "dtype": "object",
+        "null_count": 3888,
+        "null_rate": 0.341083,
+        "distinct": 2,
+        "top1_share": 0.413984,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "Pass",
+            0.413984
+          ],
+          [
+            "Fail",
+            0.244934
+          ]
+        ]
+      },
+      "SYSTEM_RTC": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.848495,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "0",
+            0.848495
+          ],
+          [
+            "1",
+            0.151505
+          ]
+        ]
+      },
+      "RFB": {
+        "dtype": "Int64",
+        "null_count": 123,
+        "null_rate": 0.01079,
+        "distinct": 10,
+        "top1_share": 0.656198,
+        "tail_share_lt_1pct": 0.3,
+        "top_values": [
+          [
+            "0",
+            0.656198
+          ],
+          [
+            "1",
+            0.091148
+          ],
+          [
+            "2",
+            0.083428
+          ],
+          [
+            "3",
+            0.068778
+          ],
+          [
+            "4",
+            0.044302
+          ]
+        ]
+      },
+      "TOTAL_RFB": {
+        "dtype": "Int64",
+        "null_count": 117,
+        "null_rate": 0.010264,
+        "distinct": 18,
+        "top1_share": 0.310466,
+        "tail_share_lt_1pct": 0.4444,
+        "top_values": [
+          [
+            "0",
+            0.310466
+          ],
+          [
+            "1",
+            0.221862
+          ],
+          [
+            "2",
+            0.131503
+          ],
+          [
+            "3",
+            0.095359
+          ],
+          [
+            "4",
+            0.069655
+          ]
+        ]
+      },
+      "COMPLIANCE_STATUS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 4,
+        "top1_share": 0.41451,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "Compliant",
+            0.41451
+          ],
+          [
+            "Non_Compliant",
+            0.301254
+          ],
+          [
+            "Pending",
+            0.168524
+          ],
+          [
+            "Not_Applicable",
+            0.115712
+          ]
+        ]
+      },
+      "COMPLIANCE_REASON": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 18,
+        "top1_share": 0.257216,
+        "tail_share_lt_1pct": 0.0556,
+        "top_values": [
+          [
+            "Requirements_Met",
+            0.257216
+          ],
+          [
+            "Test_Failed",
+            0.106939
+          ],
+          [
+            "Open_Findings_Outstanding",
+            0.084218
+          ],
+          [
+            "Controls_Verified",
+            0.074743
+          ],
+          [
+            "Exemption_Approved",
+            0.066146
+          ]
+        ]
+      },
+      "RTO_CHANGE_DATE": {
+        "dtype": "datetime64[us]",
+        "null_count": 7445,
+        "null_rate": 0.653127,
+        "distinct": 460,
+        "top1_share": 0.00386,
+        "tail_share_lt_1pct": 1.0
+      },
+      "GRN": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 1500,
+        "top1_share": 0.003158,
+        "tail_share_lt_1pct": 1.0
+      },
+      "APPLICATION_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 1500,
+        "top1_share": 0.003158,
+        "tail_share_lt_1pct": 1.0
+      },
+      "APPLICATION_RTO": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 6,
+        "top1_share": 0.261953,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "RTO_4_12H",
+            0.261953
+          ],
+          [
+            "RTO_12_24H",
+            0.235722
+          ],
+          [
+            "RTO_1_4H",
+            0.184929
+          ],
+          [
+            "RTO_24_72H",
+            0.172822
+          ],
+          [
+            "RTO_GT_72H",
+            0.091061
+          ]
+        ]
+      },
+      "HAS_CTIRICAL_KBS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.755768,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "N",
+            0.755768
+          ],
+          [
+            "Y",
+            0.244232
+          ]
+        ]
+      },
+      "LIFECYCLE_PHASE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 5,
+        "top1_share": 0.602597,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "Production",
+            0.602597
+          ],
+          [
+            "Retirement",
+            0.118782
+          ],
+          [
+            "Development",
+            0.112554
+          ],
+          [
+            "Implementation",
+            0.084481
+          ],
+          [
+            "Planning",
+            0.081586
+          ]
+        ]
+      },
+      "ASSET_RISK_RATING_2": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 4,
+        "top1_share": 0.395035,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "P3",
+            0.395035
+          ],
+          [
+            "P2",
+            0.394947
+          ],
+          [
+            "P4",
+            0.105711
+          ],
+          [
+            "P1",
+            0.104307
+          ]
+        ]
+      },
+      "ARR_AVAILABILITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 4,
+        "top1_share": 0.308448,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "A2",
+            0.308448
+          ],
+          [
+            "A3",
+            0.306781
+          ],
+          [
+            "A1",
+            0.196245
+          ],
+          [
+            "A4",
+            0.188525
+          ]
+        ]
+      },
+      "ARR_CONFIDENTIALITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 4,
+        "top1_share": 0.377489,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "C3",
+            0.377489
+          ],
+          [
+            "C2",
+            0.293096
+          ],
+          [
+            "C4",
+            0.206948
+          ],
+          [
+            "C1",
+            0.122467
+          ]
+        ]
+      },
+      "ARR_INTEGRITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 4,
+        "top1_share": 0.345644,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "I2",
+            0.345644
+          ],
+          [
+            "I3",
+            0.308009
+          ],
+          [
+            "I1",
+            0.190718
+          ],
+          [
+            "I4",
+            0.155628
+          ]
+        ]
+      },
+      "IS_MERGERS_ACQUISITIONS_ASSET": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.91508,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "N",
+            0.91508
+          ],
+          [
+            "Y",
+            0.08492
+          ]
+        ]
+      },
+      "ACQUIRED_ENTITY": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 9,
+        "top1_share": 0.91508,
+        "tail_share_lt_1pct": 0.5556,
+        "top_values": [
+          [
+            "NON_ACQUIRED_ENTITY",
+            0.91508
+          ],
+          [
+            "Acquired_Entity_04",
+            0.020879
+          ],
+          [
+            "Acquired_Entity_03",
+            0.020002
+          ],
+          [
+            "Acquired_Entity_05",
+            0.011229
+          ],
+          [
+            "Acquired_Entity_01",
+            0.008597
+          ]
+        ]
+      },
+      "BU_SUPER_DIVISION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 6,
+        "top1_share": 0.280639,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "BU_Super_Division_01",
+            0.280639
+          ],
+          [
+            "BU_Super_Division_05",
+            0.268883
+          ],
+          [
+            "BU_Super_Division_03",
+            0.168524
+          ],
+          [
+            "BU_Super_Division_04",
+            0.131064
+          ],
+          [
+            "BU_Super_Division_02",
+            0.087113
+          ]
+        ]
+      },
+      "BU_DIVISION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 16,
+        "top1_share": 0.21265,
+        "tail_share_lt_1pct": 0.0625,
+        "top_values": [
+          [
+            "BU_Division_05_02",
+            0.21265
+          ],
+          [
+            "BU_Division_01_02",
+            0.141855
+          ],
+          [
+            "BU_Division_03_02",
+            0.130976
+          ],
+          [
+            "BU_Division_02_01",
+            0.079393
+          ],
+          [
+            "BU_Division_01_03",
+            0.072024
+          ]
+        ]
+      },
+      "BU_SUPER_DEPARTMENT": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 39,
+        "top1_share": 0.148785,
+        "tail_share_lt_1pct": 0.3333,
+        "top_values": [
+          [
+            "BU_Super_Department_05_02_01",
+            0.148785
+          ],
+          [
+            "BU_Super_Department_01_02_01",
+            0.110799
+          ],
+          [
+            "BU_Super_Department_03_02_03",
+            0.06483
+          ],
+          [
+            "BU_Super_Department_03_02_02",
+            0.061672
+          ],
+          [
+            "BU_Super_Department_01_03_02",
+            0.058251
+          ]
+        ]
+      },
+      "BU_DEPARTMENT": {
+        "dtype": "object",
+        "null_count": 1271,
+        "null_rate": 0.111501,
+        "distinct": 76,
+        "top1_share": 0.121151,
+        "tail_share_lt_1pct": 0.6053
+      },
+      "ORG_GROUP_TYPE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.888499,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "DEPARTMENT",
+            0.888499
+          ],
+          [
+            "SUPER_DEPARTMENT",
+            0.111501
+          ]
+        ]
+      },
+      "SUPER_DIVISION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 8,
+        "top1_share": 0.213264,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "Super_Division_04",
+            0.213264
+          ],
+          [
+            "Super_Division_02",
+            0.150452
+          ],
+          [
+            "Super_Division_06",
+            0.143697
+          ],
+          [
+            "Super_Division_05",
+            0.142556
+          ],
+          [
+            "Super_Division_08",
+            0.133784
+          ]
+        ]
+      },
+      "DIVISION": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 26,
+        "top1_share": 0.118344,
+        "tail_share_lt_1pct": 0.0385,
+        "top_values": [
+          [
+            "Division_06_02",
+            0.118344
+          ],
+          [
+            "Division_04_02",
+            0.103518
+          ],
+          [
+            "Division_08_02",
+            0.067287
+          ],
+          [
+            "Division_05_01",
+            0.05018
+          ],
+          [
+            "Division_04_03",
+            0.048074
+          ]
+        ]
+      },
+      "SUPER_DEPARTMENT": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 79,
+        "top1_share": 0.089218,
+        "tail_share_lt_1pct": 0.5316
+      },
+      "DEPARTMENT": {
+        "dtype": "object",
+        "null_count": 1271,
+        "null_rate": 0.111501,
+        "distinct": 214,
+        "top1_share": 0.070533,
+        "tail_share_lt_1pct": 0.9252
+      },
+      "BUS_ORG_LG_NM": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 278,
+        "top1_share": 0.070533,
+        "tail_share_lt_1pct": 0.9388
+      },
+      "COST_CENTER_CODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 272,
+        "top1_share": 0.084832,
+        "tail_share_lt_1pct": 0.9412
+      },
+      "COST_CENTER_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 272,
+        "top1_share": 0.084832,
+        "tail_share_lt_1pct": 0.9412
+      },
+      "EMPLOYEE_BUILDING_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 41,
+        "top1_share": 0.096938,
+        "tail_share_lt_1pct": 0.3171,
+        "top_values": [
+          [
+            "Building_006",
+            0.096938
+          ],
+          [
+            "Building_020",
+            0.069918
+          ],
+          [
+            "Building_042",
+            0.067199
+          ],
+          [
+            "Building_023",
+            0.063514
+          ],
+          [
+            "Building_014",
+            0.059654
+          ]
+        ]
+      },
+      "EMPLOYEE_COUNTRY_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 7,
+        "top1_share": 0.442846,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "Country_05",
+            0.442846
+          ],
+          [
+            "Country_04",
+            0.20958
+          ],
+          [
+            "Country_06",
+            0.10422
+          ],
+          [
+            "Country_03",
+            0.084657
+          ],
+          [
+            "Country_01",
+            0.067988
+          ]
+        ]
+      },
+      "PRIMARY_BUS_FIRST_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 402,
+        "top1_share": 0.029125,
+        "tail_share_lt_1pct": 0.9602
+      },
+      "PRIMARY_BUS_LAST_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 384,
+        "top1_share": 0.029739,
+        "tail_share_lt_1pct": 0.9583
+      },
+      "PRIMARY_IT_FIRST_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 326,
+        "top1_share": 0.042109,
+        "tail_share_lt_1pct": 0.9356
+      },
+      "PRIMARY_IT_LAST_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 315,
+        "top1_share": 0.042109,
+        "tail_share_lt_1pct": 0.9333
+      },
+      "LEGAL_ENTITY_CODE": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 40,
+        "top1_share": 0.04746,
+        "tail_share_lt_1pct": 0.1,
+        "top_values": [
+          [
+            "LE2590",
+            0.04746
+          ],
+          [
+            "LE4955",
+            0.044653
+          ],
+          [
+            "LE4023",
+            0.044478
+          ],
+          [
+            "LE4621",
+            0.043951
+          ],
+          [
+            "LE4070",
+            0.042723
+          ]
+        ]
+      },
+      "LEGAL_ENTITY_NAME": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 40,
+        "top1_share": 0.04746,
+        "tail_share_lt_1pct": 0.1,
+        "top_values": [
+          [
+            "Legal_Entity_38",
+            0.04746
+          ],
+          [
+            "Legal_Entity_04",
+            0.044653
+          ],
+          [
+            "Legal_Entity_34",
+            0.044478
+          ],
+          [
+            "Legal_Entity_40",
+            0.043951
+          ],
+          [
+            "Legal_Entity_27",
+            0.042723
+          ]
+        ]
+      },
+      "IS_USBANKS": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.595228,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "Y",
+            0.595228
+          ],
+          [
+            "N",
+            0.404772
+          ]
+        ]
+      },
+      "IS_MSBNA": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.641197,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "N",
+            0.641197
+          ],
+          [
+            "Y",
+            0.358803
+          ]
+        ]
+      },
+      "IS_MSPBNA": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.949294,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "N",
+            0.949294
+          ],
+          [
+            "Y",
+            0.050706
+          ]
+        ]
+      },
+      "USBANKS_LE_LIST": {
+        "dtype": "object",
+        "null_count": 1996,
+        "null_rate": 0.175103,
+        "distinct": 5,
+        "top1_share": 0.415387,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "BANK_A",
+            0.415387
+          ],
+          [
+            "BANK_B",
+            0.214229
+          ],
+          [
+            "BANK_A|BANK_B",
+            0.144574
+          ],
+          [
+            "BANK_A|BANK_C",
+            0.035266
+          ],
+          [
+            "BANK_C",
+            0.01544
+          ]
+        ]
+      },
+      "KBS_FLAG_FLAG": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.755768,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "N",
+            0.755768
+          ],
+          [
+            "Y",
+            0.244232
+          ]
+        ]
+      },
+      "REPORTING_MONTHEND_DATE": {
+        "dtype": "datetime64[us]",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 12,
+        "top1_share": 0.097991,
+        "tail_share_lt_1pct": 0.0
+      },
+      "REPORTING_MONTH": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 12,
+        "top1_share": 0.097991,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "8",
+            0.097991
+          ],
+          [
+            "10",
+            0.096149
+          ],
+          [
+            "9",
+            0.096061
+          ],
+          [
+            "7",
+            0.093692
+          ],
+          [
+            "6",
+            0.091762
+          ]
+        ]
+      },
+      "REPORTING_YEAR": {
+        "dtype": "Int64",
+        "null_count": 0,
+        "null_rate": 0.0,
+        "distinct": 2,
+        "top1_share": 0.871743,
+        "tail_share_lt_1pct": 0.0,
+        "top_values": [
+          [
+            "2026",
+            0.871743
+          ],
+          [
+            "2025",
+            0.128257
+          ]
+        ]
+      }
+    },
+    "dates": {
+      "METRIC_DATE": {
+        "min": "2025-11-30",
+        "max": "2026-10-31",
+        "distinct": 12
+      },
+      "RTO_CHANGE_DATE": {
+        "min": "2023-11-02",
+        "max": "2026-10-31",
+        "distinct": 460
+      },
+      "REPORTING_MONTHEND_DATE": {
+        "min": "2025-11-30",
+        "max": "2026-10-31",
+        "distinct": 12
+      }
+    },
+    "entity_repetition": {
+      "distinct_eon_id": 1500,
+      "distinct_metric_id": 24,
+      "rows_per_eon": {
+        "min": 1.0,
+        "p25": 3.0,
+        "median": 6.0,
+        "mean": 7.599,
+        "p75": 12.0,
+        "p90": 12.0,
+        "max": 36.0
+      },
+      "months_per_eon": {
+        "min": 1.0,
+        "p25": 3.0,
+        "median": 6.0,
+        "mean": 6.523,
+        "p75": 11.25,
+        "p90": 12.0,
+        "max": 12.0
+      },
+      "metrics_per_eon": {
+        "min": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "mean": 1.317,
+        "p75": 2.0,
+        "p90": 2.0,
+        "max": 3.0
+      },
+      "months_per_eon_histogram": {
+        "1": 139,
+        "2": 172,
+        "3": 149,
+        "4": 134,
+        "5": 136,
+        "6": 99,
+        "7": 80,
+        "8": 79,
+        "9": 50,
+        "10": 55,
+        "11": 32,
+        "12": 375
+      },
+      "metrics_per_eon_histogram": {
+        "1": 1105,
+        "2": 315,
+        "3": 80
+      },
+      "share_eon_with_2plus_months": 0.9073,
+      "share_eon_with_6plus_months": 0.5133,
+      "share_eon_with_all_months": 0.25,
+      "share_eon_single_observation": 0.072,
+      "top_decile_eon_row_share": 0.2459,
+      "largest_eon_row_share": 0.0032,
+      "sparsity_note": "entities typically observed in a contiguous-ish window with gaps; not a full Cartesian grid"
+    },
+    "metric_repetition": {
+      "rows_per_metric": {
+        "min": 127.0,
+        "p25": 251.5,
+        "median": 340.0,
+        "mean": 474.958,
+        "p75": 482.75,
+        "p90": 970.1999999999998,
+        "max": 1955.0
+      },
+      "apps_per_metric": {
+        "min": 28.0,
+        "p25": 41.5,
+        "median": 58.0,
+        "mean": 82.292,
+        "p75": 83.75,
+        "p90": 165.09999999999997,
+        "max": 329.0
+      },
+      "months_per_metric": {
+        "min": 12.0,
+        "p25": 12.0,
+        "median": 12.0,
+        "mean": 12.0,
+        "p75": 12.0,
+        "p90": 12.0,
+        "max": 12.0
+      }
+    },
+    "periods": [
+      {
+        "date": "2025-11-30",
+        "rows": 699,
+        "distinct_eon_id": 596,
+        "distinct_metric_id": 24,
+        "status_Compliant": 304,
+        "status_Non_Compliant": 216,
+        "status_Not_Applicable": 80,
+        "status_Pending": 99,
+        "test_Test_Complete": 478,
+        "test_No_Test": 94,
+        "test_Test_Pending": 63,
+        "test_Exempt": 64,
+        "failed_completed_tests": 168,
+        "provisional_compliance_rate": 0.5305
+      },
+      {
+        "date": "2025-12-31",
+        "rows": 763,
+        "distinct_eon_id": 652,
+        "distinct_metric_id": 24,
+        "status_Compliant": 320,
+        "status_Non_Compliant": 221,
+        "status_Not_Applicable": 84,
+        "status_Pending": 138,
+        "test_Test_Complete": 499,
+        "test_No_Test": 119,
+        "test_Test_Pending": 85,
+        "test_Exempt": 60,
+        "failed_completed_tests": 175,
+        "provisional_compliance_rate": 0.5229
+      },
+      {
+        "date": "2026-01-31",
+        "rows": 827,
+        "distinct_eon_id": 708,
+        "distinct_metric_id": 24,
+        "status_Compliant": 349,
+        "status_Non_Compliant": 252,
+        "status_Not_Applicable": 96,
+        "status_Pending": 130,
+        "test_Test_Complete": 555,
+        "test_No_Test": 119,
+        "test_Test_Pending": 82,
+        "test_Exempt": 71,
+        "failed_completed_tests": 202,
+        "provisional_compliance_rate": 0.5304
+      },
+      {
+        "date": "2026-02-28",
+        "rows": 859,
+        "distinct_eon_id": 745,
+        "distinct_metric_id": 24,
+        "status_Compliant": 351,
+        "status_Non_Compliant": 265,
+        "status_Not_Applicable": 88,
+        "status_Pending": 155,
+        "test_Test_Complete": 556,
+        "test_No_Test": 135,
+        "test_Test_Pending": 101,
+        "test_Exempt": 67,
+        "failed_completed_tests": 206,
+        "provisional_compliance_rate": 0.5029
+      },
+      {
+        "date": "2026-03-31",
+        "rows": 908,
+        "distinct_eon_id": 780,
+        "distinct_metric_id": 24,
+        "status_Compliant": 375,
+        "status_Non_Compliant": 287,
+        "status_Not_Applicable": 102,
+        "status_Pending": 144,
+        "test_Test_Complete": 622,
+        "test_No_Test": 119,
+        "test_Test_Pending": 83,
+        "test_Exempt": 84,
+        "failed_completed_tests": 247,
+        "provisional_compliance_rate": 0.5095
+      },
+      {
+        "date": "2026-04-30",
+        "rows": 943,
+        "distinct_eon_id": 814,
+        "distinct_metric_id": 24,
+        "status_Compliant": 385,
+        "status_Non_Compliant": 288,
+        "status_Not_Applicable": 111,
+        "status_Pending": 159,
+        "test_Test_Complete": 628,
+        "test_No_Test": 134,
+        "test_Test_Pending": 100,
+        "test_Exempt": 81,
+        "failed_completed_tests": 248,
+        "provisional_compliance_rate": 0.5086
+      },
+      {
+        "date": "2026-05-31",
+        "rows": 978,
+        "distinct_eon_id": 842,
+        "distinct_metric_id": 24,
+        "status_Compliant": 400,
+        "status_Non_Compliant": 308,
+        "status_Not_Applicable": 99,
+        "status_Pending": 171,
+        "test_Test_Complete": 665,
+        "test_No_Test": 151,
+        "test_Test_Pending": 97,
+        "test_Exempt": 65,
+        "failed_completed_tests": 257,
+        "provisional_compliance_rate": 0.5031
+      },
+      {
+        "date": "2026-06-30",
+        "rows": 1046,
+        "distinct_eon_id": 903,
+        "distinct_metric_id": 24,
+        "status_Compliant": 445,
+        "status_Non_Compliant": 304,
+        "status_Not_Applicable": 126,
+        "status_Pending": 171,
+        "test_Test_Complete": 694,
+        "test_No_Test": 156,
+        "test_Test_Pending": 107,
+        "test_Exempt": 89,
+        "failed_completed_tests": 246,
+        "provisional_compliance_rate": 0.5374
+      },
+      {
+        "date": "2026-07-31",
+        "rows": 1068,
+        "distinct_eon_id": 922,
+        "distinct_metric_id": 24,
+        "status_Compliant": 420,
+        "status_Non_Compliant": 328,
+        "status_Not_Applicable": 126,
+        "status_Pending": 194,
+        "test_Test_Complete": 703,
+        "test_No_Test": 174,
+        "test_Test_Pending": 97,
+        "test_Exempt": 94,
+        "failed_completed_tests": 264,
+        "provisional_compliance_rate": 0.497
+      },
+      {
+        "date": "2026-08-31",
+        "rows": 1117,
+        "distinct_eon_id": 962,
+        "distinct_metric_id": 24,
+        "status_Compliant": 457,
+        "status_Non_Compliant": 345,
+        "status_Not_Applicable": 137,
+        "status_Pending": 178,
+        "test_Test_Complete": 741,
+        "test_No_Test": 168,
+        "test_Test_Pending": 112,
+        "test_Exempt": 96,
+        "failed_completed_tests": 269,
+        "provisional_compliance_rate": 0.5141
+      },
+      {
+        "date": "2026-09-30",
+        "rows": 1095,
+        "distinct_eon_id": 937,
+        "distinct_metric_id": 24,
+        "status_Compliant": 456,
+        "status_Non_Compliant": 296,
+        "status_Not_Applicable": 144,
+        "status_Pending": 199,
+        "test_Test_Complete": 697,
+        "test_No_Test": 187,
+        "test_Test_Pending": 105,
+        "test_Exempt": 106,
+        "failed_completed_tests": 237,
+        "provisional_compliance_rate": 0.5416
+      },
+      {
+        "date": "2026-10-31",
+        "rows": 1096,
+        "distinct_eon_id": 923,
+        "distinct_metric_id": 24,
+        "status_Compliant": 463,
+        "status_Non_Compliant": 324,
+        "status_Not_Applicable": 126,
+        "status_Pending": 183,
+        "test_Test_Complete": 736,
+        "test_No_Test": 168,
+        "test_Test_Pending": 109,
+        "test_Exempt": 83,
+        "failed_completed_tests": 273,
+        "provisional_compliance_rate": 0.5304
+      }
+    ],
+    "stability": {
+      "application_name_grn": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0,
+        "share_rows_off_modal_value": 0.0
+      },
+      "application_tier": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0295,
+        "share_rows_off_modal_value": 0.0093
+      },
+      "application_rto": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0366,
+        "share_rows_off_modal_value": 0.0118
+      },
+      "lifecycle_phase": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0381,
+        "share_rows_off_modal_value": 0.0104
+      },
+      "risk_ratings": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.033,
+        "share_rows_off_modal_value": 0.0091
+      },
+      "critical_kbs_flags": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0,
+        "share_rows_off_modal_value": 0.0
+      },
+      "ma_fields": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0,
+        "share_rows_off_modal_value": 0.0
+      },
+      "business_owner": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0366,
+        "share_rows_off_modal_value": 0.0104
+      },
+      "it_owner": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.028,
+        "share_rows_off_modal_value": 0.0083
+      },
+      "organisation_both_hierarchies": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0201,
+        "share_rows_off_modal_value": 0.0063
+      },
+      "cost_centre": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0251,
+        "share_rows_off_modal_value": 0.0078
+      },
+      "legal_entity_and_flags": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0158,
+        "share_rows_off_modal_value": 0.0039
+      },
+      "primary_building_location": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0187,
+        "share_rows_off_modal_value": 0.0046
+      },
+      "employee_building_country": {
+        "entities_with_2plus_rows": 1392,
+        "share_entities_with_change": 0.0323,
+        "share_rows_off_modal_value": 0.0096
+      }
+    },
+    "cardinalities": {
+      "applications": 1500,
+      "metrics": 24,
+      "buildings": 45,
+      "locations": 32,
+      "employee_buildings": 41,
+      "countries": 7,
+      "bu_super_divisions": 6,
+      "bu_divisions": 16,
+      "bu_super_departments": 39,
+      "bu_departments": 76,
+      "super_divisions": 8,
+      "divisions": 26,
+      "super_departments": 79,
+      "departments": 214,
+      "business_org_labels": 278,
+      "cost_centres": 272,
+      "legal_entities": 40,
+      "business_owners": 412,
+      "it_owners": 334
+    },
+    "test_status_by_compliance_status": {
+      "Exempt": {
+        "Compliant": 135,
+        "Non_Compliant": 71,
+        "Not_Applicable": 754,
+        "Pending": 0
+      },
+      "No_Test": {
+        "Compliant": 0,
+        "Non_Compliant": 533,
+        "Not_Applicable": 565,
+        "Pending": 626
+      },
+      "Test_Complete": {
+        "Compliant": 4590,
+        "Non_Compliant": 2679,
+        "Not_Applicable": 0,
+        "Pending": 305
+      },
+      "Test_Pending": {
+        "Compliant": 0,
+        "Non_Compliant": 151,
+        "Not_Applicable": 0,
+        "Pending": 990
+      }
+    },
+    "test_status_by_test_result": {
+      "Exempt": {
+        "<null>": 960,
+        "Fail": 0,
+        "Pass": 0
+      },
+      "No_Test": {
+        "<null>": 1724,
+        "Fail": 0,
+        "Pass": 0
+      },
+      "Test_Complete": {
+        "<null>": 63,
+        "Fail": 2792,
+        "Pass": 4719
+      },
+      "Test_Pending": {
+        "<null>": 1141,
+        "Fail": 0,
+        "Pass": 0
+      }
+    },
+    "transitions": {
+      "consecutive_month_pairs": 7968,
+      "new_non_compliance": 1296,
+      "resolved_non_compliance": 1311,
+      "persistent_non_compliance": 1285,
+      "new_non_compliance_by_month": {
+        "1": 97,
+        "2": 103,
+        "3": 99,
+        "4": 111,
+        "5": 115,
+        "6": 133,
+        "7": 126,
+        "8": 135,
+        "9": 126,
+        "10": 119,
+        "11": 132
+      },
+      "resolved_by_month": {
+        "1": 98,
+        "2": 95,
+        "3": 103,
+        "4": 109,
+        "5": 121,
+        "6": 127,
+        "7": 143,
+        "8": 132,
+        "9": 125,
+        "10": 141,
+        "11": 117
+      },
+      "definition": "entity-month flag = any Non_Compliant row for the EON_ID in that month; consecutive observed months only"
+    },
+    "scenarios": {
+      "consistently_compliant": {
+        "entities": 476,
+        "rows": 3484,
+        "non_compliant_share": 0.1007,
+        "compliant_share": 0.7939,
+        "test_complete_share": 0.9021,
+        "test_pending_share": 0.0396,
+        "exempt_share": 0.0207,
+        "no_test_share": 0.0376,
+        "fail_share_of_completed": 0.0503
+      },
+      "deteriorating": {
+        "entities": 94,
+        "rows": 991,
+        "non_compliant_share": 0.4127,
+        "compliant_share": 0.4329,
+        "test_complete_share": 0.8527,
+        "test_pending_share": 0.0515,
+        "exempt_share": 0.0283,
+        "no_test_share": 0.0676,
+        "fail_share_of_completed": 0.4781,
+        "nc_share_before_switch": 0.1449,
+        "nc_share_after_switch": 0.6163
+      },
+      "exempt": {
+        "entities": 111,
+        "rows": 779,
+        "non_compliant_share": 0.0886,
+        "compliant_share": 0.1592,
+        "test_complete_share": 0.0385,
+        "test_pending_share": 0.0385,
+        "exempt_share": 0.8768,
+        "no_test_share": 0.0462,
+        "fail_share_of_completed": 0.2333
+      },
+      "improving_after_remediation": {
+        "entities": 107,
+        "rows": 1093,
+        "non_compliant_share": 0.4007,
+        "compliant_share": 0.4446,
+        "test_complete_share": 0.8527,
+        "test_pending_share": 0.0567,
+        "exempt_share": 0.0192,
+        "no_test_share": 0.0714,
+        "fail_share_of_completed": 0.47,
+        "nc_share_before_switch": 0.6529,
+        "nc_share_after_switch": 0.2003
+      },
+      "no_completed_tests": {
+        "entities": 127,
+        "rows": 804,
+        "non_compliant_share": 0.3843,
+        "compliant_share": 0.005,
+        "test_complete_share": 0.0,
+        "test_pending_share": 0.0361,
+        "exempt_share": 0.0684,
+        "no_test_share": 0.8955,
+        "fail_share_of_completed": null
+      },
+      "not_applicable_scope": {
+        "entities": 59,
+        "rows": 359,
+        "non_compliant_share": 0.1003,
+        "compliant_share": 0.0418,
+        "test_complete_share": 0.0446,
+        "test_pending_share": 0.0111,
+        "exempt_share": 0.039,
+        "no_test_share": 0.9053,
+        "fail_share_of_completed": 0.125
+      },
+      "pending_tests": {
+        "entities": 103,
+        "rows": 656,
+        "non_compliant_share": 0.154,
+        "compliant_share": 0.0412,
+        "test_complete_share": 0.0549,
+        "test_pending_share": 0.8521,
+        "exempt_share": 0.0457,
+        "no_test_share": 0.0473,
+        "fail_share_of_completed": 0.3333
+      },
+      "persistently_noncompliant": {
+        "entities": 240,
+        "rows": 1640,
+        "non_compliant_share": 0.661,
+        "compliant_share": 0.1323,
+        "test_complete_share": 0.7963,
+        "test_pending_share": 0.0628,
+        "exempt_share": 0.0195,
+        "no_test_share": 0.1213,
+        "fail_share_of_completed": 0.8828
+      },
+      "volatile_mixed": {
+        "entities": 183,
+        "rows": 1593,
+        "non_compliant_share": 0.3999,
+        "compliant_share": 0.4124,
+        "test_complete_share": 0.7947,
+        "test_pending_share": 0.1036,
+        "exempt_share": 0.0157,
+        "no_test_share": 0.086,
+        "fail_share_of_completed": 0.4882
+      }
+    },
+    "scenario_entity_shares": {
+      "consistently_compliant": 0.3173,
+      "persistently_noncompliant": 0.16,
+      "volatile_mixed": 0.122,
+      "no_completed_tests": 0.0847,
+      "exempt": 0.074,
+      "improving_after_remediation": 0.0713,
+      "pending_tests": 0.0687,
+      "deteriorating": 0.0627,
+      "not_applicable_scope": 0.0393
+    },
+    "risk_vs_compliance": {
+      "P1": {
+        "rows": 1189,
+        "non_compliant_share": 0.3188,
+        "fail_share_of_completed": 0.3939
+      },
+      "P2": {
+        "rows": 4502,
+        "non_compliant_share": 0.2952,
+        "fail_share_of_completed": 0.3539
+      },
+      "P3": {
+        "rows": 4503,
+        "non_compliant_share": 0.2987,
+        "fail_share_of_completed": 0.3739
+      },
+      "P4": {
+        "rows": 1205,
+        "non_compliant_share": 0.3162,
+        "fail_share_of_completed": 0.3799
+      }
+    },
+    "duplicates": {
+      "EON_ID+METRIC_ID+METRIC_DATE (candidate row key)": 0,
+      "full_row": 0,
+      "EON_ID+METRIC_DATE (several metrics per app-month; informational)": 1615,
+      "EON_ID+METRIC_ID (repeats across months; informational)": 9424,
+      "METRIC_ID+METRIC_DATE (repeats across apps; informational)": 11111
+    },
+    "disclosure_scan": {
+      "status": "PASS",
+      "n_findings": 0,
+      "columns_scanned": 46,
+      "distinct_values_scanned": 7538,
+      "by_check": {},
+      "examples": []
+    }
+  },
+  "golden_questions": [
+    {
+      "id": "Q01",
+      "question": "How many distinct applications reported in October 2026?",
+      "status": "Unambiguous",
+      "grain": "Distinct EON_ID within the month filter.",
+      "sql": "SELECT COUNT(DISTINCT EON_ID) AS DISTINCT_APPLICATIONS FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-10-31'",
+      "columns": [
+        "DISTINCT_APPLICATIONS"
+      ],
+      "expected": [
+        [
+          923
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q02",
+      "question": "How many applications reported in all 12 periods?",
+      "status": "Unambiguous",
+      "grain": "Distinct reporting months per EON_ID.",
+      "sql": "SELECT COUNT(*) AS APPLICATIONS_REPORTING_ALL_PERIODS FROM (SELECT EON_ID FROM SYNTHETIC_ENTERPRISE_DATA GROUP BY EON_ID HAVING COUNT(DISTINCT REPORTING_MONTHEND_DATE) = 12) X",
+      "columns": [
+        "APPLICATIONS_REPORTING_ALL_PERIODS"
+      ],
+      "expected": [
+        [
+          375
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q03",
+      "question": "How many rows are in each COMPLIANCE_STATUS in October 2026?",
+      "status": "Unambiguous",
+      "grain": "Row counts (one row = app x metric x month), not application counts.",
+      "sql": "SELECT COMPLIANCE_STATUS, COUNT(*) AS ROW_COUNT FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-10-31' GROUP BY COMPLIANCE_STATUS ORDER BY ROW_COUNT DESC, COMPLIANCE_STATUS",
+      "columns": [
+        "COMPLIANCE_STATUS",
+        "ROW_COUNT"
+      ],
+      "expected": [
+        [
+          "Compliant",
+          463
+        ],
+        [
+          "Non_Compliant",
+          324
+        ],
+        [
+          "Pending",
+          183
+        ],
+        [
+          "Not_Applicable",
+          126
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q04",
+      "question": "What is the provisional compliance rate by reporting month?",
+      "status": "PROVISIONAL (numerator/denominator rule is a generator assumption)",
+      "grain": "SUM(IS_NUMERATOR)/SUM(IS_DENOMINATOR) at row grain across all metrics; metric variants A/B differ in denominator scope.",
+      "sql": "SELECT REPORTING_MONTHEND_DATE, ROUND(1.0 * SUM(IS_NUMERATOR) / NULLIF(SUM(IS_DENOMINATOR), 0), 4) AS PROVISIONAL_COMPLIANCE_RATE FROM SYNTHETIC_ENTERPRISE_DATA GROUP BY REPORTING_MONTHEND_DATE ORDER BY REPORTING_MONTHEND_DATE",
+      "columns": [
+        "REPORTING_MONTHEND_DATE",
+        "PROVISIONAL_COMPLIANCE_RATE"
+      ],
+      "expected": [
+        [
+          "2025-11-30",
+          0.5305
+        ],
+        [
+          "2025-12-31",
+          0.5229
+        ],
+        [
+          "2026-01-31",
+          0.5304
+        ],
+        [
+          "2026-02-28",
+          0.5029
+        ],
+        [
+          "2026-03-31",
+          0.5095
+        ],
+        [
+          "2026-04-30",
+          0.5086
+        ],
+        [
+          "2026-05-31",
+          0.5031
+        ],
+        [
+          "2026-06-30",
+          0.5374
+        ],
+        [
+          "2026-07-31",
+          0.497
+        ],
+        [
+          "2026-08-31",
+          0.5141
+        ],
+        [
+          "2026-09-30",
+          0.5416
+        ],
+        [
+          "2026-10-31",
+          0.5304
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q05",
+      "question": "How many completed tests failed in each month?",
+      "status": "Unambiguous",
+      "grain": "Row counts where TEST_STATUS = 'Test_Complete' and TEST_RESULT = 'Fail'.",
+      "sql": "SELECT REPORTING_MONTHEND_DATE, COUNT(*) AS FAILED_TEST_ROWS FROM SYNTHETIC_ENTERPRISE_DATA WHERE TEST_STATUS = 'Test_Complete' AND TEST_RESULT = 'Fail' GROUP BY REPORTING_MONTHEND_DATE ORDER BY REPORTING_MONTHEND_DATE",
+      "columns": [
+        "REPORTING_MONTHEND_DATE",
+        "FAILED_TEST_ROWS"
+      ],
+      "expected": [
+        [
+          "2025-11-30",
+          168
+        ],
+        [
+          "2025-12-31",
+          175
+        ],
+        [
+          "2026-01-31",
+          202
+        ],
+        [
+          "2026-02-28",
+          206
+        ],
+        [
+          "2026-03-31",
+          247
+        ],
+        [
+          "2026-04-30",
+          248
+        ],
+        [
+          "2026-05-31",
+          257
+        ],
+        [
+          "2026-06-30",
+          246
+        ],
+        [
+          "2026-07-31",
+          264
+        ],
+        [
+          "2026-08-31",
+          269
+        ],
+        [
+          "2026-09-30",
+          237
+        ],
+        [
+          "2026-10-31",
+          273
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q06",
+      "question": "Which 5 SUPER_DIVISIONs have the most non-compliant applications in October 2026?",
+      "status": "Unambiguous (an application counts once if any of its rows is Non_Compliant)",
+      "grain": "COUNT(DISTINCT EON_ID) with at least one Non_Compliant row in the month.",
+      "sql": "SELECT SUPER_DIVISION, COUNT(DISTINCT EON_ID) AS NON_COMPLIANT_APPLICATIONS FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-10-31' AND COMPLIANCE_STATUS = 'Non_Compliant' GROUP BY SUPER_DIVISION ORDER BY NON_COMPLIANT_APPLICATIONS DESC, SUPER_DIVISION LIMIT 5",
+      "columns": [
+        "SUPER_DIVISION",
+        "NON_COMPLIANT_APPLICATIONS"
+      ],
+      "expected": [
+        [
+          "Super_Division_04",
+          65
+        ],
+        [
+          "Super_Division_02",
+          50
+        ],
+        [
+          "Super_Division_05",
+          48
+        ],
+        [
+          "Super_Division_06",
+          37
+        ],
+        [
+          "Super_Division_08",
+          36
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q07",
+      "question": "How many applications became non-compliant in October 2026?",
+      "status": "PROVISIONAL (definition of 'newly non-compliant' is an analyst assumption)",
+      "grain": "App has a Non_Compliant row in the latest month, was reported in the previous month, and had no Non_Compliant row then.",
+      "sql": "SELECT COUNT(*) AS NEWLY_NON_COMPLIANT_APPLICATIONS FROM (SELECT DISTINCT EON_ID FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-10-31' AND COMPLIANCE_STATUS = 'Non_Compliant') C WHERE C.EON_ID IN (SELECT EON_ID FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-09-30') AND C.EON_ID NOT IN (SELECT EON_ID FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-09-30' AND COMPLIANCE_STATUS = 'Non_Compliant')",
+      "columns": [
+        "NEWLY_NON_COMPLIANT_APPLICATIONS"
+      ],
+      "expected": [
+        [
+          132
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q08",
+      "question": "Which 5 legal entities hold the most distinct applications in October 2026?",
+      "status": "Unambiguous",
+      "grain": "COUNT(DISTINCT EON_ID) by LEGAL_ENTITY_NAME for the month.",
+      "sql": "SELECT LEGAL_ENTITY_NAME, COUNT(DISTINCT EON_ID) AS APPLICATIONS FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-10-31' GROUP BY LEGAL_ENTITY_NAME ORDER BY APPLICATIONS DESC, LEGAL_ENTITY_NAME LIMIT 5",
+      "columns": [
+        "LEGAL_ENTITY_NAME",
+        "APPLICATIONS"
+      ],
+      "expected": [
+        [
+          "Legal_Entity_34",
+          46
+        ],
+        [
+          "Legal_Entity_38",
+          46
+        ],
+        [
+          "Legal_Entity_27",
+          45
+        ],
+        [
+          "Legal_Entity_24",
+          42
+        ],
+        [
+          "Legal_Entity_40",
+          38
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q09",
+      "question": "How many M&A-associated applications have a non-compliant row in October 2026?",
+      "status": "Unambiguous",
+      "grain": "COUNT(DISTINCT EON_ID) with IS_MERGERS_ACQUISITIONS_ASSET = 'Y' and a Non_Compliant row in the month.",
+      "sql": "SELECT COUNT(DISTINCT EON_ID) AS MA_NON_COMPLIANT_APPLICATIONS FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-10-31' AND IS_MERGERS_ACQUISITIONS_ASSET = 'Y' AND COMPLIANCE_STATUS = 'Non_Compliant'",
+      "columns": [
+        "MA_NON_COMPLIANT_APPLICATIONS"
+      ],
+      "expected": [
+        [
+          29
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q10",
+      "question": "Which 5 primary business owners (fictional) own the most applications in October 2026?",
+      "status": "Unambiguous",
+      "grain": "COUNT(DISTINCT EON_ID) by (PRIMARY_BUS_FIRST_NAME, PRIMARY_BUS_LAST_NAME) for the month.",
+      "sql": "SELECT PRIMARY_BUS_FIRST_NAME, PRIMARY_BUS_LAST_NAME, COUNT(DISTINCT EON_ID) AS APPLICATIONS FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-10-31' GROUP BY PRIMARY_BUS_FIRST_NAME, PRIMARY_BUS_LAST_NAME ORDER BY APPLICATIONS DESC, PRIMARY_BUS_FIRST_NAME, PRIMARY_BUS_LAST_NAME LIMIT 5",
+      "columns": [
+        "PRIMARY_BUS_FIRST_NAME",
+        "PRIMARY_BUS_LAST_NAME",
+        "APPLICATIONS"
+      ],
+      "expected": [
+        [
+          "Marrin",
+          "Haxaven",
+          24
+        ],
+        [
+          "Nurmuta",
+          "Wraolshaw",
+          24
+        ],
+        [
+          "Yaltala",
+          "Turarmir",
+          22
+        ],
+        [
+          "Nurans",
+          "Povorin",
+          21
+        ],
+        [
+          "Ulaelve",
+          "Yoreven",
+          21
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q11",
+      "question": "What is the average RFB per COMPLIANCE_STATUS in October 2026?",
+      "status": "PROVISIONAL (RFB semantics are a generator assumption)",
+      "grain": "AVG over rows with non-null RFB (row grain); row counts include null-RFB rows.",
+      "sql": "SELECT COMPLIANCE_STATUS, ROUND(AVG(RFB), 3) AS AVG_RFB, COUNT(*) AS ROW_COUNT FROM SYNTHETIC_ENTERPRISE_DATA WHERE REPORTING_MONTHEND_DATE = '2026-10-31' GROUP BY COMPLIANCE_STATUS ORDER BY COMPLIANCE_STATUS",
+      "columns": [
+        "COMPLIANCE_STATUS",
+        "AVG_RFB",
+        "ROW_COUNT"
+      ],
+      "expected": [
+        [
+          "Compliant",
+          0.115,
+          463
+        ],
+        [
+          "Non_Compliant",
+          2.683,
+          324
+        ],
+        [
+          "Not_Applicable",
+          0.048,
+          126
+        ],
+        [
+          "Pending",
+          0.258,
+          183
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    },
+    {
+      "id": "Q12",
+      "question": "What share of completed tests failed, by ASSET_RISK_RATING_2 (all months)?",
+      "status": "PROVISIONAL (risk-code severity direction is not defined by the sources)",
+      "grain": "Rows with TEST_STATUS = 'Test_Complete' and a non-null TEST_RESULT.",
+      "sql": "SELECT ASSET_RISK_RATING_2, COUNT(*) AS COMPLETED_TESTS, ROUND(1.0 * SUM(CASE WHEN TEST_RESULT = 'Fail' THEN 1 ELSE 0 END) / COUNT(*), 4) AS FAIL_SHARE FROM SYNTHETIC_ENTERPRISE_DATA WHERE TEST_STATUS = 'Test_Complete' AND TEST_RESULT IS NOT NULL GROUP BY ASSET_RISK_RATING_2 ORDER BY ASSET_RISK_RATING_2",
+      "columns": [
+        "ASSET_RISK_RATING_2",
+        "COMPLETED_TESTS",
+        "FAIL_SHARE"
+      ],
+      "expected": [
+        [
+          "P1",
+          804,
+          0.3993
+        ],
+        [
+          "P2",
+          3009,
+          0.3566
+        ],
+        [
+          "P3",
+          2934,
+          0.3773
+        ],
+        [
+          "P4",
+          764,
+          0.3809
+        ]
+      ],
+      "verified_sql_vs_pandas": true
+    }
+  ],
+  "config_digest": "68c55b4900756d083e287ec65fe4a84f70f8cea2afdab5bd445bf0272ba02ed0",
+  "validation": {
+    "csv": [
+      {
+        "section": "Schema",
+        "check": "Row count equals configured row_count",
+        "status": "PASS",
+        "detail": "11,399 vs 11,399"
+      },
+      {
+        "section": "Schema",
+        "check": "Row count equals client contract (11,399)",
+        "status": "PASS",
+        "detail": "11,399"
+      },
+      {
+        "section": "Schema",
+        "check": "Exactly 57 columns",
+        "status": "PASS",
+        "detail": "57"
+      },
+      {
+        "section": "Schema",
+        "check": "Column names and order match specification",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Schema",
+        "check": "No duplicate column names",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Schema",
+        "check": "Spelling preserved: HAS_CTIRICAL_KBS and KBS_FLAG_FLAG",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Schema",
+        "check": "Seed equals contract seed 20261103",
+        "status": "PASS",
+        "detail": "20261103"
+      },
+      {
+        "section": "Schema",
+        "check": "Dictionary column order identical to specification",
+        "status": "PASS",
+        "detail": "57 dictionary rows"
+      },
+      {
+        "section": "Schema",
+        "check": "Every date / integer cell parses",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Schema",
+        "check": "Dates stored as ISO YYYY-MM-DD",
+        "status": "PASS",
+        "detail": "0 non-ISO cells"
+      },
+      {
+        "section": "Keys & nulls",
+        "check": "All non-nullable columns fully populated (keys, reporting fields, hierarchy levels 1-3, ...)",
+        "status": "PASS",
+        "detail": "49 columns checked"
+      },
+      {
+        "section": "Keys & nulls",
+        "check": "Nulls are true missing values (no 'NULL'/'nan'/'None'/blank-string tokens)",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Keys & nulls",
+        "check": "Identifier columns are text (not numeric)",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "IS_NUMERATOR in {0,1}",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "IS_DENOMINATOR in {0,1}",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "SYSTEM_RTC in {0,1}",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "APPLICATION_TIER in 1..4",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "REPORTING_MONTH in 1..12 and REPORTING_YEAR 4-digit",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "RFB and TOTAL_RFB non-negative integers where present",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "HAS_CTIRICAL_KBS contains only Y/N",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "IS_MERGERS_ACQUISITIONS_ASSET contains only Y/N",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "IS_USBANKS contains only Y/N",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "IS_MSBNA contains only Y/N",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "IS_MSPBNA contains only Y/N",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "KBS_FLAG_FLAG contains only Y/N",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "ASSET_RISK_RATING_2 codes valid (P[1-4])",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "ARR_AVAILABILITY codes valid (A[1-4])",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "ARR_CONFIDENTIALITY codes valid (C[1-4])",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "ARR_INTEGRITY codes valid (I[1-4])",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "TEST_STATUS vocabulary valid",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "COMPLIANCE_STATUS vocabulary valid",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "TEST_RESULT only Pass/Fail/null",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "LIFECYCLE_PHASE vocabulary valid",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "APPLICATION_RTO vocabulary valid",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Domains",
+        "check": "METRIC_DATE_TYPE vocabulary valid",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Dates",
+        "check": "METRIC_DATE equals REPORTING_MONTHEND_DATE on every row",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Dates",
+        "check": "REPORTING_MONTHEND_DATE is a month-end",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Dates",
+        "check": "Reporting dates are exactly the configured consecutive month-ends",
+        "status": "PASS",
+        "detail": "12 periods 2025-11-30..2026-10-31"
+      },
+      {
+        "section": "Dates",
+        "check": "REPORTING_MONTH derived correctly",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Dates",
+        "check": "REPORTING_YEAR derived correctly",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Dates",
+        "check": "RTO_CHANGE_DATE null or <= METRIC_DATE",
+        "status": "PASS",
+        "detail": "0 violations"
+      },
+      {
+        "section": "Dates",
+        "check": "RTO_CHANGE_DATE missingness is moderate/high (often missing)",
+        "status": "PASS",
+        "detail": "65.3% null"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "EON_ID <-> APPLICATION_NAME one-to-one",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "EON_ID <-> GRN one-to-one",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "GRN suffix agrees with APPLICATION_NAME",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Generated application set equals entity lookup",
+        "status": "PASS",
+        "detail": "1500 vs 1500"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: application_name_grn",
+        "status": "PASS",
+        "detail": "0.00% of multi-row apps change; 0.00% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: application_tier",
+        "status": "PASS",
+        "detail": "2.95% of multi-row apps change; 0.93% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: application_rto",
+        "status": "PASS",
+        "detail": "3.66% of multi-row apps change; 1.18% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: lifecycle_phase",
+        "status": "PASS",
+        "detail": "3.81% of multi-row apps change; 1.04% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: risk_ratings",
+        "status": "PASS",
+        "detail": "3.30% of multi-row apps change; 0.91% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: critical_kbs_flags",
+        "status": "PASS",
+        "detail": "0.00% of multi-row apps change; 0.00% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: ma_fields",
+        "status": "PASS",
+        "detail": "0.00% of multi-row apps change; 0.00% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: business_owner",
+        "status": "PASS",
+        "detail": "3.66% of multi-row apps change; 1.04% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: it_owner",
+        "status": "PASS",
+        "detail": "2.80% of multi-row apps change; 0.83% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: organisation_both_hierarchies",
+        "status": "PASS",
+        "detail": "2.01% of multi-row apps change; 0.63% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: cost_centre",
+        "status": "PASS",
+        "detail": "2.51% of multi-row apps change; 0.78% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: legal_entity_and_flags",
+        "status": "PASS",
+        "detail": "1.58% of multi-row apps change; 0.39% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: primary_building_location",
+        "status": "PASS",
+        "detail": "1.87% of multi-row apps change; 0.46% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Stable within EON_ID: employee_building_country",
+        "status": "PASS",
+        "detail": "3.23% of multi-row apps change; 0.96% rows off modal"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Business-owner (first,last) pairs all exist in the fictional-person lookup",
+        "status": "PASS",
+        "detail": "412 pairs"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "IT-owner (first,last) pairs all exist in the fictional-person lookup",
+        "status": "PASS",
+        "detail": "334 pairs"
+      },
+      {
+        "section": "Entity identity & stability",
+        "check": "Business-owner pair maps to a single employee building",
+        "status": "PASS",
+        "detail": "max 1"
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "DIVISION has exactly one SUPER_DIVISION",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "SUPER_DEPARTMENT has exactly one DIVISION",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "DEPARTMENT has exactly one SUPER_DEPARTMENT",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "BU_DIVISION has exactly one BU_SUPER_DIVISION",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "BU_SUPER_DEPARTMENT has exactly one BU_DIVISION",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "BU_DEPARTMENT has exactly one BU_SUPER_DEPARTMENT",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "Hierarchy 2 paths exist in the lookup",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "Hierarchy 1 (BU_) paths exist in the lookup",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "DEPARTMENT deterministically maps to one BU_DEPARTMENT",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "ORG_GROUP_TYPE consistent with populated level (DEPARTMENT => both dept cols; SUPER_DEPARTMENT => both null)",
+        "status": "PASS",
+        "detail": "11.2% rows at super-department level"
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "BUS_ORG_LG_NM consistent with hierarchy",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "COST_CENTER_CODE <-> COST_CENTER_NAME one-to-one",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "Cost-centre code/name pairs match the lookup",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "Cost centre belongs to the row's DEPARTMENT",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "LEGAL_ENTITY_CODE <-> LEGAL_ENTITY_NAME one-to-one",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "Legal-entity code/name pairs match the lookup",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "Bank-grouping flags are a function of the legal entity",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "USBANKS_LE_LIST agrees with IS_USBANKS / IS_MSBNA / IS_MSPBNA (null iff all N)",
+        "status": "PASS",
+        "detail": "17.5% null"
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "EVENT_LOCATION deterministic from BUILDING_NAME (location lookup)",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "BUILDING_NAME / EMPLOYEE_BUILDING_NAME come from the building lookup",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "EMPLOYEE_COUNTRY_NAME deterministic from EMPLOYEE_BUILDING_NAME",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "ACQUIRED_ENTITY agrees with IS_MERGERS_ACQUISITIONS_ASSET",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Hierarchies & lookups",
+        "check": "KBS_FLAG_FLAG consistent with HAS_CTIRICAL_KBS",
+        "status": "PASS",
+        "detail": "0.00% disagree"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "TEST_RESULT null whenever no completed test",
+        "status": "PASS",
+        "detail": "0 violations"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "Test_Complete rows nearly always carry Pass/Fail",
+        "status": "PASS",
+        "detail": "99.17%"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "(COMPLIANCE_STATUS, TEST_STATUS, TEST_RESULT) combinations are all permitted",
+        "status": "PASS",
+        "detail": "17 combinations used"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "COMPLIANCE_REASON consistent with COMPLIANCE_STATUS and TEST_STATUS",
+        "status": "PASS",
+        "detail": "0 violations"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "No-test rows carry a synthetic no-test reason or pending/NA reason (never a 'Test_Failed'/'Requirements_Met' reason)",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "EXEMPTION_LEVEL_1 usually populated when Exempt",
+        "status": "PASS",
+        "detail": "96.9%"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "EXEMPTION_LEVEL_1 mostly blank otherwise",
+        "status": "PASS",
+        "detail": "2.1% populated"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "TOTAL_RFB >= RFB where both numeric",
+        "status": "PASS",
+        "detail": "0 violations"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "RFB normally zero for compliant rows",
+        "status": "PASS",
+        "detail": "92.1% zero"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "SYSTEM_RTC=1 more likely for non-compliant than compliant rows",
+        "status": "PASS",
+        "detail": "34.7% vs 5.8%"
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "IS_NUMERATOR <= IS_DENOMINATOR",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Compliance & testing",
+        "check": "IS_DENOMINATOR / IS_NUMERATOR follow the provisional metric-variant rule",
+        "status": "PASS",
+        "detail": "provisional rule, not a client definition"
+      },
+      {
+        "section": "Grain & duplicates",
+        "check": "Candidate key (EON_ID, METRIC_ID, METRIC_DATE) is unique",
+        "status": "PASS",
+        "detail": "0"
+      },
+      {
+        "section": "Grain & duplicates",
+        "check": "No fully duplicated rows",
+        "status": "PASS",
+        "detail": "0"
+      },
+      {
+        "section": "Grain & duplicates",
+        "check": "METRIC_ID values all come from the metric catalogue",
+        "status": "PASS",
+        "detail": "24 used of 24"
+      },
+      {
+        "section": "Grain & duplicates",
+        "check": "METRIC_ID repeats across applications and periods (not a row key)",
+        "status": "PASS",
+        "detail": "rows/metric min 127 max 1955"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Distinct EON_ID within target range",
+        "status": "PASS",
+        "detail": "1500"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Meaningful share of applications observed in 2+ periods",
+        "status": "PASS",
+        "detail": "90.7%"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Meaningful share of applications observed in 6+ periods",
+        "status": "PASS",
+        "detail": "51.3%"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Dataset is not a full Cartesian grid (sparse history present)",
+        "status": "PASS",
+        "detail": "25.0% fully observed, 7.2% single observation"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Heavy-tailed observations per application (top 10% of apps hold well above 10% of rows)",
+        "status": "PASS",
+        "detail": "24.6%"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Every reporting period has data",
+        "status": "PASS",
+        "detail": "min 699 max 1117 rows/period"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Month-to-month new non-compliance observed",
+        "status": "PASS",
+        "detail": "1296"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Month-to-month remediation (non-compliance resolved) observed",
+        "status": "PASS",
+        "detail": "1311"
+      },
+      {
+        "section": "Longitudinal behaviour",
+        "check": "Provisional compliance rate varies across months (trend demonstrable)",
+        "status": "PASS",
+        "detail": "range 0.497-0.542"
+      },
+      {
+        "section": "Scenarios",
+        "check": "All configured scenarios are present",
+        "status": "PASS",
+        "detail": "9 scenarios"
+      },
+      {
+        "section": "Scenarios",
+        "check": "consistently_compliant: Non_Compliant share <= 15%",
+        "status": "PASS",
+        "detail": "0.1007"
+      },
+      {
+        "section": "Scenarios",
+        "check": "persistently_noncompliant: Non_Compliant share >= 60%",
+        "status": "PASS",
+        "detail": "0.661"
+      },
+      {
+        "section": "Scenarios",
+        "check": "deteriorating: Non_Compliant share rises after the switch month",
+        "status": "PASS",
+        "detail": "0.14 -> 0.62"
+      },
+      {
+        "section": "Scenarios",
+        "check": "improving_after_remediation: Non_Compliant share falls after the switch month",
+        "status": "PASS",
+        "detail": "0.65 -> 0.20"
+      },
+      {
+        "section": "Scenarios",
+        "check": "no_completed_tests: zero Test_Complete rows",
+        "status": "PASS",
+        "detail": "0.0"
+      },
+      {
+        "section": "Scenarios",
+        "check": "pending_tests: Test_Pending dominates",
+        "status": "PASS",
+        "detail": "0.8521"
+      },
+      {
+        "section": "Scenarios",
+        "check": "exempt: Exempt dominates",
+        "status": "PASS",
+        "detail": "0.8768"
+      },
+      {
+        "section": "Scenarios",
+        "check": "No artificial risk/compliance coupling: each risk code has a mixed Non_Compliant share (5%-80%)",
+        "status": "PASS",
+        "detail": "{'P1': 0.3188, 'P2': 0.2952, 'P3': 0.2987, 'P4': 0.3162}"
+      },
+      {
+        "section": "Scenarios",
+        "check": "Failed completed tests occur in every asset-risk code",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "Privacy / disclosure",
+        "check": "Disclosure scan: no emails, deny-listed firm/bank terms, real-name matches, null-like strings or out-of-shape values",
+        "status": "PASS",
+        "detail": "0 findings over 7,538 distinct values in 46 columns "
+      },
+      {
+        "section": "Privacy / disclosure",
+        "check": "Disclosure scanner self-test detects planted violations",
+        "status": "PASS",
+        "detail": ""
+      }
+    ],
+    "xlsx_non_pass": [],
+    "files": [
+      {
+        "section": "File integrity",
+        "check": "CSV is valid UTF-8 without BOM",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "File integrity",
+        "check": "CSV header row equals the 57 specified column names",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "File integrity",
+        "check": "Saved CSV equals the in-memory frame cell-by-cell",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "File integrity",
+        "check": "XLSX Data sheet equals CSV cell-by-cell",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "File integrity",
+        "check": "Same configuration + seed regenerates an identical dataset",
+        "status": "PASS",
+        "detail": ""
+      },
+      {
+        "section": "File integrity",
+        "check": "Workbook has the four required worksheets in order",
+        "status": "PASS",
+        "detail": "['Data', 'Data Dictionary', 'Validation Summary', 'Assumptions']"
+      },
+      {
+        "section": "File integrity",
+        "check": "Data Dictionary sheet lists all 57 columns",
+        "status": "PASS",
+        "detail": "57"
+      },
+      {
+        "section": "File integrity",
+        "check": "Final XLSX (after summary rewrite) still equals CSV cell-by-cell",
+        "status": "PASS",
+        "detail": ""
+      }
+    ]
+  }
+}

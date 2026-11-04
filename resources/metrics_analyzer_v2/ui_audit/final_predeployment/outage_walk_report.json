@@ -1,0 +1,405 @@
+{
+  "base": "http://127.0.0.1:8082",
+  "firstRequest": {
+    "status": 200,
+    "ms": 5528,
+    "source": "packaged"
+  },
+  "walk": {
+    "requests": 4920,
+    "ok": 4920,
+    "failures": [],
+    "failureCount": 0,
+    "p50Ms": 26,
+    "p95Ms": 90,
+    "maxMs": 2075,
+    "scopes": {
+      "default": {
+        "requests": 60,
+        "ok": 60
+      },
+      "tier=4": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2025-11-30": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2025-12-31": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-01-31": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-02-28": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-03-31": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-04-30": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-05-31": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-06-30": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-07-31": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-08-31": {
+        "requests": 60,
+        "ok": 60
+      },
+      "month=2026-09-30": {
+        "requests": 60,
+        "ok": 60
+      },
+      "tier=1": {
+        "requests": 60,
+        "ok": 60
+      },
+      "tier=2": {
+        "requests": 60,
+        "ok": 60
+      },
+      "tier=3": {
+        "requests": 60,
+        "ok": 60
+      },
+      "risk=P1": {
+        "requests": 60,
+        "ok": 60
+      },
+      "risk=P2": {
+        "requests": 60,
+        "ok": 60
+      },
+      "risk=P3": {
+        "requests": 60,
+        "ok": 60
+      },
+      "risk=P4": {
+        "requests": 60,
+        "ok": 60
+      },
+      "lifecycle=Development": {
+        "requests": 60,
+        "ok": 60
+      },
+      "lifecycle=Implementation": {
+        "requests": 60,
+        "ok": 60
+      },
+      "lifecycle=Planning": {
+        "requests": 60,
+        "ok": 60
+      },
+      "lifecycle=Production": {
+        "requests": 60,
+        "ok": 60
+      },
+      "lifecycle=Retirement": {
+        "requests": 60,
+        "ok": 60
+      },
+      "ma=Y": {
+        "requests": 60,
+        "ok": 60
+      },
+      "ma=N": {
+        "requests": 60,
+        "ok": 60
+      },
+      "orgTree=BU": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=Super_Division_01": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=Super_Division_02": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=Super_Division_03": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=Super_Division_04": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=Super_Division_05": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=Super_Division_06": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=Super_Division_07": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=Super_Division_08": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=BU_Super_Division_01&orgTree=BU": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=BU_Super_Division_02&orgTree=BU": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=BU_Super_Division_03&orgTree=BU": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=BU_Super_Division_04&orgTree=BU": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=BU_Super_Division_05&orgTree=BU": {
+        "requests": 60,
+        "ok": 60
+      },
+      "l1=BU_Super_Division_06&orgTree=BU": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2048": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2049": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2051": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2110": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2127": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2195": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2242": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2249": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2377": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2413": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2425": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2590": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2723": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2751": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2909": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2963": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE2985": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3109": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3141": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3455": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3575": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3617": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3676": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3727": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3933": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE3981": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4023": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4070": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4075": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4227": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4260": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4412": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4413": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4497": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4621": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4709": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4814": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4903": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4927": {
+        "requests": 60,
+        "ok": 60
+      },
+      "legalEntity=LE4955": {
+        "requests": 60,
+        "ok": 60
+      }
+    }
+  },
+  "unsupported": [
+    {
+      "probe": "a month combined with a tier",
+      "path": "/overview?month=2025-11-30&tier=4",
+      "status": 503,
+      "code": "FALLBACK_UNSUPPORTED",
+      "explicit": true
+    },
+    {
+      "probe": "two filters together",
+      "path": "/overview?tier=4&risk=P1",
+      "status": 503,
+      "code": "FALLBACK_UNSUPPORTED",
+      "explicit": true
+    },
+    {
+      "probe": "two values of one filter",
+      "path": "/overview?tier=4&tier=3",
+      "status": 503,
+      "code": "FALLBACK_UNSUPPORTED",
+      "explicit": true
+    },
+    {
+      "probe": "a month that does not exist",
+      "path": "/overview?month=2019-01-31",
+      "status": 503,
+      "code": "FALLBACK_UNSUPPORTED",
+      "explicit": true
+    },
+    {
+      "probe": "a registered non-default sort on applications",
+      "path": "/metrics/M340202/applications?sort=rfb:desc",
+      "status": 503,
+      "code": "FALLBACK_UNSUPPORTED",
+      "explicit": true
+    },
+    {
+      "probe": "a legal entity that was never recorded",
+      "path": "/overview?legalEntity=LE0000",
+      "status": 503,
+      "code": "FALLBACK_UNSUPPORTED",
+      "explicit": true
+    }
+  ],
+  "agents": [
+    {
+      "probe": "list agents",
+      "status": 200,
+      "ms": 74,
+      "body": "{\"data\":{\"agents\":[{\"agentKey\":\"analysis\",\"displayName\":\"Analysis & Investigation\",\"description\":\"Understand what is happening and why. Explore trends, anomalie"
+    },
+    {
+      "probe": "start a conversation",
+      "status": 400,
+      "ms": 41,
+      "body": "{\"error\":{\"code\":\"VALIDATION_FAILED\",\"message\":\"The request is not valid.\",\"retryable\":false,\"requestId\":\"0674ec4b9629466e965745120087be25\"}}"
+    }
+  ]
+}

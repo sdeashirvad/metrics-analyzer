@@ -1,0 +1,35 @@
+Metrics Analyzer mock data deployment package, batch MOCK_V1_20261103, dataset v1-seed20261103
+Built 2026-11-03  (SQL statements UNEXECUTED)
+SHA-256  bytes  path
+99186d8ba9a5b640f610a286d23f00d12f7238538188a1ccc8f88fe7341dfd9b       1433  agent/agent_instructions.md
+655d085f58eccdb1f4def0ab448a9d1591d507c2473b8183a8646ab79d93560f       3741  agent/agent_specification.yaml
+04d5fb62cf8a5b9e4ba079b342e3e14870194460c0a448cc8a7cfd585bf07b71      10289  agent/golden_questions.md
+cda8a4e06047847843b0f877872cfc25eb9e7569e6534935d490d94a23206c81      15472  data/assumptions_register.md
+398b5168d29d6b6a706ef87fa03790d4a4232ab171b2b3abf673aac01cef35ef      78434  data/data_profile.json
+a6d76f631611823b3d4cfbada16828ab92cbc2b9debd21178cfb0d464afca0b3     175253  data/generate_client_dataset.py
+08df1af542daf11c496355680d21de5d01618bf9220c965cdc75ac74c0cfbca3    6701793  data/synthetic_enterprise_data.csv
+a3bff552c517149e3e0436286d6c905ffd55e7f1de1aa74fe976d7cd975e31d1    2753612  data/synthetic_enterprise_data.xlsx
+971a7a9014b820857c3988ceab3f6924487909c0b6514e5c10d53a38c68b1792      27445  data/validation_report.md
+38fa48f65b55d846c1618c0882fc0a8133f57d0efba05b762632447c6d7e3769       2378  docs/AGENT_CONFIGURATION.md
+b33c95de70e2d9443da17caf7fc38ee3be67e78fab07be45c6851774f75fab26      16190  docs/DATA_MODEL.md
+b6a2d332e7eeafb392392ed27b2fcd9f2776120a202300c7b376c9cb42ce9c38       2807  docs/PERMISSIONS.md
+2f70ea934d0d2859de0492201feb4eb3d3607667bef5581c640125545fed7b1a       7980  docs/README_SETUP.md
+49a892bfd8780c21cb471c239c92dc76a3c6b7c2bf1a19a3f0f8d6ef77af1a87       3153  docs/ROLLBACK.md
+b78bf17ff19e3695c85d024214689f05d9f39a98f2f6bb3763d815a0a1aef2a8       4145  docs/SEMANTIC_MODEL.md
+3c404854ad7dd866383e326d94e6c86e46029f0e686fa505c5795915172cfcd3       3699  sql/00_preflight.sql
+58a9fca4d15b23c189fc1e4f373a6db3fc6279d34a41b2aa07ea4585be80f436       1282  sql/01_create_schema.sql
+5bf22146e3684f85aee2b7a4de478c7cab9f0711a7a0b07d1ddc0fb49fd8bf40       2687  sql/02_create_file_format_and_stage.sql
+5e4470d88edd99484f3ea6765c975dbff0025afe6452e5f1b9c5018dcde2835b       5055  sql/03_create_raw_tables.sql
+f390e6b77fe4c07e2e978a220c76de0338083888a85042784494e1701f15079a       8327  sql/04_validate_staged_file.sql
+5836aa6b6d8da4f927f4ae60bef7d9a0dfb4f60dc59e809e6050c1fdf7d23a80       6031  sql/05_copy_into_raw.sql
+ceccd6b1f67cad8361bf78209682201e2e730064b0b0eb28c38478d8c3a99f18       9603  sql/06_create_typed_staging.sql
+e7e8e3716bc4115f04ed8d9c12eb2a11c651a5f19dcadc6a2e482ff07d5f5a35      19121  sql/07_validate_staging.sql
+3e6f3e4c9f8bb5af490aca189a3882a5334830aff616d2ccb68316bb8ee819d1       4492  sql/08_create_final_tables.sql
+ea00462545aeaa9a83108f6de09265113e72d7b1af9230c419f425abd726260d       6021  sql/09_promote_validated_data.sql
+eb2a12a28b6c7789c54010d85fbda61a1de74b739b004353e237f20193d26481       6441  sql/10_reconciliation.sql
+bcc62b4dbc4ece950525008cdce9398064bf23a44b0461cb14c32bd83cd88ffb       6414  sql/11_create_curated_views.sql
+d5a4130e41dbe783e05f1b34875e1e15f8025d264379a36cd52089157e3b9cbe      26021  sql/12_create_semantic_view.sql
+bb88152def47f5c46cb868d0d598ea37c8dd1c10ec3786684fbda1e1631ca663       6167  sql/13_create_agent.sql
+dd650adfd5140b963996e9d008d2c8232063c6bec6352538bdbd79ec86d2c3fc       3586  sql/14_grant_permissions.sql
+f15b61f18d3ed1132849dfe64d277461bdebbec69e77ce920686a2c186efc957       6146  sql/15_smoke_tests.sql
+837a5dcc4c5280549399f51421d0110a95beccd3780a4899b1a1479d6b7b524c     122587  sql/ALL_IN_ORDER.sql

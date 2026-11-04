@@ -1,0 +1,91 @@
+-- =====================================================================================
+-- 08_create_final_tables.sql
+-- The analytical table. Typed, NOT NULL where the data dictionary says the column is never blank.
+-- CREATE TABLE IF NOT EXISTS: re-running never drops or empties data. Status: UNEXECUTED.
+-- =====================================================================================
+-- Set these two values ONCE per worksheet, then run the whole file.
+SET SETUP_ROLE = '<SETUP_ROLE>';          -- a role that can create objects in METRICS_ANALYZER (from 00_preflight 0.4)
+SET WH_NAME    = '<WAREHOUSE_NAME>';      -- an existing warehouse (from 00_preflight 0.2)
+USE ROLE IDENTIFIER($SETUP_ROLE);
+USE WAREHOUSE IDENTIFIER($WH_NAME);
+USE DATABASE METRICS_ANALYZER;
+USE SCHEMA METRICS_ANALYZER.MOCK_DATA;
+
+-- Grain (verified on the generated file, enforced as a blocking check in script 07 and again in script 10):
+--   one row per EON_ID x METRIC_ID x METRIC_DATE   (11,399 rows; 0 duplicate keys).
+-- The client specification explicitly allows EON_ID and METRIC_ID to repeat, and a future real extract may repeat the
+-- full key. Snowflake does not enforce PRIMARY KEY/UNIQUE on standard tables, so uniqueness is checked, not declared.
+CREATE TABLE IF NOT EXISTS APPLICATION_COMPLIANCE (
+    METRIC_ID VARCHAR(20) NOT NULL,
+    METRIC_DATE DATE NOT NULL,
+    METRIC_DATE_TYPE VARCHAR(20) NOT NULL,
+    IS_NUMERATOR NUMBER(1,0) NOT NULL,
+    IS_DENOMINATOR NUMBER(1,0) NOT NULL,
+    EON_ID VARCHAR(20) NOT NULL,
+    BUILDING_NAME VARCHAR(50) NOT NULL,
+    EVENT_LOCATION VARCHAR(50) NOT NULL,
+    APPLICATION_TIER NUMBER(1,0) NOT NULL,
+    EXEMPTION_LEVEL_1 VARCHAR(50),
+    TEST_STATUS VARCHAR(30) NOT NULL,
+    TEST_RESULT VARCHAR(20),
+    SYSTEM_RTC NUMBER(1,0) NOT NULL,
+    RFB NUMBER(10,0),
+    TOTAL_RFB NUMBER(10,0),
+    COMPLIANCE_STATUS VARCHAR(30) NOT NULL,
+    COMPLIANCE_REASON VARCHAR(60) NOT NULL,
+    RTO_CHANGE_DATE DATE,
+    GRN VARCHAR(100) NOT NULL,
+    APPLICATION_NAME VARCHAR(100) NOT NULL,
+    APPLICATION_RTO VARCHAR(30) NOT NULL,
+    HAS_CTIRICAL_KBS VARCHAR(1) NOT NULL,
+    LIFECYCLE_PHASE VARCHAR(30) NOT NULL,
+    ASSET_RISK_RATING_2 VARCHAR(10) NOT NULL,
+    ARR_AVAILABILITY VARCHAR(10) NOT NULL,
+    ARR_CONFIDENTIALITY VARCHAR(10) NOT NULL,
+    ARR_INTEGRITY VARCHAR(10) NOT NULL,
+    IS_MERGERS_ACQUISITIONS_ASSET VARCHAR(1) NOT NULL,
+    ACQUIRED_ENTITY VARCHAR(60) NOT NULL,
+    BU_SUPER_DIVISION VARCHAR(100) NOT NULL,
+    BU_DIVISION VARCHAR(100) NOT NULL,
+    BU_SUPER_DEPARTMENT VARCHAR(100) NOT NULL,
+    BU_DEPARTMENT VARCHAR(100),
+    ORG_GROUP_TYPE VARCHAR(30) NOT NULL,
+    SUPER_DIVISION VARCHAR(100) NOT NULL,
+    DIVISION VARCHAR(100) NOT NULL,
+    SUPER_DEPARTMENT VARCHAR(100) NOT NULL,
+    DEPARTMENT VARCHAR(100),
+    BUS_ORG_LG_NM VARCHAR(100) NOT NULL,
+    COST_CENTER_CODE VARCHAR(20) NOT NULL,
+    COST_CENTER_NAME VARCHAR(100) NOT NULL,
+    EMPLOYEE_BUILDING_NAME VARCHAR(50) NOT NULL,
+    EMPLOYEE_COUNTRY_NAME VARCHAR(50) NOT NULL,
+    PRIMARY_BUS_FIRST_NAME VARCHAR(100) NOT NULL,
+    PRIMARY_BUS_LAST_NAME VARCHAR(100) NOT NULL,
+    PRIMARY_IT_FIRST_NAME VARCHAR(100) NOT NULL,
+    PRIMARY_IT_LAST_NAME VARCHAR(100) NOT NULL,
+    LEGAL_ENTITY_CODE VARCHAR(20) NOT NULL,
+    LEGAL_ENTITY_NAME VARCHAR(100) NOT NULL,
+    IS_USBANKS VARCHAR(1) NOT NULL,
+    IS_MSBNA VARCHAR(1) NOT NULL,
+    IS_MSPBNA VARCHAR(1) NOT NULL,
+    USBANKS_LE_LIST VARCHAR(50),
+    KBS_FLAG_FLAG VARCHAR(1) NOT NULL,
+    REPORTING_MONTHEND_DATE DATE NOT NULL,
+    REPORTING_MONTH NUMBER(2,0) NOT NULL,
+    REPORTING_YEAR NUMBER(4,0) NOT NULL,
+    -- derived / traceability columns (not source columns)
+    OBSERVATION_KEY         VARCHAR      NOT NULL,   -- EON_ID|METRIC_ID|YYYY-MM-DD, the observed row grain
+    LOAD_BATCH_ID           VARCHAR      NOT NULL,
+    SOURCE_FILE_ROW_NUMBER  NUMBER(10,0) NOT NULL,
+    PROMOTED_AT             TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP()
+) COMMENT = 'Validated application compliance observations. Grain: EON_ID x METRIC_ID x METRIC_DATE (observed unique). 57 source columns + 4 derived/traceability columns.';
+
+-- Clustering is unnecessary at 11k rows; none is declared.
+
+-- Checkpoint 08
+SELECT COUNT(*) AS final_columns
+FROM METRICS_ANALYZER.INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = 'MOCK_DATA' AND TABLE_NAME = 'APPLICATION_COMPLIANCE';
+-- Expected: 61 (57 source + 4 derived)
+SELECT COUNT(*) AS final_rows FROM APPLICATION_COMPLIANCE;
+-- Expected: 0 on first run (script 09 fills it).

@@ -1,0 +1,20 @@
+branch: v2-poc
+HEAD: ce4016151ed32327956fe1b4849a4123e47f43b9
+
+git rev-parse HEAD
+ce4016151ed32327956fe1b4849a4123e47f43b9
+
+git status --porcelain
+?? METRICSanalyzer1@
+?? docs/
+?? frontend/.env.production
+?? resources/
+?? snowflake/mock_data_setup/
+?? snowflake_v1.zip
+?? snowflake_v2.zip
+?? snowflake_v3.zip
+?? snowflake_v4.zip
+
+Captured on branch main before v2-poc was created and before B0 files were added. Creating v2-poc did not change HEAD or this porcelain. No commit.
+
+MANIFEST.sha256 lists every file in the untracked archive except itself (lowercase SHA-256, two spaces, repo-relative forward-slash path). The zip includes the manifest.

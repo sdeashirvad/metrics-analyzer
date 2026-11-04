@@ -1,0 +1,50 @@
+# Rollback
+
+All objects live in `METRICS_ANALYZER.MOCK_DATA`. **Nothing in `METRICS_ANALYZER.DQ` is ever changed, so rollback never needs to touch it.**
+Statements below are UNEXECUTED. Drop in reverse dependency order. Run as the setup role. Review before running: `DROP` is irreversible (Time Travel can restore a dropped table/schema for a limited period according to your account's retention setting).
+
+## A. Remove the agent layer only (keep the data)
+
+```sql
+DROP AGENT IF EXISTS METRICS_ANALYZER.MOCK_DATA.AGENT_APPLICATION_COMPLIANCE_V1;
+DROP SEMANTIC VIEW IF EXISTS METRICS_ANALYZER.MOCK_DATA.SV_APPLICATION_COMPLIANCE_V1;
+DROP VIEW IF EXISTS METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS;
+```
+
+## B. Reload the data after a changed CSV (keep the objects)
+
+1. Decide a **new** batch id and dataset version (the old batch id is guarded). Replace `MOCK_V1_20261103` in scripts 05–10 with the new id (search/replace).
+2. Remove the old batch from each layer, final layer first:
+
+```sql
+DELETE FROM METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE     WHERE LOAD_BATCH_ID = 'MOCK_V1_20261103';
+DELETE FROM METRICS_ANALYZER.MOCK_DATA.DATASET_REJECTED_ROWS      WHERE LOAD_BATCH_ID = 'MOCK_V1_20261103';
+DELETE FROM METRICS_ANALYZER.MOCK_DATA.STG_APPLICATION_COMPLIANCE WHERE LOAD_BATCH_ID = 'MOCK_V1_20261103';
+DELETE FROM METRICS_ANALYZER.MOCK_DATA.RAW_APPLICATION_COMPLIANCE WHERE LOAD_BATCH_ID = 'MOCK_V1_20261103';
+-- keep DATASET_LOAD_AUDIT: mark it instead
+UPDATE METRICS_ANALYZER.MOCK_DATA.DATASET_LOAD_AUDIT SET STATUS = 'SUPERSEDED', UPDATED_AT = CURRENT_TIMESTAMP() WHERE LOAD_BATCH_ID = 'MOCK_V1_20261103';
+REMOVE @METRICS_ANALYZER.MOCK_DATA.CLIENT_DATA_STAGE/synthetic_enterprise_data.csv;
+```
+
+3. Upload the new file and run scripts 04 → 10 with the new batch id. The semantic view and agent need no change.
+
+## C. Remove everything this package created
+
+```sql
+DROP AGENT IF EXISTS METRICS_ANALYZER.MOCK_DATA.AGENT_APPLICATION_COMPLIANCE_V1;
+DROP SEMANTIC VIEW IF EXISTS METRICS_ANALYZER.MOCK_DATA.SV_APPLICATION_COMPLIANCE_V1;
+DROP ROLE IF EXISTS METRICS_ANALYZER_DEMO_VIEWER;          -- only if this package created it and nobody else uses it
+DROP SCHEMA IF EXISTS METRICS_ANALYZER.MOCK_DATA;          -- drops tables, views, stage, file formats in one step
+```
+
+**Before C:** run `SHOW OBJECTS IN SCHEMA METRICS_ANALYZER.MOCK_DATA;` and confirm every object is one this package created. If someone added their own objects to `MOCK_DATA`, `DROP SCHEMA` removes them too. Never run `DROP DATABASE`; never name `DQ`.
+
+## D. Undo grants only
+
+```sql
+REVOKE USAGE ON AGENT METRICS_ANALYZER.MOCK_DATA.AGENT_APPLICATION_COMPLIANCE_V1 FROM ROLE METRICS_ANALYZER_DEMO_VIEWER;
+REVOKE SELECT ON SEMANTIC VIEW METRICS_ANALYZER.MOCK_DATA.SV_APPLICATION_COMPLIANCE_V1 FROM ROLE METRICS_ANALYZER_DEMO_VIEWER;
+REVOKE SELECT ON VIEW  METRICS_ANALYZER.MOCK_DATA.V_APPLICATION_MONTH_STATUS FROM ROLE METRICS_ANALYZER_DEMO_VIEWER;
+REVOKE SELECT ON TABLE METRICS_ANALYZER.MOCK_DATA.APPLICATION_COMPLIANCE FROM ROLE METRICS_ANALYZER_DEMO_VIEWER;
+REVOKE USAGE ON SCHEMA METRICS_ANALYZER.MOCK_DATA FROM ROLE METRICS_ANALYZER_DEMO_VIEWER;
+```
