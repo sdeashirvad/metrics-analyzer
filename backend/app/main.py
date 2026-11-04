@@ -4,11 +4,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from app.agents.router import router as agents_router
 from app.config import Settings, load_settings
 from app.core.errors import AppError
 from app.core.logging import configure_logging
 from app.dq.router import router as dq_router
 from app.fallback.assets import read_json
+from app.portfolio.router import router as portfolio_router
 from app.tr.router import router as tr_router
 
 logger = logging.getLogger(__name__)
@@ -29,6 +31,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
     app.include_router(dq_router)
     app.include_router(tr_router)
+    app.include_router(portfolio_router)
+    app.include_router(agents_router)
 
     @app.exception_handler(AppError)
     async def app_error(_request, exc: AppError):
