@@ -131,6 +131,16 @@ $batches = @(
         Paths   = @('frontend/src/v2/features/architecture/model.ts')
     },
     @{
+        Summary = 'v2 scope bar always uses business organisation tree'
+        Paths   = @(
+            'frontend/src/v2/components/ScopeBar.tsx'
+            'frontend/src/v2/hooks/useScopeFilters.ts'
+            'frontend/src/v2/api/query.ts'
+            'frontend/src/v2/api/query.test.ts'
+            'frontend/src/v2/scopePath.ts'
+        )
+    },
+    @{
         Summary = 'snowflake mock data setup scripts'
         Paths   = @('snowflake/mock_data_setup')
     },
