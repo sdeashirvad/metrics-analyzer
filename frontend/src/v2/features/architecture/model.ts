@@ -110,7 +110,7 @@ const pocNodes: ArchNode[] = [
     'The Metrics Analyzer interface, hosted on Cloudflare Pages. It calls the Portfolio API and the agent gateway over HTTPS and renders the typed responses.',
     ['Stakeholder navigation', 'Portfolio responses and run status'],
     ['Dashboard, register, metric summary, investigations, and the agent'],
-    ['Does not query Snowflake or Cortex from the browser', 'Keeps conversation metadata only in this browser'],
+    ['Does not query Snowflake or Cortex from the browser', 'Saves conversation history in this browser: a list in localStorage, transcripts in IndexedDB'],
   ),
   pocNode(
     'gateway',
@@ -203,10 +203,10 @@ const pocNodes: ArchNode[] = [
     'implemented',
     750,
     360,
-    'Messages, SQL, and rows stay on the Snowflake thread. This browser stores only conversation metadata.',
+    'The Snowflake thread is the live record of each conversation. This browser also saves a copy: the conversation list in localStorage, and messages with their SQL and rows in IndexedDB, so a conversation can still be read when the live service is unavailable.',
     ['A completed thread message'],
-    ['The message the UI reads back by handle'],
-    ['No message text, SQL, or rows in browser storage', 'A handle that no longer resolves is marked unavailable'],
+    ['The message the UI reads back by handle, and a saved copy in this browser'],
+    ['The live thread is read first; the saved copy is labelled when shown', 'A handle that no longer resolves is marked unavailable'],
   ),
 ]
 
@@ -370,7 +370,7 @@ const proposedNodes: ArchNode[] = [
   proposedNode('job-queue', 'Queue', 'Async investigations', 1, 5, 'Holds investigation work off the request path so a slow analysis cannot block the UI.', ['Submitted jobs'], ['Work items for a bounded pool'], ['Proposed. No separate queue product is deployed']),
   proposedNode('job-workers', 'Workers', 'Async investigations', 2, 5, 'The API runs analysis with a concurrency limit of two, a timeout, and a check that cited figures were retrieved.', ['Accepted jobs'], ['A checked narrative, or a failed run'], ['Running in this POC', 'A failed check does not replace a saved investigation'], 'implemented'),
   proposedNode('job-dead', 'Dead letter', 'Async investigations', 3, 5, 'Holds jobs that still fail after retries so they can be seen and replayed without silent success.', ['Exhausted failures'], ['A visible failed job'], ['Failure stays failed', 'Proposed. The POC records a failed run, without a separate replay queue']),
-  proposedNode('job-result', 'Snowflake threads', 'Async investigations', 4, 5, 'The conversation store. Messages, SQL, and rows stay on the Snowflake thread. The browser keeps only metadata.', ['Completed agent messages'], ['A thread the UI can poll and reopen'], ['Running in this release', 'The browser does not store message text'], 'implemented'),
+  proposedNode('job-result', 'Snowflake threads', 'Async investigations', 4, 5, 'The live conversation store. Messages, SQL, and rows are kept on the Snowflake thread; the browser also saves a copy in IndexedDB for offline reading.', ['Completed agent messages'], ['A thread the UI can poll and reopen'], ['Running in this release', 'The browser copy is labelled whenever it is shown instead of the live thread'], 'implemented'),
   proposedNode('ops-store', 'Job-state store', 'Records', 1, 6, 'Operational state for jobs. Which database holds it is a design decision, not a selection made here.', ['Job status and payloads'], ['Current state for the API'], ['Not the Snowflake analytical store', 'Proposed']),
   proposedNode('ops-audit', 'Audit and provenance', 'Records', 2, 6, 'Records who asked, which definition and prompt versions were used, and which evidence was cited.', ['Requests, versions, and citations'], ['An audit trail'], ['Separate from analytical tables', 'Proposed']),
   proposedNode('ops-observe', 'Observability', 'Records', 3, 6, 'Logs, metrics, traces, queue depth, worker use, latency, errors, and usage or cost telemetry.', ['Runtime signals'], ['Alerts and diagnostic history'], ['Proposed. No vendor or quota is specified']),
