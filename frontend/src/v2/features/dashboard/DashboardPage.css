@@ -288,7 +288,8 @@
     flex-direction: column;
   }
 
-  .compliance-dashboard .dashboard-panel-testing > .card > .stack {
+  .compliance-dashboard .dashboard-panel-testing > .card > .stack,
+  .compliance-dashboard .dashboard-panel-testing > .card > .qp > .stack {
     flex: 1 1 auto;
     justify-content: space-between;
   }

@@ -22,6 +22,11 @@ import { useScopeFilters } from '../../hooks/useScopeFilters'
 import { readPositiveInt } from '../../api/query'
 import { AskAgentLink } from '../../components/ui/AskAgentLink'
 import { scopeKey, scopedTo } from '../../scopePath'
+import { Skeleton } from '../../components/Skeleton'
+
+/** Rows in the summary attention list. Seven fill the card beside Compliance mix and Testing at 1440 to 1920px wide. */
+const SUMMARY_ROWS = 7
+const SCOPE = { keep: 'dashboard-scope' }
 
 const ATTENTION = ['nonCompliant', 'noCompletedTest', 'failedTest', 'newlyNonCompliant', 'resolved'] as const
 type AttentionTab = (typeof ATTENTION)[number]
@@ -43,10 +48,13 @@ function AttentionList({ filters }: { filters: ScopeFilters }) {
   const linkState = useLinkState('Back')
   const attention = isAttention(params.get('attention')) ? params.get('attention')! : 'nonCompliant'
   const expanded = params.get('explore') === 'attention'
-  const pageSize = expanded ? 25 : 5
+  const pageSize = expanded ? 25 : SUMMARY_ROWS
   const page = expanded ? readPositiveInt(params, 'attentionPage', 1) : 1
-  const query = useApiQuery(`attention-${attention}`, `${scopeKey(filters)}|${page}|${pageSize}`, () =>
-    getApplications(filters, { attention, page, pageSize }),
+  const query = useApiQuery(
+    `attention-${attention}`,
+    `${scopeKey(filters)}|${page}|${pageSize}`,
+    () => getApplications(filters, { attention, page, pageSize }),
+    { keep: `attention-${attention}|${pageSize}` },
   )
   return (
     <div className="stack">
@@ -57,7 +65,7 @@ function AttentionList({ filters }: { filters: ScopeFilters }) {
           </button>
         ))}
       </div>
-      <QueryPanel query={query}>
+      <QueryPanel query={query} skeleton={<Skeleton shape="list" rows={pageSize} label="Loading applications" />}>
         {(data) => (
           <>
             <ul className="list dashboard-attention-list">
@@ -97,8 +105,11 @@ function OrgCard({ filters }: { filters: ScopeFilters }) {
   const level = params.get('orgLevel') === '2' ? 2 : 1
   const expanded = params.get('explore') === 'org'
   const page = expanded ? readPositiveInt(params, 'orgPage', 1) : 1
-  const query = useApiQuery('org', `${scopeKey(filters)}|${level}|${page}|${expanded}`, () =>
-    getOrgContribution(filters, { level, page, pageSize: expanded ? 40 : 8 }),
+  const query = useApiQuery(
+    'org',
+    `${scopeKey(filters)}|${level}|${page}|${expanded}`,
+    () => getOrgContribution(filters, { level, page, pageSize: expanded ? 40 : 8 }),
+    { keep: `org-${level}-${expanded}` },
   )
   return (
     <section className="dashboard-panel dashboard-panel-org">
@@ -116,7 +127,7 @@ function OrgCard({ filters }: { filters: ScopeFilters }) {
       }
     >
       <p className="fine">Non-compliant applications. Bar length matches the count.</p>
-      <QueryPanel query={query}>
+      <QueryPanel query={query} skeleton={<Skeleton shape="bars" rows={8} label="Loading organisations" />}>
         {(data) => (
           <>
             <BarList
@@ -158,12 +169,12 @@ function OrgCard({ filters }: { filters: ScopeFilters }) {
 function LegalEntityCard({ filters }: { filters: ScopeFilters }) {
   const { params, replace, replaceScope } = useScopeFilters()
   const expanded = params.get('explore') === 'legal'
-  const query = useApiQuery('legal', scopeKey(filters), () => getAttributeDistribution('legalEntity', filters))
+  const query = useApiQuery('legal', scopeKey(filters), () => getAttributeDistribution('legalEntity', filters), { keep: 'legal' })
   return (
     <section className="dashboard-panel dashboard-panel-legal">
     <Card title="Legal entities">
       <p className="fine">Non-compliant applications. Bar length matches the count.</p>
-      <QueryPanel query={query}>
+      <QueryPanel query={query} skeleton={<Skeleton shape="bars" rows={8} label="Loading legal entities" />}>
         {(data) => {
           const shown = expanded ? data.items : data.items.slice(0, 8)
           return (
@@ -207,11 +218,11 @@ export function DashboardPage() {
   const navigate = useNavigate()
   const explore = params.get('explore')
   const key = scopeKey(filters)
-  const overview = useApiQuery('overview', key, () => getOverview(filters))
-  const compliance = useApiQuery('compliance', key, () => getComplianceDistribution(filters))
-  const testing = useApiQuery('testing', key, () => getTestingDistribution(filters))
-  const trends = useApiQuery('trends', key, () => getTrends(filters))
-  const coverage = useApiQuery('coverage', filters.month ?? 'latest', () => getDataCoverage(filters.month))
+  const overview = useApiQuery('overview', key, () => getOverview(filters), SCOPE)
+  const compliance = useApiQuery('compliance', key, () => getComplianceDistribution(filters), SCOPE)
+  const testing = useApiQuery('testing', key, () => getTestingDistribution(filters), SCOPE)
+  const trends = useApiQuery('trends', key, () => getTrends(filters), SCOPE)
+  const coverage = useApiQuery('coverage', filters.month ?? 'latest', () => getDataCoverage(filters.month), SCOPE)
   const showLegal = !filters.legalEntity?.length
 
   return (
@@ -237,7 +248,7 @@ export function DashboardPage() {
         </section>
       )}
       {!explore && (
-      <QueryPanel query={overview}>
+      <QueryPanel query={overview} skeleton={<Skeleton shape="kpis" label="Loading the headline figures" />}>
         {(data) => (
           <div className="grid g4 dashboard-kpis">
             <Link className="kpi" to={scopedTo('/register', filters)}>
@@ -270,7 +281,7 @@ export function DashboardPage() {
         <div className="stack dashboard-column dashboard-column-left">
         <section className="dashboard-panel dashboard-panel-compliance">
         <Card title="Compliance mix">
-          <QueryPanel query={compliance}>
+          <QueryPanel query={compliance} skeleton={<Skeleton shape="stack-bar" rows={4} label="Loading the compliance mix" />}>
             {(data) => (
               <>
                 <p className="fine">
@@ -307,7 +318,7 @@ export function DashboardPage() {
         </section>
         <section className="dashboard-panel dashboard-panel-testing">
         <Card title="Testing distribution">
-            <QueryPanel query={testing}>
+            <QueryPanel query={testing} skeleton={<Skeleton shape="bars" rows={6} label="Loading the testing distribution" />}>
               {(data) => (
                 <div className="stack">
                   <p className="fine">Metric rows by test status. This is not an application count.</p>
@@ -338,7 +349,7 @@ export function DashboardPage() {
                     ]}
                   />
                   <p className="fine">{formatInt(data.applications.reporting)} applications reporting</p>
-                  <QueryPanel query={coverage}>
+                  <QueryPanel query={coverage} skeleton={<Skeleton shape="lines" rows={1} label="Loading coverage" />}>
                     {(cover) => (
                       <p className="fine">
                         Coverage {formatInt(cover.applicationsReporting)} reporting · {formatInt(cover.applicationsNotReporting)} not reporting ·{' '}
@@ -355,7 +366,7 @@ export function DashboardPage() {
         <div className="stack dashboard-column dashboard-column-right">
         <section className="dashboard-panel dashboard-panel-movement">
         <Card title="Movement and attention">
-          <QueryPanel query={overview}>
+          <QueryPanel query={overview} skeleton={<Skeleton shape="lines" rows={3} label="Loading movement" />}>
             {(data) =>
               data.movement ? (
                 <div className="stack">
@@ -387,7 +398,7 @@ export function DashboardPage() {
         <section className="dashboard-panel dashboard-panel-trend">
           <Card title="Non-compliant share">
             <p className="fine">Application share by month. Select a point to change the reporting month. Gaps are not plotted as zero.</p>
-            <QueryPanel query={trends}>
+            <QueryPanel query={trends} skeleton={<Skeleton shape="chart" label="Loading the trend" />}>
               {(data) => (
                 <LineChart
                   onSelect={(index) => {
