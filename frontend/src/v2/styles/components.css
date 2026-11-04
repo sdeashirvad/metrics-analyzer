@@ -131,7 +131,7 @@ a.kpi:hover{border-color:var(--accent);box-shadow:var(--e-3)}
 .hbar:hover,.bar-row.chart-hit:hover{background:var(--surface-hover)}
 .bar-track{height:12px;border-radius:6px;background:var(--data-track);overflow:hidden}
 .bar-fill{height:100%;border-radius:6px;background:var(--accent)}
-.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--glass);backdrop-filter:blur(20px) saturate(160%);border:1px solid var(--hairline)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;padding:10px 12px;border-radius:12px;background:var(--glass);backdrop-filter:blur(20px) saturate(160%);border:1px solid var(--hairline)}
 .field{display:flex;flex-direction:column;gap:3px}
 .field-label{font-size:12px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
 button.select{min-width:140px;max-width:100%;padding:6px 10px;border-radius:8px;border:1px solid var(--hairline-strong);background:var(--surface);font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--ink-1);text-align:left}
