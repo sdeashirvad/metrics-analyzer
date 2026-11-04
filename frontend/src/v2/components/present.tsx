@@ -5,6 +5,7 @@ import { errorMessage, isUnsupportedScope } from '../agent/errors'
 import type { Page, RagStatus } from '../api/types'
 import { formatDuration, formatInt, labelOf } from '../format'
 import type { QueryState } from '../hooks/useApiQuery'
+import { Skeleton } from './Skeleton'
 
 const SCOPE_PARAMS = ['month', 'orgTree', 'l1', 'l2', 'legalEntity', 'tier', 'risk', 'lifecycle', 'ma', 'page', 'preview']
 
@@ -29,7 +30,9 @@ function UnsupportedScope({ message }: { message: string }) {
   )
 }
 
-export function QueryPanel<T>({ query, children }: { query: QueryState<T>; children: (data: T) => ReactNode }) {
+export function QueryPanel<T>({ query, children, skeleton }: { query: QueryState<T>; children: (data: T) => ReactNode; skeleton?: ReactNode }) {
+  const waited = useRef(!query.data)
+  if (!query.data && query.status !== 'error') waited.current = true
   if (query.status === 'error') {
     if (isUnsupportedScope(query.error)) return <UnsupportedScope message={errorMessage(query.error)} />
     return (
@@ -41,8 +44,12 @@ export function QueryPanel<T>({ query, children }: { query: QueryState<T>; child
       </div>
     )
   }
-  if (!query.data) return <p className="fine">Loading…</p>
-  return <>{children(query.data)}</>
+  if (!query.data) return <>{skeleton ?? <Skeleton />}</>
+  return (
+    <div className={`qp${waited.current ? ' qp-in' : ''}${query.stale ? ' qp-stale' : ''}`} aria-busy={query.stale || undefined}>
+      {children(query.data)}
+    </div>
+  )
 }
 
 export function Card({ title, action, children }: { title?: ReactNode; action?: ReactNode; children: ReactNode }) {
@@ -194,7 +201,8 @@ export function useFocusContain(containerRef: RefObject<HTMLElement | null>, onE
   }, [containerRef])
 }
 
-export function Elapsed({ submittedAt, running, serverMs }: { submittedAt: string; running: boolean; serverMs: number }) {
+/** Milliseconds since submission, ticking once a second while running. Never less than the server's figure. */
+export function useElapsedMs(submittedAt: string, running: boolean, serverMs: number): number {
   const [now, setNow] = useState(() => Date.now())
   useEffect(() => {
     if (!running) return
@@ -202,7 +210,12 @@ export function Elapsed({ submittedAt, running, serverMs }: { submittedAt: strin
     return () => window.clearInterval(timer)
   }, [running])
   const local = Math.max(0, now - Date.parse(submittedAt))
-  return <span className="fine num">{formatDuration(running ? Math.max(serverMs, local) : serverMs)}</span>
+  return running ? Math.max(serverMs, local) : serverMs
+}
+
+export function Elapsed({ submittedAt, running, serverMs }: { submittedAt: string; running: boolean; serverMs: number }) {
+  const ms = useElapsedMs(submittedAt, running, serverMs)
+  return <span className="fine num">{formatDuration(ms)}</span>
 }
 
 export function Dialog({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {

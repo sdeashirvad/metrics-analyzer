@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { getStatus } from '../api/portfolio'
 import { formatMonth } from '../format'
-import { useApiQuery } from '../hooks/useApiQuery'
+import { useAnyStale, useApiQuery } from '../hooks/useApiQuery'
 import { useScopeFilters } from '../hooks/useScopeFilters'
 
 function navClass({ isActive }: { isActive: boolean }) {
@@ -20,6 +20,7 @@ function Icon({ children }: { children: ReactNode }) {
 export function V2Shell() {
   const status = useApiQuery('status', 'portfolio', getStatus)
   const { filters } = useScopeFilters()
+  const updating = useAnyStale()
   const data = status.data
   const latestLabel = data ? formatMonth(data.latestMonth) : ''
   const selectedLabel = filters.month ? formatMonth(filters.month) : null
@@ -103,6 +104,12 @@ export function V2Shell() {
         <div className="env-bar" aria-live="polite">
           <span className="env-dot" />
           <span className="grow">{statusText}</span>
+          {updating && (
+            <span className="env-updating" role="status">
+              <span className="env-updating-dot" aria-hidden="true" />
+              Showing the previous selection while the new one loads
+            </span>
+          )}
           {status.status === 'error' && (
             <button type="button" className="btn btn-quiet btn-sm" onClick={status.retry}>
               Retry
