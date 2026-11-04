@@ -32,7 +32,7 @@ export function useScopeFilters() {
     (nextFilters: ScopeFilters, extras?: Record<string, ParamValue>) => {
       const changes: Record<string, ParamValue> = {
         month: nextFilters.month ?? null,
-        orgTree: nextFilters.orgTree && nextFilters.orgTree !== 'BUSINESS_ORG' ? nextFilters.orgTree : null,
+        orgTree: null,
         l1: nextFilters.l1 ?? null,
         l2: nextFilters.l2 ?? null,
         legalEntity: nextFilters.legalEntity ?? null,

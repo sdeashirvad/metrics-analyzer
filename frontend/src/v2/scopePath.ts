@@ -13,7 +13,6 @@ export function scopedTo(path: string, filters: ScopeFilters, extra?: QueryParam
 export function contextScope(filters: ScopeFilters, extra?: { metricId?: string; eonId?: string }): ContextRequest['scope'] {
   const partial: Partial<ActiveFilters> = {}
   if (filters.month) partial.month = filters.month
-  if (filters.orgTree) partial.orgTree = filters.orgTree
   if (filters.l1?.length) partial.l1 = filters.l1
   if (filters.l2?.length) partial.l2 = filters.l2
   if (filters.legalEntity?.length) partial.legalEntity = filters.legalEntity

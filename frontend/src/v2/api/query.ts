@@ -1,4 +1,4 @@
-import type { OrgTree, ScopeFilters } from './types'
+import type { ScopeFilters } from './types'
 
 export type QueryValue = string | number | boolean | null | undefined | Array<string | number>
 export type QueryParams = Record<string, QueryValue>
@@ -22,7 +22,6 @@ export function appendQuery(path: string, params: QueryParams): string {
 export function scopeParams(filters: ScopeFilters = {}): QueryParams {
   return {
     month: filters.month,
-    orgTree: filters.orgTree,
     l1: filters.l1,
     l2: filters.l2,
     legalEntity: filters.legalEntity,
@@ -39,7 +38,9 @@ function present(values: string[]): string[] | undefined {
 }
 
 export function readScope(params: URLSearchParams): ScopeFilters {
-  const orgTree = params.get('orgTree')
+  // The organisation tree is always business organisation. A leftover bank-group URL is ignored,
+  // and its level filters are dropped because those names belong to the other tree.
+  const bankGroup = params.get('orgTree') === 'BU'
   const ma = params.get('ma')
   const tier = params
     .getAll('tier')
@@ -47,9 +48,8 @@ export function readScope(params: URLSearchParams): ScopeFilters {
     .filter((item) => Number.isInteger(item))
   return {
     month: params.get('month') || undefined,
-    orgTree: orgTree === 'BUSINESS_ORG' || orgTree === 'BU' ? (orgTree as OrgTree) : undefined,
-    l1: present(params.getAll('l1')),
-    l2: present(params.getAll('l2')),
+    l1: bankGroup ? undefined : present(params.getAll('l1')),
+    l2: bankGroup ? undefined : present(params.getAll('l2')),
     legalEntity: present(params.getAll('legalEntity')),
     tier: tier.length ? tier : undefined,
     risk: present(params.getAll('risk')),

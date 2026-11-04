@@ -16,8 +16,7 @@ export function ScopeBar({ search, extra }: { mode?: 'full' | 'compact'; search?
   const buttonRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const titleId = useId()
-  const treeKey = filters.orgTree ?? 'BUSINESS_ORG'
-  const tree = catalog.data?.orgTrees[treeKey]
+  const tree = catalog.data?.orgTrees.BUSINESS_ORG
   const l2 = tree?.level2.filter((child) => !filters.l1?.length || filters.l1.includes(child.parent)) ?? []
 
   const advancedCount =
@@ -87,14 +86,6 @@ export function ScopeBar({ search, extra }: { mode?: 'full' | 'compact'; search?
         <span className="field-label">Month</span>
         <MenuSelect label="Month" emptyLabel="Latest" options={months} selected={filters.month ? [filters.month] : []} onChange={(next) => patch({ ...filters, month: next[0] })} />
       </div>
-      <div className="seg" role="group" aria-label="Organisation tree">
-        <button type="button" className={treeKey === 'BUSINESS_ORG' ? 'on' : ''} onClick={() => patch({ ...filters, orgTree: undefined, l1: undefined, l2: undefined })}>
-          Business org
-        </button>
-        <button type="button" className={treeKey === 'BU' ? 'on' : ''} onClick={() => patch({ ...filters, orgTree: 'BU', l1: undefined, l2: undefined })}>
-          Bank group
-        </button>
-      </div>
       <button
         ref={buttonRef}
         type="button"
@@ -106,7 +97,7 @@ export function ScopeBar({ search, extra }: { mode?: 'full' | 'compact'; search?
         {advancedCount ? `More filters · ${advancedCount}` : 'More filters'}
       </button>
       {advancedCount > 0 && (
-        <button type="button" className="btn btn-quiet btn-sm" onClick={() => replaceScope({ month: filters.month, orgTree: filters.orgTree })}>
+        <button type="button" className="btn btn-quiet btn-sm" onClick={() => replaceScope({ month: filters.month })}>
           Clear filters
         </button>
       )}
