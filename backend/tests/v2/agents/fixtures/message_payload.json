@@ -1,0 +1,50 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "thinking",
+      "thinking": "secret plan"
+    },
+    {
+      "type": "text",
+      "text": "**Interpreted intent**\nCount reporting applications.\n\n**Assumptions**\n- One row per application.\n\n**Result dataset**\n| APPLICATIONS_REPORTING |\n| 999 |\n"
+    },
+    {
+      "type": "tool_use",
+      "tool_use": {
+        "tool_use_id": "tu-sql",
+        "name": "system_execute_sql",
+        "input": {
+          "sql": "SELECT SHOULD_NOT_USE"
+        }
+      }
+    },
+    {
+      "type": "tool_result",
+      "tool_result": {
+        "tool_use_id": "tu-sql",
+        "name": "system_execute_sql",
+        "status": "success",
+        "content": [
+          {
+            "type": "json",
+            "json": {
+              "sql": "SELECT COUNT(*) AS APPLICATIONS_REPORTING FROM T",
+              "query_id": "01c82c6e-0002-f949-000f-4bee0004c0d6",
+              "result_set": {
+                "data": [["923", ""]],
+                "resultSetMetaData": {
+                  "numRows": 1,
+                  "rowType": [
+                    {"name": "APPLICATIONS_REPORTING", "type": "fixed", "nullable": false, "scale": 0},
+                    {"name": "TEST_RESULT", "type": "text", "nullable": true, "scale": 0}
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
